@@ -1548,89 +1548,10 @@ public class websocket_api extends WebSocketListener {
         return sendForReplyImpl(callObject, replyObjectProcess);
     }
 
-
-    private String makeJsonFromObj(String jsonMessage) {
-        String jsonData = "{\"id\":";
-        try {
-            JSONObject jsonObject = new JSONObject(jsonMessage);
-            if (jsonObject != null) {
-               String strId = jsonObject.getString("id");
-               jsonData += strId +",";
-               jsonData += "\"method\":\"call\",";
-               jsonData += "\"params\":[4,\"broadcast_transaction\",[{\"signatures\": [\"";
-               JSONArray jparams = jsonObject.getJSONArray("params");
-               if (jparams!= null && jparams.length()>0) {
-                   JSONArray transArray = jparams.getJSONArray(2);
-                   if (transArray != null && transArray.length() >0) {
-                       JSONArray signArray = transArray.getJSONObject(0).getJSONArray("signatures");
-                       if (signArray != null && signArray.length() >0) {
-                           String signatures = signArray.getString(0);
-                           jsonData += signatures;
-                           jsonData += "\"],";
-                           jsonData +="\"expiration\": \"";
-                           String expiration = transArray.getJSONObject(0).getString("expiration");
-                           jsonData += expiration;
-                           jsonData +="\", \"extensions\": [],\"operations\": [[5,{\"active\":{\"account_auths\": [],\"address_auths\": [],\"key_auths\": [[";
-                           JSONArray jOperations = transArray.getJSONObject(0).getJSONArray("operations");
-                           JSONArray jOperation = jOperations.getJSONArray(0);
-                           JSONObject Jactive =  jOperation.getJSONObject(1).getJSONObject("active");
-                           String keyAuths = Jactive.getString("key_auths");
-                           jsonData += "{\"";
-                           jsonData += keyAuths.substring(1,keyAuths.length()-3);
-                           jsonData +="\":";
-                           jsonData +="1}";
-                           jsonData +="\"]],";
-                           jsonData +="\"weight_threshold\": 1},";
-                           jsonData +=" \"name\": \"";
-                           String username=jOperation.getJSONObject(1).getString("name");
-                           jsonData += username;
-                           jsonData += "\",\"options\":{\"memo_key\": \"";
-                           JSONObject joptions = jOperation.getJSONObject(1).getJSONObject("options");
-                           String options = joptions.getString("memo_key");
-                           jsonData += options;
-                           jsonData += "\"}, \"owner\": {\"account_auths\": [],\"address_auths\": [],\"key_auths\": [[";
-                           JSONObject jowner = jOperation.getJSONObject(1).getJSONObject("owner");
-                           String keyOwnerAuths = jowner.getString("key_auths");
-                           //jsonData += keyOwnerAuths;
-                           jsonData +="{\"";
-;                          jsonData += keyOwnerAuths.substring(1,keyOwnerAuths.length()-3);
-                           jsonData +="\":";
-                           jsonData +="1}";
-                           jsonData += "]],";
-                           jsonData +="\"weight_threshold\": 1},";
-                           jsonData +=" \"referrer\": \"";
-                           String referrer = jOperation.getJSONObject(1).getString("referrer");
-                           jsonData += referrer;
-                           jsonData +="\",\"referrer_percent\": \"";
-                           String refpercent = jOperation.getJSONObject(1).getString("referrer_percent");
-                           jsonData += refpercent;
-                           jsonData += " \",\"registrar\": \"";
-                           String registrar = jOperation.getJSONObject(1).getString("registrar");
-                           jsonData += registrar;
-                           jsonData +="\"}]],";
-                           jsonData += "\"ref_block_num\":";
-                           String ref_block = transArray.getJSONObject(0).getString("ref_block_num");
-                           jsonData += ref_block;
-                           jsonData += ",\"ref_block_prefix\":";
-                           String ref_block_prefix =  transArray.getJSONObject(0).getString("ref_block_prefix");
-                           jsonData += ref_block_prefix;
-                           jsonData += "}]]}";
-                       }
-                   }
-               }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return jsonData;
-    }
-
     private <T> Reply<T> sendJsonForReplyImpl(Call callObject,
                                           ReplyObjectProcess<Reply<T>> replyObjectProcess) throws NetworkStatusException {
         Gson gson = global_config_object.getInstance().getGsonBuilder().create();
         String strMessage = gson.toJson(callObject);
-        strMessage = makeJsonFromObj(strMessage);
         synchronized (mHashMapIdToProcess) {
             mHashMapIdToProcess.put(callObject.id, replyObjectProcess);
         }

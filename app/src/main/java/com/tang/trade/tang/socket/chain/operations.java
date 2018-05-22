@@ -54,6 +54,7 @@ public class operations {
             mHashId2Operation.put(ID_FILL_LMMIT_ORDER_OPERATION, fill_order_operation.class);
             mHashId2Operation.put(ID_CREATE_ACCOUNT_OPERATION, account_create_operation.class);
             mHashId2Operation.put(ID_UPGRADE_ACCOUNT_OPERATION,account_upgrade_operation.class);
+            mHashId2Operation.put(ID_VESTING_WITHDRAW_OPERATION,withdraw_vesting_operation.class);
 
             mHashId2OperationFee.put(ID_TRANSER_OPERATION, transfer_operation.fee_parameters_type.class);
             mHashId2OperationFee.put(ID_CREATE_LIMIT_ORDER_OPERATION, limit_order_create_operation.fee_parameters_type.class);
@@ -62,6 +63,7 @@ public class operations {
             mHashId2OperationFee.put(ID_FILL_LMMIT_ORDER_OPERATION, fill_order_operation.fee_parameters_type.class);
             mHashId2OperationFee.put(ID_CREATE_ACCOUNT_OPERATION, account_create_operation.fee_parameters_type.class);
             mHashId2OperationFee.put(ID_UPGRADE_ACCOUNT_OPERATION,account_upgrade_operation.fee_parameters_type.class);
+            mHashId2OperationFee.put(ID_VESTING_WITHDRAW_OPERATION,withdraw_vesting_operation.fee_parameters_type.class);
         }
 
         public Type getOperationObjectById(int nId) {
@@ -552,18 +554,15 @@ public class operations {
         }
         public asset fee;
         public object_id<account_object> account_to_upgrade;
-        public boolean upgrade_to_lifetime_member ;
-        public types.account_options options;
-        public authority owner;
-        public authority active;
-        public authority memor;
+        public boolean upgrade_to_lifetime_member;
+        public Set<types.void_t> extensions;
 
 
         public long calculate_fee(fee_parameters_type feeParametersType) {
-             if (upgrade_to_lifetime_member)
-                 return feeParametersType.membership_lifetime_fee;
-             return feeParametersType.membershhip_annual_fee;
-            }
+            if (upgrade_to_lifetime_member)
+                return feeParametersType.membership_lifetime_fee;
+            return feeParametersType.membershhip_annual_fee;
+        }
 
         @Override
         public List<authority> get_required_authorities() {
@@ -584,17 +583,32 @@ public class operations {
 
         @Override
         public void write_to_encoder(base_encoder baseEncoder) {
+            raw_type rawObject = new raw_type();
+            //打包手续费
+            baseEncoder.write(rawObject.get_byte_array(fee.amount));
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(fee.asset_id.get_instance()));
 
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(account_to_upgrade.get_instance()));
+
+            baseEncoder.write(rawObject.get_byte(upgrade_to_lifetime_member));
+
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(extensions.size()));
         }
 
         @Override
         public long calculate_fee(Object objectFeeParameter) {
-            return 10000;
+            assert(fee_parameters_type.class.isInstance(objectFeeParameter));
+            fee_parameters_type feeParametersType = (fee_parameters_type)objectFeeParameter;
+
+            if (upgrade_to_lifetime_member) {
+                return feeParametersType.membership_lifetime_fee;
+            }
+            return feeParametersType.membershhip_annual_fee;
         }
 
         @Override
         public void set_fee(asset fee) {
-
+            this.fee = fee;
         }
 
         @Override
@@ -617,9 +631,73 @@ public class operations {
 
     }
 
+    public static class withdraw_vesting_operation implements base_operation {
+        class fee_parameters_type {
+            long fee = 20*GRAPHENE_BLOCKCHAIN_PRECISION; ///< the cost to register the cheapest non-free account
+        }
 
-    public static class withdraw_vesting_operation {
+        public asset fee;
+        public object_id<vesting_balance_object> vesting_balance;
+        public object_id<account_object> owner;
+        public asset amount;
 
+        @Override
+        public List<authority> get_required_authorities() {
+            return new ArrayList<>();
+        }
+
+        @Override
+        public List<object_id<account_object>> get_required_active_authorities() {
+            List<object_id<account_object>> activeList = new ArrayList<>();
+            activeList.add(fee_payer());
+            return activeList;
+        }
+
+        @Override
+        public List<object_id<account_object>> get_required_owner_authorities() {
+            return new ArrayList<>();
+        }
+
+        @Override
+        public void write_to_encoder(base_encoder baseEncoder) {
+            raw_type rawObject = new raw_type();
+            //打包手续费
+            baseEncoder.write(rawObject.get_byte_array(fee.amount));
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(fee.asset_id.get_instance()));
+
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(vesting_balance.get_instance()));
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(owner.get_instance()));
+
+            baseEncoder.write(rawObject.get_byte_array(amount.amount));
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(amount.asset_id.get_instance()));
+        }
+
+        @Override
+        public long calculate_fee(Object objectFeeParameter) {
+            assert(fee_parameters_type.class.isInstance(objectFeeParameter));
+            fee_parameters_type feeParametersType = (fee_parameters_type)objectFeeParameter;
+            return feeParametersType.fee;
+        }
+
+        @Override
+        public void set_fee(asset fee) {
+            this.fee = fee;
+        }
+
+        @Override
+        public object_id<account_object> fee_payer() {
+            return owner;
+        }
+
+        @Override
+        public List<object_id<account_object>> get_account_id_list() {
+            return null;
+        }
+
+        @Override
+        public List<object_id<asset_object>> get_asset_id_list() {
+            return null;
+        }
     }
 
     public static class account_create_operation implements base_operation {
@@ -637,7 +715,7 @@ public class operations {
         public authority owner;
         public authority active;
         public types.account_options options;
-
+        public Set<types.void_t>         extensions;
 
         public long calculate_fee(fee_parameters_type feeParametersType) {
             long lFeeRequired = feeParametersType.basic_fee;
@@ -646,7 +724,7 @@ public class operations {
             }
 
             // // TODO: 07/09/2017  未完成
-            return 0;
+            return lFeeRequired;
 
         }
 
@@ -669,7 +747,31 @@ public class operations {
 
         @Override
         public void write_to_encoder(base_encoder baseEncoder) {
+            raw_type rawObject = new raw_type();
+            //打包手续费
+            baseEncoder.write(rawObject.get_byte_array(fee.amount));
 
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(fee.asset_id.get_instance()));
+            //打包账户
+
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(registrar.get_instance()));
+
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(referrer.get_instance()));
+            //reffer_percent 需要直接写入数据的二进制文件
+            Integer reffer = Integer.valueOf(referrer_percent);
+            baseEncoder.write(rawObject.get_byte_array(reffer.shortValue()));
+
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(name.length()));
+
+            baseEncoder.write(name.getBytes());
+
+            owner.write_to_endcode(baseEncoder);
+
+            active.write_to_endcode(baseEncoder);
+
+            options.write_to_encode(baseEncoder);
+
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(extensions.size()));
         }
 
         @Override
@@ -679,7 +781,7 @@ public class operations {
 
         @Override
         public void set_fee(asset fee) {
-
+            this.fee = fee;
         }
 
         @Override

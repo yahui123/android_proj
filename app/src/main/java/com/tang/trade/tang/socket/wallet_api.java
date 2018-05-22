@@ -64,6 +64,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -1211,23 +1212,13 @@ public class wallet_api {
     }
 
 
-    public signed_transaction upgrade_account(String name, String fee) throws NetworkStatusException {
-
+    public signed_transaction upgrade_account(String name, boolean upgrade_to_lifetime_member) throws NetworkStatusException {
         account_object object = mWebsocketApi.get_account(name);
         operations.account_upgrade_operation operation = new operations.account_upgrade_operation();
         operation.account_to_upgrade = object.id;
-        operation.upgrade_to_lifetime_member = true;
-        operation.active = object.owner;
+        operation.upgrade_to_lifetime_member = upgrade_to_lifetime_member;
 
-        asset_object assetBDS = lookup_asset_symbols("BDS");
-        if (assetBDS == null) {
-            return null;
-        }
-        object_id<asset_object> feeAssetObjectId = assetBDS.id;
-        List<object_id<asset_object>> listAssetObjectId = new ArrayList<>();
-        listAssetObjectId.add(feeAssetObjectId);
-        asset_object feeAssetObject = get_assets(listAssetObjectId).get(0);
-        operation.fee = feeAssetObject.amount_from_string(fee);
+        operation.extensions = new HashSet<>();
 
         operations.operation_type operationType = new operations.operation_type();
         operationType.nOperationType = operations.ID_UPGRADE_ACCOUNT_OPERATION;
@@ -1238,37 +1229,90 @@ public class wallet_api {
         tx.operations.add(operationType);
 
         tx.extensions = new HashSet<>();
+        set_operation_fees(tx,get_global_properties().parameters.current_fees);
         //set_operation_fees(tx, get_global_properties().parameters.current_fees);
         return sign_transaction(tx);
     }
 
-    public signed_transaction create_account_with_private_key(private_key privateOwnerKey,
+    public signed_transaction with_draw_vesting(String name_or_id, String vesting_name,String amount,String asset_symbol) throws NetworkStatusException {
+//        account_object object = mWebsocketApi.get_account(name);
+        //待修复
+        object_id<vesting_balance_object> object_witness_id = object_id.create_from_string(name_or_id);
+        vesting_balance_object vesting_object = null;
+        if (object_witness_id == null) {
+            return null;
+        }
+
+        account_object vesting_owner = get_account(vesting_name);
+
+        if (vesting_owner == null) {
+            return null;
+        }
+
+        asset_object symbol = lookup_asset_symbols(asset_symbol);
+
+        if (symbol == null) {
+            return null;
+        }
+
+        operations.withdraw_vesting_operation operation = new operations.withdraw_vesting_operation();
+        operation.vesting_balance = object_witness_id;
+        operation.owner = vesting_owner.id;
+
+        operation.amount = symbol.amount_from_string(amount);
+
+
+        operations.operation_type operationType = new operations.operation_type();
+        operationType.nOperationType = operations.ID_VESTING_WITHDRAW_OPERATION;
+        operationType.operationContent = operation;
+
+        signed_transaction tx = new signed_transaction();
+        tx.operations = new ArrayList<>();
+        tx.operations.add(operationType);
+
+        tx.extensions = new HashSet<>();
+        set_operation_fees(tx,get_global_properties().parameters.current_fees);
+        //set_operation_fees(tx, get_global_properties().parameters.current_fees);
+        return sign_transaction(tx);
+    }
+
+    public signed_transaction create_account_with_pub_key(String publicKey,
                                                               String strAccountName,
-                                                              String strPassword,
                                                               String strRegistar,
-                                                              String strReferrer) throws NetworkStatusException {
-        int nActiveKeyIndex = find_first_unused_derived_key_index(privateOwnerKey);
+                                                              String strReferrer,
+                                                              int refferPercent) throws NetworkStatusException {
 
-        String strWifKey = new types.private_key_type(privateOwnerKey).toString();
-        private_key privateActiveKey = derive_private_key(strWifKey, nActiveKeyIndex);
+        if (refferPercent > 100 || refferPercent < 0) {
+            return null;
+        }
 
-        strWifKey = new types.private_key_type(privateActiveKey).toString();
-        int nMemoKeyIndex = find_first_unused_derived_key_index(privateActiveKey);
-        private_key privateMemoKey = derive_private_key(strWifKey, nMemoKeyIndex);
-
-        types.public_key_type publicOwnerKey = new types.public_key_type(privateOwnerKey.get_public_key());
-        types.public_key_type publicActiveKey = new types.public_key_type(privateActiveKey.get_public_key());
-        types.public_key_type publicMemoKey = new types.public_key_type(privateMemoKey.get_public_key());
+        types.public_key_type publicOwnerKey = null;
+        types.public_key_type publicActiveKey = null;
+        types.public_key_type publicMemoKey = null;
+        try {
+            publicMemoKey = new types.public_key_type(publicKey);
+            publicActiveKey = new types.public_key_type(publicKey);
+            publicOwnerKey = new types.public_key_type(publicKey);
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        }
 
         operations.account_create_operation operation = new operations.account_create_operation();
         operation.name = strAccountName;
 
         if (operation.options == null)
             operation.options = new types.account_options();
+
+        operation.options.num_committee = 0;
+        operation.options.num_witness = 0;
+        operation.options.voting_account = new object_id<account_object>(1,2,5);
+        operation.options.votes = new HashSet<>();
+        operation.options.extensions = new HashSet<String>();
+        operation.extensions = new HashSet<>();
         if (publicMemoKey != null)
             operation.options.memo_key = publicOwnerKey;
 
-        operation.active = new authority(1, publicOwnerKey, 1);
+        operation.active = new authority(1, publicActiveKey, 1);
         operation.owner = new authority(1, publicOwnerKey, 1);
 
         account_object accountRegistrar = get_account(strRegistar);
@@ -1276,7 +1320,9 @@ public class wallet_api {
 
         operation.referrer = accountReferr.id;
         operation.registrar = accountRegistrar.id;
-        operation.referrer_percent = accountReferr.referrer_rewards_percentage;
+        operation.referrer_percent = refferPercent * 100;
+
+
 
         operations.operation_type operationType = new operations.operation_type();
         operationType.nOperationType = operations.ID_CREATE_ACCOUNT_OPERATION;
@@ -1290,11 +1336,6 @@ public class wallet_api {
         set_operation_fees(tx, get_global_properties().parameters.current_fees);
 
         return sign_create_account_transaction(tx);
-
-
-        // global_property_object globalPropertyObject = mWebsocketApi.get_global_properties();
-        // dynamic_global_property_object dynamicGlobalPropertyObject = mWebsocketApi.get_dynamic_global_properties();
-
     }
 
 
@@ -1310,7 +1351,7 @@ public class wallet_api {
 
 
         for (authority authorityObject : requiresAuthorities.other) {
-            for (object_id<account_object> accountObjectId : authorityObject.account_auths.keySet()) {
+            for (object_id<account_object> accountObjectId : authorityObject.account_auths().keySet()) {
                 req_active_approvals.add(accountObjectId);
             }
         }
@@ -1387,7 +1428,7 @@ public class wallet_api {
 
 
         for (authority authorityObject : requiresAuthorities.other) {
-            for (object_id<account_object> accountObjectId : authorityObject.account_auths.keySet()) {
+            for (object_id<account_object> accountObjectId : authorityObject.account_auths().keySet()) {
                 req_active_approvals.add(accountObjectId);
             }
         }

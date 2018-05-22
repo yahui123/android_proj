@@ -365,45 +365,15 @@ public class BitsharesWalletWraper {
     public int unlock(String strPassword) {
         return mWalletApi.unlock(strPassword);
     }
-
-
-
-    public void create_account_with_password(String account_name,String password,String registar,String referrer) {
-
-        Map<private_key,public_key> keys = mWalletApi.generateKeyFromPassword(account_name,password);
-        if (keys.size() > 0) {
-            Set set = keys.entrySet();
-            private_key privKey = null;
-            public_key  pubKey = null;
-            for(Iterator iter = set.iterator(); iter.hasNext();)
-            {
-                Map.Entry entry = (Map.Entry)iter.next();
-                privKey = (private_key)entry.getKey();
-                pubKey = (public_key)entry.getValue();
-                System.out.println(privKey +" :" + pubKey);
-            }
-
-            if (pubKey != null && privKey != null) {
-                operations.account_create_operation operation = new operations.account_create_operation();
-                operation.name = account_name;
-            }
-        }
-
+    
+    public signed_transaction create_account_with_pub_key(String pubKey, String strAccountName,
+                                                          String strRegistar, String strReferrer, int refferPercent)
+            throws NetworkStatusException {
+        return mWalletApi.create_account_with_pub_key(pubKey,strAccountName,strRegistar,strReferrer,refferPercent);
     }
 
-
-
-    public void create_account_with_private_key(private_key privateOwnerKey,
-                                                String strAccountName,
-                                                String strPassword,
-                                                String strRegistar,
-                                                String strReferrer) throws NetworkStatusException {
-        mWalletApi.create_account_with_private_key(privateOwnerKey,strAccountName,strPassword,strRegistar,strReferrer);
-    }
-
-
-    public signed_transaction upgrade_account(String name,String fee)throws NetworkStatusException  {
-        return  mWalletApi.upgrade_account(name,fee);
+    public signed_transaction upgrade_account(String name, boolean upgrade_to_lifetime_member)throws NetworkStatusException  {
+        return  mWalletApi.upgrade_account(name,upgrade_to_lifetime_member);
     }
 
     public int lock() {
