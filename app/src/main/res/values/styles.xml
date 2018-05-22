@@ -1,0 +1,286 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="immersivemode" parent="AppTheme">
+        <!--&lt;!&ndash;透明状态栏&ndash;&gt;-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--&lt;!&ndash;透明导航栏&ndash;&gt;-->
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+        <!--&lt;!&ndash;使状态栏，导航栏可绘制&ndash;&gt;-->
+        <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+    </style>
+
+    <style name="FullscreenTheme" parent="immersivemode">
+        <item name="windowNoTitle">true</item>
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="leadMode" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="main" parent="leadMode">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="textview">
+        <item name="android:textSize">@dimen/s12</item>
+        <item name="android:textColor">#58B3FF</item>
+        <item name="android:layout_marginLeft">@dimen/d10</item>
+        <item name="android:layout_marginRight">@dimen/d10</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="textview_2">
+        <item name="android:textSize">@dimen/s12</item>
+        <item name="android:textColor">#58B3FF</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+
+    <style name="textviewtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s12</item>
+    </style>
+
+    <style name="textstyle">
+        <item name="android:textColor">@color/common_color_blank</item>
+    </style>
+
+
+    <style name="style0">
+        <item name="android:textSize">@dimen/s9</item>
+    </style>
+
+    <style name="style1">
+        <item name="android:textSize">@dimen/s16</item>
+    </style>
+
+    <style name="style2">
+        <item name="android:textSize">@dimen/sp17</item>
+    </style>
+
+    <style name="style4">
+        <item name="android:textSize">@dimen/s9</item>
+    </style>
+
+    <style name="style3">
+        <item name="android:textSize">@dimen/s14</item>
+    </style>
+
+
+    <style name="foodRatingBarBig" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingstars_big</item>
+        <item name="android:minHeight">@dimen/d20</item>
+        <item name="android:maxHeight">@dimen/d25</item>
+
+    </style>
+
+
+
+
+
+    <style name="text_title_textsize">
+        <item name="android:textColor">@color/common_text_blank</item>
+        <item name="android:textSize">@dimen/s16</item>
+        <item name="android:paddingTop">@dimen/d20</item>
+    </style>
+
+    <style name="my_actionbar_styles">
+        <item name="android:layout_height">@dimen/d68</item>
+        <item name="android:paddingTop">@dimen/d20</item>
+        <item name="android:background">@color/common_white</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="text_black_textsize12">
+        <item name="android:textColor">@color/common_text_blank</item>
+        <item name="android:textSize">@dimen/s12</item>
+    </style>
+
+    <style name="text_black_textsize13">
+        <item name="android:textColor">@color/common_text_blank</item>
+        <item name="android:textSize">@dimen/s13</item>
+    </style>
+
+    <style name="text_black_textsize14">
+        <item name="android:textColor">@color/common_text_blank</item>
+        <item name="android:textSize">@dimen/s14</item>
+    </style>
+
+    <style name="text_black_textsize15">
+        <item name="android:textColor">@color/common_text_blank</item>
+        <item name="android:textSize">@dimen/s15</item>
+    </style>
+
+    <style name="text_black_textsize16">
+        <item name="android:textColor">@color/common_text_blank</item>
+        <item name="android:textSize">@dimen/s16</item>
+    </style>
+
+    <!--accept-->
+
+    <style name="accept_style_red">
+        <item name="android:textColor">@color/accept_text_red</item>
+        <item name="android:textSize">@dimen/s13</item>
+    </style>
+
+
+    <style name="text_blue_13sp">
+        <item name="android:textColor">@color/rechange_tab_selected</item>
+        <item name="android:textSize">@dimen/s13</item>
+    </style>
+
+    <style name="text_gray_13">
+        <item name="android:textColor">@color/mine_text_gray</item>
+        <item name="android:textSize">@dimen/s13</item>
+    </style>
+
+    /**
+    */
+
+    <style name="edittext_style">
+        <item name="android:textSize">@dimen/s13</item>
+    </style>
+
+    <style name="mine_phone_edit_style">
+        <item name="android:textSize">@dimen/s13</item>
+        <item name="android:textColor">@color/mine_phone_text_gray</item>
+        <item name="android:textColorHint">@color/mine_phone_text_gray_hint</item>
+    </style>
+
+
+
+    <!--  这个是加入的代码 -->
+
+    <style name="accouptor_popwindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popup_topenter</item>
+
+        <item name="android:windowExitAnimation">@anim/popup_topexit</item>
+    </style>
+
+
+    <style name="dialog_style" parent="android:style/Theme.Dialog">
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 没有标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景模糊 -->
+    </style>
+
+    <style name="dialog_animatoion_style">
+        <item name="android:windowEnterAnimation">@anim/route_in</item>
+        <item name="android:windowExitAnimation">@anim/route_out</item>
+    </style>
+
+
+    <!-- 竖屏K线radio -->
+    <style name="KLineVRadioButton_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@drawable/radio_btn_line_color_blue_black</item>
+        <item name="android:textSize">@dimen/s13</item>
+        <item name="android:background">@drawable/radio_btn_line_bg_klin</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <style name="StyleProgressBarMini" parent="Widget.AppCompat.ProgressBar.Horizontal">
+
+        <item name="android:maxHeight">2dp</item>
+        <item name="android:minHeight">2dp</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
+        <item name="android:progressDrawable">@drawable/horizontal_progress_bar_style</item>
+
+    </style>
+
+
+    <declare-styleable name="badge_stule">
+        <attr name="drawable_badge" format="reference|integer" />
+    </declare-styleable>
+
+
+    <!--<style name="StyledIndicators" parent="@android:style/Theme.Light">-->
+    <!--<item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>-->
+    <!--</style>-->
+
+    <!--<style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">-->
+    <!--<item name="android:background">@drawable/tab_indicator</item>-->
+    <!--<item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>-->
+    <!--<item name="android:textSize">14sp</item>-->
+    <!--<item name="android:dividerPadding">8dp</item>-->
+    <!--<item name="android:showDividers">middle</item>-->
+    <!--<item name="android:paddingLeft">10dp</item>-->
+    <!--<item name="android:paddingRight">10dp</item>-->
+    <!--<item name="android:fadingEdge">horizontal</item>-->
+    <!--<item name="android:fadingEdgeLength">8dp</item>-->
+    <!--</style>-->
+
+    <!--<style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">-->
+    <!--<item name="android:typeface">monospace</item>-->
+    <!--<item name="android:textColor">@drawable/selector_tabtext</item>-->
+
+    <!--********************** 4.0添加 ****************************************************-->
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SingleChoiceDialogStyle" parent="android:Theme.Holo.Light.Dialog.MinWidth">
+        <item name="android:listChoiceIndicatorSingle">@drawable/selector_btn_bg</item>
+        <item name="android:radioButtonStyle">@drawable/select_iv_zhangdie</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="btn_enable_400">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@drawable/selector_btn_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/common_white</item>
+        <item name="android:textSize">@dimen/s15</item>
+    </style>
+
+    <style name="btn_disable_400">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@color/login_btn_color_dissable</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/s15</item>
+    </style>
+
+    <style name="TabLayoutTextStyle_400">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+</resources>

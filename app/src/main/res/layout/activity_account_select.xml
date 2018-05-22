@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@color/common_bg_gray"
+xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:id="@+id/iv_back"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/common_back"
+        android:layout_marginTop="5dp"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_marginLeft="@dimen/d15"
+        style="@style/text_title_textsize"
+        android:layout_centerHorizontal="true"
+        android:text="@string/bds_address_management"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/d10"
+        android:layout_marginTop="5dp"/>
+
+    <ImageView
+        android:id="@+id/iv_add"
+        android:layout_alignParentRight="true"
+        android:layout_width="40dp"
+        android:scaleType="fitCenter"
+        android:layout_height="40dp"
+        android:padding="@dimen/d5"
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/mine_selectaccont_add"
+        />
+</RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2"
+        />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.tang.trade.tang.widget.LoadingView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            ></com.tang.trade.tang.widget.LoadingView>
+
+        <ListView
+            android:id="@+id/lv_account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="@dimen/d15"
+            android:divider="@color/common_bg_gray"
+            android:listSelector="@color/common_none"
+            android:scrollbars="none"></ListView>
+
+        <com.tang.trade.tang.widget.NoDataView
+            android:id="@+id/ll_nodata"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+<LinearLayout
+    android:id="@+id/ll_add"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/btn_sendout_title"
+    android:gravity="center"
+    android:layout_marginTop="@dimen/d15"
+    >
+
+    <TextView
+        android:id="@+id/tv_add"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/bds_confirm"
+        android:textColor="@color/common_white"
+        android:textSize="@dimen/s16"
+        />
+</LinearLayout>
+
+
+
+</LinearLayout>
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp">
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/left"
+        android:layout_height="match_parent"/>
+
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rect"
+        android:orientation="vertical"
+        android:padding="5dp">
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d10" />
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt"
+            android:textColor="@color/common_color_blank"
+            android:textSize="@dimen/s16"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15dp"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d16"
+        android:layout_marginLeft="@dimen/d20"
+        android:layout_marginBottom="@dimen/s16"
+        android:layout_marginRight="@dimen/d20"
+        android:padding="@dimen/d8"
+        android:textSize="@dimen/s13"
+        android:text="@string/bds_note_wallet_remove"
+        android:maxLines="5"
+        android:lineSpacingExtra="@dimen/d5"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_yes"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/bds_confirm"
+            android:gravity="center"
+            android:padding="@dimen/d5"
+            android:textColor="@color/common_white"
+            android:layout_marginLeft="@dimen/d25"
+            android:layout_marginRight="@dimen/d5"
+            android:background="@drawable/btn_sendout"
+            />
+        <TextView
+            android:id="@+id/tv_no"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d5"
+            android:layout_marginRight="@dimen/d25"
+            android:text="@string/bds_cancel"
+            android:gravity="center"
+            android:padding="@dimen/d5"
+            android:textColor="@color/common_white"
+            android:background="@drawable/bg_shape_adadad"
+            />
+
+    </LinearLayout>
+
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d10" />
+    </LinearLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:id="@+id/right"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bds_note_phone_null">请先于“我的-安全中心-手机号管理”内设置绑定手机号码，以便您接收充值提现验证码的短信。</string>
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="@dimen/d13"
+                android:layout_marginLeft="@dimen/d8"
+                android:layout_marginRight="@dimen/d8"
+                android:layout_marginTop="@dimen/d13"
+                android:scaleType="fitXY"
+                android:src="@mipmap/iv_haoping_pw_icon" />
+            <TextView
+                android:id="@+id/tv_sort"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/s14"
+                android:gravity="left"
+                android:text="@string/accept_deposit_fee"
+                android:textColor="@color/common_white"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:id="@+id/line_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d0.5"
+            android:background="@color/common_white"
+            android:alpha="0.3"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

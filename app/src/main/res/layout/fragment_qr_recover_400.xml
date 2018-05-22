@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_scan_qr"
+        android:layout_width="186dp"
+        android:layout_height="186dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/login_recover_qr_scan" />
+
+    <TextView
+        android:id="@+id/tv_scan_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d50"
+        android:gravity="center"
+        android:text="请扫描二维码或者上传二维码"
+        android:textColor="@color/common_text_gray"
+        android:textSize="@dimen/sp16" />
+
+    <!--扫描新二维码显示的布局-->
+    <LinearLayout
+        android:id="@+id/ll_new_qr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/mine_security_backupqr_phone" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/input_phone_400"
+                android:inputType="phone"
+                android:padding="7dp"
+                android:singleLine="true"
+                android:textColorHint="@color/common_text_gray"
+                android:textSize="14dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/login_recover_text_blue" />
+
+            <TextView
+                android:id="@+id/tv_send_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="7dp"
+                android:paddingEnd="12dp"
+                android:paddingStart="12dp"
+                android:paddingTop="7dp"
+                android:text="@string/send_code_400"
+                android:textColor="@color/login_recover_text_blue_v2"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="52dp"
+            android:background="@color/common_line_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="23dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/ic_code_400" />
+
+            <EditText
+                android:id="@+id/et_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/input_code_400"
+                android:padding="7dp"
+                android:singleLine="true"
+                android:textColorHint="@color/common_text_gray"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="52dp"
+            android:background="@color/common_line_gray" />
+
+    </LinearLayout>
+
+    <!--扫描旧二维码显示布局-->
+    <LinearLayout
+        android:id="@+id/ll_old_qr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/common_psw" />
+
+            <EditText
+                android:id="@+id/et_user"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/hint_input_account_400"
+                android:inputType="phone"
+                android:padding="7dp"
+                android:singleLine="true"
+                android:textColorHint="@color/common_text_gray"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="52dp"
+            android:background="@color/common_line_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="23dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/common_psw" />
+
+            <EditText
+                android:id="@+id/et_key"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入私钥"
+                android:padding="7dp"
+                android:singleLine="true"
+                android:textColorHint="@color/common_text_gray"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="52dp"
+            android:background="@color/common_line_gray" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_btn"
+            style="@style/btn_enable_400"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp30"
+            android:text="@string/btn_commit_400" />
+    </RelativeLayout>
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:layout_gravity="bottom"
+        android:enabled="false"
+        android:gravity="bottom"
+        android:scaleType="fitXY"
+        android:src="@drawable/login_bottom" />
+
+</LinearLayout>

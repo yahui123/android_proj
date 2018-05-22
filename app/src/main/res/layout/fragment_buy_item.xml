@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/d10"
+    android:paddingRight="@dimen/d10"
+    android:paddingTop="3dp"
+    android:orientation="vertical"
+   >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:paddingLeft="6dp"
+            android:text="@string/bds_type"
+            android:textColor="@color/common_color_blank"
+            android:textSize="@dimen/s12"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.25"
+            android:gravity="center"
+            android:text="@string/bds_price"
+            android:textColor="@color/common_color_blank"
+            android:textSize="@dimen/s12"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.25"
+            android:gravity="center"
+            android:text="@string/bds_quantity"
+            android:textColor="@color/common_color_blank"
+            android:textSize="@dimen/s12"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/tv_gmv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="right"
+            android:paddingRight="6dp"
+            android:text="@string/bds_turnover"
+            android:textColor="@color/common_color_blank"
+            android:textSize="@dimen/s12"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/common_bg_gray"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        />
+</LinearLayout>

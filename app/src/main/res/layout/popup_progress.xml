@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/d15"
+    android:layout_marginRight="@dimen/d15"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_progress"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/d20"
+        android:layout_marginRight="@dimen/d30"
+        android:background="@drawable/bg_rect_progress"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/d5"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginTop="@dimen/d15"
+                android:text="@string/loading" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d2"
+                android:background="@color/common_bg_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d15"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/text_progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d15"
+                android:text="%" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

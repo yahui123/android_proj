@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/acceptance_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.fragment.NewAcceptorFragment">
+
+    <LinearLayout
+        style="@style/my_actionbar_styles"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/line_gateway_qiehuan"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/d40"
+                android:paddingBottom="10dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="10dp"
+                android:src="@mipmap/accept_record_icon" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/line_search"
+            android:layout_width="0dp"
+            android:layout_height="29dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/d20"
+            android:layout_marginRight="@dimen/d20"
+            android:layout_marginTop="@dimen/d1"
+            android:layout_weight="1"
+            android:background="@drawable/bg_search_shape"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="@dimen/d5"
+                android:layout_marginRight="@dimen/d5"
+                android:src="@mipmap/accept_search_icon" />
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/d25"
+                android:gravity="center"
+                android:text="@string/accept_search_hint"
+                android:textColor="@color/common_white"
+                android:textSize="@dimen/s13"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/accept_search_hint"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/accept_text_gray_v2"
+                android:textColorHint="@color/accept_text_gray_v2"
+                android:textSize="@dimen/s13" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/tvPupList"
+            android:layout_width="29.5dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:paddingRight="@dimen/d10"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/accept_sort_list" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/rechange_tab_selected"
+        app:tabSelectedTextColor="@color/rechange_tab_selected"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"></android.support.design.widget.TabLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_bg_gray" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_exchange"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

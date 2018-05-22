@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray_v2"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.AddMoneyAddressActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingTop="@dimen/d20"
+            style="@style/text_title_textsize"
+            android:text="@string/bds_cash_in_address"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2"
+        />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/iv_select_cash_in_currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+                style="@style/text_black_textsize13"
+                android:text="@string/bds_revalued_currency"
+           />
+
+            <TextView
+                android:id="@+id/tv_cash_in_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="@string/CNY"
+                android:textColor="@color/common_text_blank"
+                android:textSize="@dimen/s14" />
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/d8"
+                android:src="@mipmap/drop_down_icon" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v2" />
+
+        <LinearLayout
+            android:id="@+id/iv_select_cash_in_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="@string/bds_cash_in_type"
+                style="@style/text_black_textsize13"
+              />
+
+            <TextView
+                android:id="@+id/tv_cash_in_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="@string/bds_WeChat"
+                android:textColor="@color/common_text_blank"
+                android:textSize="@dimen/s14" />
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/d8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="230dp"
+            android:layout_height="41.5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/d60"
+            android:background="@drawable/bg_button_shape_radiues"
+            android:gravity="center"
+            android:text="@string/bds_next_submit"
+            android:textColor="@color/common_white"
+            android:textSize="@dimen/s14" />
+    </LinearLayout>
+</LinearLayout>

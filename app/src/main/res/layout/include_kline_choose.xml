@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="50dp"
+    android:layout_height="match_parent"
+    android:background="@color/market_kline_sp_ll_bg"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_kline">
+
+    <Spinner
+        android:id="@+id/sp_kline_period_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/market_kline_sp_bg" />
+
+    <Spinner
+        android:id="@+id/sp_kline_ma_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sp_kline_period_switch"
+
+        android:layout_marginTop="2dp"
+        android:background="@color/market_kline_sp_bg" />
+
+    <Spinner
+        android:id="@+id/sp_kline_km_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sp_kline_ma_switch"
+        android:layout_marginTop="2dp"
+        android:background="@color/market_kline_sp_bg" />
+
+    <TextView
+        android:id="@+id/tv_kline_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/market_kline_sp_bg"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:singleLine="true"
+        android:text="返回"
+        android:textAlignment="inherit"
+        android:textColor="@color/market_kline_text_grey" />
+</RelativeLayout>

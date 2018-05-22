@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/photo_popupwindow_item_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <FrameLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/photo_popupwindow_item_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_rect"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_note"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@null"
+                android:text="你可对账号xxx的微信账户进行操作"
+                android:textColor="@color/common_edit_hint"
+                android:textSize="12sp"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_separator_v1"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_edit"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:gravity="center"
+                android:text="@string/bds_edit"
+                android:textColor="@color/mine_selectaccount_text_blue"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_separator_v1"
+                />
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:text="@string/bds_delete"
+                android:textColor="@color/mine_selectaccount_text_red"
+                android:gravity="center"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/bg_rect"
+            android:gravity="center"
+            android:text="@string/bds_cancel"
+            android:textColor="@color/mine_selectaccount_text_blue"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+           />
+    </LinearLayout>
+
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>

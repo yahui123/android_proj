@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_home"
+        android:clipChildren="false"
+        android:clipToPadding="true"
+        android:paddingTop="@dimen/d20">
+
+        <ImageView
+            android:id="@+id/backwallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d10"
+            android:layout_marginTop="@dimen/d10"
+            android:src="@mipmap/common_backwallet" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/d20"
+            android:clipChildren="false">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d20"
+                android:layout_marginRight="@dimen/d20"
+                android:layout_marginTop="@dimen/d35"
+                android:background="@drawable/bg_rect"
+                android:clipChildren="false"
+                android:elevation="@dimen/d4"
+                android:translationZ="@dimen/d4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/d75"
+                    android:src="@mipmap/group_2x"
+                    android:translationY="-40dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d60"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/textviewtitle"
+                                android:text="@string/bds_current_block" />
+
+                            <TextView
+                                android:id="@+id/currentblock"
+                                style="@style/textview" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/textviewtitle"
+                                android:text="@string/bds_previous_block" />
+
+                            <TextView
+                                android:id="@+id/headblockage"
+                                style="@style/textview" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                style="@style/textviewtitle"
+                                android:text="@string/bds_active_witness" />
+
+                            <TextView
+                                android:id="@+id/activewitnesses"
+                                style="@style/textview" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d20"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView"
+                                style="@style/textviewtitle"
+                                android:text="@string/bds_generated_at" />
+
+                            <TextView
+                                android:id="@+id/nextmaintance"
+                                style="@style/textview"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginLeft="@dimen/d10"
+                                android:ellipsize="end"
+                                android:gravity="center_horizontal"
+                                android:lines="1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/textviewtitle"
+                                android:text="@string/bds_active_board_members" />
+
+                            <TextView
+                                android:id="@+id/activecommitmember"
+                                style="@style/textview" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <android.support.v4.widget.Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/d20" />
+                </LinearLayout>
+
+
+            </FrameLayout>
+        </FrameLayout>
+
+
+    </FrameLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d20" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/d20"
+        android:layout_marginLeft="@dimen/d20"
+        android:layout_marginRight="@dimen/d20"
+        android:background="@drawable/bg_rect"
+        android:elevation="4dp"
+        android:translationZ="4dp">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/listview_wallet_header" />
+
+        <ListView
+            android:id="@+id/listview_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d40"
+            android:divider="@null"
+            android:elevation="4dp"
+            android:listSelector="@color/common_none"
+            android:overScrollMode="never"
+            android:paddingBottom="@dimen/d10"
+            android:paddingTop="@dimen/d10"
+            android:scrollbars="none"
+            android:translationZ="4dp">
+
+        </ListView>
+    </FrameLayout>
+
+
+</LinearLayout>

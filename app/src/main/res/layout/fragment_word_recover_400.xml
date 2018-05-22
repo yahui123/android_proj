@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_words"
+        android:layout_width="319dp"
+        android:layout_height="187dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d40"
+        android:background="@mipmap/login_recover_word_border"
+        android:gravity="start"
+        android:hint="请输入速记词"
+        android:padding="10dp"
+        android:textSize="@dimen/sp14" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="38dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/common_username" />
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@null"
+            android:hint="@string/hint_input_username_400"
+            android:padding="7dp"
+            android:textColorHint="@color/common_text_gray"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="50dp"
+        android:background="@color/common_line_gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_btn"
+            style="@style/btn_enable_400"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp30"
+            android:text="@string/btn_commit_400" />
+    </RelativeLayout>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:enabled="false"
+        android:gravity="bottom"
+        android:scaleType="fitXY"
+        android:src="@drawable/login_bottom" />
+
+</LinearLayout>

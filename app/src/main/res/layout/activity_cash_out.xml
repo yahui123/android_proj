@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.CashOutActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/text_title_textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingTop="@dimen/d20"
+            android:text="@string/bds_withdraw" />
+
+        <ImageView
+            android:id="@+id/iv_record"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/accept_cash_record" />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/d10"
+            android:text="@string/bds_account_balance"
+            android:textColor="@color/common_color_blank" />
+
+        <TextView
+            android:id="@+id/tv_account_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d20"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="0.0000"
+            style="@style/text_black_textsize13"
+            />
+
+        <TextView
+            android:id="@+id/tv_account_balance_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d5"
+            android:layout_marginRight="@dimen/d10"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/BDS"
+            style="@style/text_black_textsize13"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_marginRight="@dimen/d10"
+        android:background="@drawable/bg_line_shape_radiues">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:padding="@dimen/d8"
+            android:singleLine="true"
+            android:text="@string/bds_cash_out1_money"
+            style="@style/text_black_textsize13"
+            />
+
+        <EditText
+            android:id="@+id/et_cash_out_money"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="right"
+            android:padding="@dimen/d8"
+            android:text=""
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            style="@style/edittext_style"
+            android:textColor="@color/accept_text_gray"
+            android:textSize="@dimen/s13" />
+
+        <TextView
+            android:id="@+id/tv_cash_out_money_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d5"
+            android:layout_marginRight="@dimen/d10"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/BDS"
+            android:textColor="@color/accept_text_gray"
+            android:textSize="@dimen/s13" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_marginRight="@dimen/d10"
+        android:layout_marginTop="@dimen/d10"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_line_shape_radiues">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:padding="@dimen/d8"
+                android:singleLine="true"
+                android:text="@string/bds_walletaddress"
+                style="@style/text_black_textsize13"
+     />
+
+            <EditText
+                android:id="@+id/tv_wallet_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:padding="@dimen/d8"
+                android:text=""
+                android:maxLines="1"
+                android:singleLine="true"
+                style="@style/edittext_style"
+                 />
+            <ImageView
+                android:id="@+id/iv_scan_address"
+                android:layout_width="@dimen/d35"
+                android:layout_height="@dimen/d35"
+                android:layout_marginRight="@dimen/d5"
+                android:padding="@dimen/d5"
+                android:layout_marginLeft="@dimen/d10"
+                android:src="@mipmap/mine_cashout_qrcode" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="@dimen/d5"
+        android:id="@+id/tv_rate"
+        style="@style/text_black_textsize13"
+        android:layout_width="match_parent"
+        android:gravity="right"
+        android:layout_marginRight="@dimen/d15"
+        android:text="@string/bds_fee"
+        android:textSize="@dimen/s12"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/mine_text_gray"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginTop="@dimen/d50"
+        android:id="@+id/tv_cash_out"
+        android:gravity="center"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:layout_gravity="center"
+        android:layout_width="230dp"
+        android:layout_height="42.3dp"
+        android:textColor="@color/common_white"
+        android:text="@string/bds_confirm"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_button_shape_radiues"
+        android:textSize="@dimen/s14" />
+
+</LinearLayout>

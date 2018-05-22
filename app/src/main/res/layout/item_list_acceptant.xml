@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/line_item"
+            android:background="@drawable/bg_rect"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_acceptantNama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="accoptor"
+                    style="@style/text_black_textsize14"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+
+                <ImageView
+                    android:id="@+id/iv_huihua"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/d10"
+                    android:paddingRight="@dimen/d10"
+                    android:src="@mipmap/accept_news" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:layout_marginRight="@dimen/d5"
+                    android:id="@+id/line_myRanking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <com.tang.trade.tang.widget.MyRanking
+                        android:id="@+id/myRanking"
+                        android:layout_width="86dp"
+                        android:layout_gravity="bottom"
+                        android:layout_height="11.8dp">
+                    </com.tang.trade.tang.widget.MyRanking>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_introduce"
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bds_nothiing_acceptor"
+                android:textColor="@color/accept_text_gray_v2"
+                android:textSize="@dimen/s13"
+                android:maxLines="1"
+                android:singleLine="true"/>
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_bg_gray"
+                />
+            <LinearLayout
+                android:id="@+id/line_bottom"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_black_textsize13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/d10"
+                        android:layout_marginRight="@dimen/d10"
+                        android:layout_marginTop="@dimen/d10"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/bds_total_turnover" />
+
+                    <TextView
+                        android:id="@+id/tvTotalVolume"
+                        style="@style/accept_style_red"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d8"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="0" />
+
+                    <TextView
+                        style="@style/text_black_textsize13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d10"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/bds_transaction_pens_sumber" />
+
+                    <TextView
+                        android:id="@+id/tvTranspens"
+                        style="@style/accept_style_red"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d10"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="0" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_black_textsize13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d10"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/bds_deposit_quate" />
+
+                    <TextView
+                        android:id="@+id/tvRechargeAmount"
+                        style="@style/accept_style_red"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d8"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="0" />
+
+                    <TextView
+                        style="@style/text_black_textsize13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d10"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/bds_withdrawal_quote" />
+
+                    <TextView
+                        android:id="@+id/tvWithdrawalAmount"
+                        style="@style/accept_style_red"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d10"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="0"
+                 />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginLeft="@dimen/d10"
+                        android:layout_marginRight="@dimen/d10"
+                        android:layout_marginTop="@dimen/d10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bds_fee_radio"
+                        style="@style/text_black_textsize13"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        />
+                    <TextView
+                        android:id="@+id/tvRechargeRata"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d8"
+                        android:text="0"
+                        android:gravity="center"
+                        style="@style/accept_style_red"
+                        android:singleLine="true"
+                        />
+                    <TextView
+                        android:layout_marginTop="@dimen/d10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bds_tixian_feeradio"
+                        android:gravity="center"
+                        style="@style/text_black_textsize13"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        />
+                    <TextView
+                        android:id="@+id/tvWithdrawalRate"
+                        android:layout_marginTop="@dimen/d8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:gravity="center"
+                        style="@style/accept_style_red"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/line_buZaiXian"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@mipmap/accept_close_bg"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+           >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/accept_close_icon"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bds_wenxi_tishi"
+                    android:textSize="@dimen/s16"
+                    android:textColor="@color/common_white"/>
+                <TextView
+                    android:id="@+id/id_name_time"
+                    android:layout_marginTop="@dimen/d5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="xxxx： 00:00~23:59"
+                    android:textSize="@dimen/s13"
+                    android:textColor="@color/common_white"/>
+                android:textColor="@color/common_white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bds_lianxi_kefu"
+                    android:textSize="@dimen/s13"
+                    android:textColor="@color/common_white"/>
+
+
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:src="@mipmap/accept_close_icon"/>
+
+        </LinearLayout>
+
+
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/bot_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp10"
+        android:visibility="gone" />
+
+</LinearLayout>

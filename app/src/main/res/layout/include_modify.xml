@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_security_showword_bg"
+    android:orientation="vertical">
+
+    <com.tang.trade.widget.LimitEditText
+        android:id="@+id/et_unlockPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_white"
+        android:drawableLeft="@mipmap/mine_security_backupqr_phone"
+        android:drawablePadding="@dimen/d10"
+        android:hint="@string/hint_unlock_phone_400"
+        android:inputType="phone"
+        android:padding="@dimen/d10"
+        android:textSize="@dimen/s15" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d1"
+        android:background="@color/common_white"
+        android:orientation="horizontal">
+
+        <com.tang.trade.widget.LimitEditText
+            android:id="@+id/et_verificationCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@mipmap/mine_security_backupqr_verication"
+            android:drawablePadding="@dimen/d10"
+            android:hint="@string/input_code_400"
+            android:inputType="phone"
+            android:padding="@dimen/d10"
+            android:textSize="@dimen/s15" />
+
+        <View
+            android:layout_width="@dimen/d1"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/d3"
+            android:layout_marginTop="@dimen/d3"
+            android:background="@color/common_line_gray" />
+
+        <TextView
+            android:id="@+id/tv_sendVerificationCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/d10"
+            android:text="@string/send_code_400"
+            android:textColor="@color/mine_security_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

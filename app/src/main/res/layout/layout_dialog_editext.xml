@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@null"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/left"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rect"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d10" />
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_cancel"
+                android:layout_width="@dimen/d25"
+                android:layout_height="@dimen/d25"
+                android:src="@mipmap/common_cancel_icon"
+                android:padding="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/d10"/>
+
+            <TextView
+                android:id="@+id/bds_input_wallet_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bds_input_wallet_pwd"
+                style="@style/text_black_textsize14"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="35dp"/>
+        </RelativeLayout>
+        <View
+            android:layout_marginLeft="@dimen/d10"
+            android:layout_marginRight="@dimen/d10"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v2"/>
+        <LinearLayout
+            android:layout_marginTop="@dimen/d15"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_line_shape_radiues"
+            android:layout_marginLeft="@dimen/d12"
+            android:layout_marginRight="@dimen/d12"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_Password"
+                android:paddingLeft="@dimen/d10"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/bds_input_wallet_pwd"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:textColor="@color/common_text_blank"
+                android:textColorHint="@color/common_edit_hint"
+                android:textSize="@dimen/s13" />
+            <ImageView
+                android:visibility="gone"
+                android:padding="@dimen/d10"
+                android:inputType="textPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/password"  />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_copy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d40"
+            android:lineSpacingExtra="@dimen/d5"
+            android:layout_marginLeft="@dimen/d60"
+            android:layout_marginBottom="@dimen/s16"
+            android:layout_marginRight="@dimen/d60"
+            android:text="@string/bds_confirm"
+            android:gravity="center"
+            android:padding="@dimen/d8"
+            android:textColor="@color/common_white"
+            android:background="@drawable/bg_button_shape_radiues" />
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d10" />
+    </LinearLayout>
+    <View
+        android:id="@+id/right"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

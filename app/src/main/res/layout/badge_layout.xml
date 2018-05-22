@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/bar_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="@dimen/d10"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher" />
+    <TextView
+        android:id="@+id/bar_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-15dp"
+        android:layout_marginTop="@dimen/d4"
+        android:layout_toRightOf="@+id/bar_iv"
+        android:background="@drawable/badge_bg_red"
+        android:text="1"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp" />
+</RelativeLayout>

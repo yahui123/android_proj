@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--共通颜色1/全局颜色-->
+    <color name="common_white">#FFFFFFFF</color>
+    <color name="common_text_blank">#4d4d4d</color>
+    <color name="common_bg_gray">#f6f6f6</color>
+    <color name="common_bg_gray_v2">#F1F1F1</color>
+    <color name="common_text_blue">#3CB8FF</color>
+    <color name="common_separator_v1">#f6f6f6</color>
+    <color name="common_separator_v2">#F1F1F1</color>
+    <color name="common_color_blank">#000000</color>
+    <color name="common_line_gray">#E9E9E9</color>
+    <color name="common_text_gray">#B4B4B4</color>
+    <color name="common_edit_hint">#AEAEAE</color>
+    <color name="common_none">#00000000</color>
+    <color name="common_text_blue_v2">#4A90E2</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="common_text_orange">#fc5353</color>
+
+
+    <!--阿里颜色-->
+    <color name="dark_blue">#1a92ed</color>
+    <color name="aliwx_conversation_pressed_bg_color1">#f5f5f5</color>
+    <color name="aliwx_conversation_unpressed_bg_color1">#ffffff</color>
+
+    <!--登录界面-->
+    <color name="login_separator">#919191</color>
+    <color name="login_recover_tab">#419bf9</color>
+    <color name="login_register_step_already">#838383</color>
+    <color name="login_register_text_explain">#B6B6B6</color>
+    <color name="login_recover_text_blue">#62ABF9</color>
+    <color name="login_recover_text_blue_v2">#5BA8F9</color>
+
+    <!--市场部分-->
+    <color name="market_quote_name">#3B3B3B</color>
+    <color name="market_24H_volume">#6D6D6D</color>
+    <color name="market_global_upper">#FFE20A16</color>
+    <color name="market_global_lower">#FF22D491</color>
+    <color name="market_kline_highlight">#737373</color>
+    <color name="market_kline_text_orange">#f59e1a</color>
+    <color name="market_kline_text_blue">#374efc</color>
+    <color name="market_kline_text_grey">#aab1b7</color>
+    <color name="market_kline_text_grey2">#d3dbe2</color>
+    <color name="market_kline_line_green">#46913f</color>
+    <color name="market_kline_line_red">#ce342f</color>
+    <color name="market_kline_sp_bg">#42484d</color>
+    <color name="market_kline_sp_ll_bg">#111a21</color>
+
+    <!--交易部分-->
+    <color name="rechange_switch_text">#A1A1A1</color>
+    <color name="rechange_switch_text_selected">#419BF9</color>
+    <color name="rechange_tab_selected">#00A2F2</color>
+    <color name="rechange_history_buy">#FF2929</color>
+    <color name="rechange_history_sell">#37B569</color>
+    <color name="rechange_edit_bg_none">#E9E9E9</color>
+
+    <!--accept-->
+    <color name="accept_text_red">#FF3B53</color>
+    <color name="accept_text_gray">#737373</color>
+    <color name="accept_text_gray_v2">#A1A1A1</color>
+    <color name="accept_accept_gray">#929292</color>
+    <color name="accept_accept_blue">#1a92ed</color>
+    <color name="accept_trans_blue">#00A2F2</color>
+    <color name="mine_trans_text_blue">#4A90E2</color>
+
+
+    <!--mine-->
+    <color name="mine_text_red">#FF3B53</color>
+    <color name="mine_text_gray">#7E7E7E</color>
+    <color name="mine_bg_gray">#F1F1F1</color>
+    <color name="mine_yellow">#F5A623</color>
+    <color name="mine_myasset_text_blue">#4A90E2</color>
+    <color name="mine_borrow_text_red">#FF001F</color>
+    <color name="mine_pingcang_text_red">#FF001F</color>
+    <color name="mine_phone_text_gray">#737373</color>
+    <color name="mine_phone_text_gray_hint">#AEAEAE</color>
+    <color name="mine_phone_text_blue">#419BF9</color>
+    <color name="mine_selectaccount_text_blue">#00A2F2</color>
+    <color name="mine_selectaccount_text_red">#FF2929</color>
+    <color name="mine_record_blue">#00A2F2</color>
+    <color name="mine_accorder_blue">#419BF9</color>
+    <color name="mine_feemanage_text_red">#FF001F</color>
+    <color name="mine_accmanage_text_gray">#d7d7d8</color>
+    <color name="mine_accmanage_text_gray_v2">#ededf2</color>
+    <color name="mine_save_text_blue">#88D0FA</color>
+    <color name="mine_showword_text_gray">#5E5E5E</color>
+    <color name="mine_showsword_text_blue">#4A90E2</color>
+    <color name="mine_save_black">#424242</color>
+    <color name="mine_security_showword_bg">#fff7f7f7</color>
+    <color name="mine_security_text">#4ABDFF</color>
+
+    <!--drawable-->
+    <color name="btn_reception_start">#ffb94a</color>
+    <color name="btn_reception_end">#f39002</color>
+    <color name="sendout_start">#4F8FFD</color>
+    <color name="sendout_end">#27C3FE</color>
+    <color name="charge">#0076FF</color>
+    <color name="login_btn_color_dissable">#C6C6C6</color>
+
+</resources>

@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_bg_gray"
+    android:focusable="true"
+    android:id="@+id/line_fee"
+    android:focusableInTouchMode="true"
+   >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/bds_borrow"
+            style="@style/text_title_textsize"
+            android:paddingTop="@dimen/d20"
+             />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/iv_select_cash_in_currency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:text="@string/bds_select_currency_type"
+                    android:textColor="@color/common_text_blank"
+                    android:textSize="@dimen/s13" />
+
+                <TextView
+                    android:id="@+id/tv_cash_in_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="@string/CNY"
+                    android:textColor="@color/common_text_blank"
+                    android:textSize="@dimen/s13" />
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/d8"
+                    android:src="@mipmap/drop_down_icon" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_bg_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d10"
+                    android:layout_marginRight="@dimen/d10"
+                    android:layout_marginTop="@dimen/d18"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_jieru_quate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/bds_jie_quate"
+                        android:textColor="@color/common_text_blank"
+                        android:textSize="@dimen/s13" />
+
+                    <TextView
+                        android:id="@+id/tv_keyong_quede"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/bds_keyong_quate"
+                        android:textColor="@color/mine_text_gray"
+                        android:textSize="@dimen/s12" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d10"
+                    android:layout_marginRight="@dimen/d10"
+                    android:layout_marginTop="@dimen/d10"
+                    android:background="@drawable/bg_line_shape_radiues"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_jieru_aquate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="0"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:paddingBottom="@dimen/d10"
+                        android:paddingLeft="@dimen/d10"
+                        android:paddingTop="@dimen/d8"
+                        android:singleLine="true"
+                        android:textColor="@color/mine_borrow_text_red"
+                        android:textColorHint="@color/mine_borrow_text_red"
+                        android:textSize="@dimen/s16" />
+
+                    <TextView
+                        android:id="@+id/tv_select_currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:text="@string/CNY"
+                        android:textColor="@color/mine_borrow_text_red"
+                        android:textSize="@dimen/s13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/d10"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/bds_feed_price"
+                            android:textColor="@color/common_text_blank"
+                            android:textSize="@dimen/s12" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d8"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/bds_call_price"
+                            android:textColor="@color/common_text_blank"
+                            android:textSize="@dimen/s12" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_wei_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="0.00"
+                                android:textColor="@color/common_text_blank"
+                                android:textSize="@dimen/s12" />
+
+                            <TextView
+                                android:id="@+id/tv_wei_symbol"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:paddingLeft="@dimen/d5"
+                                android:singleLine="true"
+                                android:text="CNY/BDS"
+                                android:textColor="@color/common_text_blank"
+                                android:textSize="@dimen/s12" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d8">
+
+                            <TextView
+                                android:id="@+id/tv_qingxingpingcang"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="0.00"
+                                android:textColor="@color/mine_text_gray"
+                                android:textSize="@dimen/s12" />
+
+                            <TextView
+                                android:id="@+id/tv_qing_symloy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:paddingLeft="@dimen/d5"
+                                android:singleLine="true"
+                                android:text="CNY/BDS"
+                                android:textColor="@color/common_text_blank"
+                                android:textSize="@dimen/s12" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_bg_gray" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/common_white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_marginTop="@dimen/d18"
+                    android:layout_marginLeft="@dimen/d10"
+                    android:layout_marginRight="@dimen/d10"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bds_margin_amount"
+                        android:textSize="@dimen/s13"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/common_text_blank"
+                        />
+                    <TextView
+                        android:id="@+id/tv_baozheng_quede"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/s12"
+                        android:maxLines="1"
+                        android:text="@string/bds_margin_amount"
+                        android:singleLine="true"
+                        android:textColor="@color/mine_text_gray"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/d10"
+                    android:layout_marginLeft="@dimen/d10"
+                    android:layout_marginRight="@dimen/d10"
+                    android:layout_marginBottom="@dimen/d20"
+                    android:background="@drawable/bg_line_shape_radiues"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/et_baozheng_quate"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/mine_borrow_text_red"
+                        android:textSize="@dimen/s16"
+                        android:maxLines="1"
+                        android:text="0"
+                        android:inputType="numberDecimal"
+                        android:background="@null"
+                        android:singleLine="true"
+                        android:paddingLeft="@dimen/d10"
+                        android:paddingTop="@dimen/d8"
+                        android:paddingBottom="@dimen/d10"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/tv_banzheng_currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:text="@string/BDS"
+                        android:textColor="@color/mine_borrow_text_red"
+                        android:textSize="@dimen/s13" />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_bg_gray" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/common_white"
+                android:padding="@dimen/d10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bds_margin_radio"
+                    android:textSize="@dimen/s13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d10"
+                    android:gravity="center"
+                    android:background="@drawable/bg_line_shape_radiues"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/tv_bili"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/mine_borrow_text_red"
+                        android:textSize="@dimen/s16"
+                        android:maxLines="1"
+                        android:text="0"
+                        android:inputType="numberDecimal"
+                        android:background="@null"
+                        android:singleLine="true"
+                        android:paddingLeft="@dimen/d10"
+                        android:paddingTop="@dimen/d8"
+                        android:paddingBottom="@dimen/d10"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/d10"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_minSumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3.00"
+                        android:textSize="@dimen/s13"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/common_text_blank"
+                        />
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/seekbar"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:maxHeight="0.6dp"
+                        android:minHeight="0.6dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:thumb="@mipmap/common_seekbar_icon"
+                        android:progressDrawable="@drawable/po_seekbar"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/tv_maxSumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6.00"
+                        android:textSize="@dimen/s13"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/common_text_blank"
+                        />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="@dimen/d20"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="42.3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_reception"
+                    android:textSize="@dimen/s14"
+                    android:text="@string/bds_reset"
+                    android:textAllCaps="false"
+                    android:textColor="@color/common_white" />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="@dimen/d10"
+                    android:layout_height="match_parent" />
+
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="42.3dp"
+                    android:layout_weight="1"
+                    android:text="@string/bds_adjuse_position"
+                    android:textSize="@dimen/s14"
+                    android:textAllCaps="false"
+                    android:background="@drawable/bg_button_shape_radiues"
+                    android:textColor="@color/common_white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

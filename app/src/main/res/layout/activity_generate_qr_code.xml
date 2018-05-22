@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_security_showword_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar_default" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/d1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.tang.trade.widget.LimitEditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@mipmap/mine_security_backupqr_phone"
+                android:drawablePadding="@dimen/d10"
+                android:maxLength="11"
+                android:hint="@string/hint_encrypt_phone_400"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textColorHint="@color/common_text_gray"
+                android:textSize="@dimen/s15" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/d5"
+                android:layout_marginTop="@dimen/d5"
+                android:background="@color/common_line_gray" />
+
+            <TextView
+                android:id="@+id/tv_sendVerificationCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:enabled="false"
+                android:text="@string/send_code_400"
+                android:padding="@dimen/d10"
+                android:textColor="@color/common_text_gray"
+                android:textSize="@dimen/s15" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d1"
+            android:background="@color/common_white">
+
+            <com.tang.trade.widget.LimitEditText
+                android:id="@+id/et_vericationCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawableLeft="@mipmap/mine_security_backupqr_verication"
+                android:drawablePadding="@dimen/d10"
+                android:hint="@string/input_code_400"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColorHint="@color/common_text_gray"
+                android:textSize="@dimen/s15" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/d30"
+            android:text="@string/alert_generate_qrcode_400"
+            android:textColor="@color/common_text_gray" />
+
+        <TextView
+            android:id="@+id/tv_commit"
+            style="@style/btn_disable_400"
+            android:layout_width="230dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/d87"
+            android:enabled="false"
+            android:text="@string/btn_generate_encrypt_qrcode"
+            android:textColor="@color/common_white" />
+    </LinearLayout>
+</LinearLayout>

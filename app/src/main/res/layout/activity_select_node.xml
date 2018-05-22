@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:padding="10dp"
+            android:id="@+id/iv_back"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/common_back" />
+
+
+        <TextView
+            style="@style/text_title_textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingTop="@dimen/d20"
+            android:text="@string/bds_node_sellect" />
+
+        <ImageView
+            android:id="@+id/iv_refresh"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/iv_refresh" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/common_bg_gray"
+        android:gravity="center_vertical"
+       >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:layout_height="wrap_content"
+            android:text="@string/bds_node_name"
+            android:textColor="@color/common_color_blank"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/bds_delay"
+            android:gravity="center"
+            android:textColor="@color/common_color_blank"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="wrap_content"
+            android:text="@string/bds_status"
+            android:gravity="center"
+            android:textColor="@color/common_color_blank"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/bds_current_choice"
+            android:gravity="center"
+            android:textColor="@color/common_color_blank"/>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lv_node"
+            android:padding="10dp"
+            android:scrollbars="none"
+            android:listSelector="@color/common_none"
+            ></ListView>
+        <com.tang.trade.tang.widget.LoadingView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            ></com.tang.trade.tang.widget.LoadingView>
+    </FrameLayout>
+
+
+</LinearLayout>

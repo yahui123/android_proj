@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tang.trade.tang">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 允许程序录制音频 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    //ali-permission
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_new"
+        android:label="@string/app_name"
+        android:resizeableActivity="false"
+        android:roundIcon="@mipmap/icon_new"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:testOnly="false"
+        android:theme="@style/immersivemode"
+        tools:replace="android:label,android:icon,android:allowBackup,android:name">
+
+        <!-- 全面屏适配 -->
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <!-- 阿里appkey -->
+        <meta-data
+            android:name="com.alibaba.app.appkey"
+            android:value="24738110" /> <!-- 请填写你自己的- appKey -->
+        <meta-data
+            android:name="com.alibaba.app.appsecret"
+            android:value="3dad5171139e600e5029ba53675bb202" /> <!-- 请填写你自己的appSecret -->
+
+
+        <!-- 必选 -->
+        <meta-data
+            android:name="PGYER_APPID"
+            android:value="382c187fc69d3f768428c4f01da8f0ee" />
+
+        <activity
+            android:name=".ui.LaunchActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme">
+            <!--<intent-filter tools:ignore="AppLinkUrlError">-->
+            <!--<action android:name="android.intent.action.VIEW" />-->
+
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
+
+            <!--<data android:mimeType="*/*" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/main" />
+        <activity
+            android:name=".ui.LeadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/leadMode" />
+        <activity
+            android:name=".ui.SendOutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.WalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ui.NewReceptionActivity"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="tang"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".ui.ChangeLanguageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CreateAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MemberUpgradeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.BackUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.LifeMemberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MyInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SelectNodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MyBlockInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.TransferRecordctivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".ui.service.MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <!--<activity-->
+            <!--android:name=".ui.MarketActivity"-->
+            <!--android:screenOrientation="portrait" />-->
+        <!--<activity-->
+            <!--android:name=".ui.MarketRecordActivity"-->
+            <!--android:screenOrientation="portrait" />-->
+        <activity
+            android:name=".ui.loginactivity.RegisterSuccessfullyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.OrePoolActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ContactWayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SelectAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AddAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.EditAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MyMortgageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.PhoneAdministrationActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.TransactionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AcceptanceManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AcceptanceDyorCzorShActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AceeeptanceTiXianActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.AcceptantOpenActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.AcceptanceRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AddMoneyAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CashInAddressByWAActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CashInAddressByCardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CashInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.CashOutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AcceptanceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.AccountOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AccOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.PingCangActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.BaoZhengJinActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.AccManageManageActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.MessageManageActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.ConversationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.NumberOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.MeAssetsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.tang.trade.kchar.KLineActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.tang.trade.kchar.VerticalKLineActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.GongGaoActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.loginactivity.ImportUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.loginactivity.ImportWalletActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.loginactivity.SettingPasswordActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.loginactivity.ChooseWalletActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.loginactivity.IndexRegisteredAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.loginactivity.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.loginactivity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.HelpCenterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.TransferDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.BorrowingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.loginactivity.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.JieRuActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name=".ui.NewDownloadAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+
+        <activity
+            android:name=".ui.WeCharPublicNumberActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <!-- ***************4.0改版界面  >>>>>>>>start *************************** -->
+
+        <activity android:name="com.tang.trade.module.splash.OldLaunchActivity"
+            android:screenOrientation="portrait">
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tang.trade.module.profile.login.LoginActivity"
+            android:launchMode="singleTask" >
+
+        </activity>
+        <activity android:name="com.tang.trade.module.recover.RecoverActivity" />
+        <activity android:name="com.tang.trade.module.recover.setPassword.SetPwdActivity" />
+        <activity android:name="com.tang.trade.module.register.generate.GenerateWordsActivity" />
+        <activity android:name="com.tang.trade.module.register.confirm.ConfirmWordsActivity" />
+        <activity
+            android:name="com.tang.trade.module.register.create.CreateUserActivity" />
+        <activity android:name="com.tang.trade.module.register.create.ProtocolActivity" />
+        <activity android:name="com.tang.trade.module.showword.ShowWordActivity" />
+        <activity android:name="com.tang.trade.module.profile.security.ModifyPasswordActivity" />
+        <activity android:name="com.tang.trade.module.profile.generateqrcode.GenerateQrCodeActivity" />
+        <activity android:name="com.tang.trade.module.profile.saveqrcode.SaveQrCodeActivity" />
+        <activity android:name="com.tang.trade.module.recover.scan.ScanQrActivity"
+            android:screenOrientation="portrait"/>
+
+
+        <!-- ***************4.0改版界面  >>>>>>>end *************************** -->
+
+    </application>
+
+</manifest>

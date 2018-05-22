@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.AccOrderActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            style="@style/my_actionbar_styles"
+            >
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/d40"
+                android:layout_height="@dimen/d40"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:src="@mipmap/common_back" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/bds_acceptance_czjl"
+                android:paddingTop="@dimen/d20"
+                style="@style/text_title_textsize"/>
+            <ImageView
+                android:id="@+id/iv_magage"
+                android:layout_alignParentRight="true"
+                android:layout_width="@dimen/d40"
+                android:layout_height="@dimen/d40"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:src="@mipmap/news_icon" />
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/common_separator_v2"
+            />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+            <ListView
+                android:id="@+id/lv_acceptors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/common_white"
+                android:listSelector="@color/common_none"
+                android:scrollbars="none"></ListView>
+            <com.tang.trade.tang.widget.LoadingView
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"></com.tang.trade.tang.widget.LoadingView>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_summit"
+            android:layout_width="match_parent"
+            android:layout_height="42.3dp"
+            android:textSize="@dimen/s14"
+            android:gravity="center"
+            android:textColor="@color/common_white"
+            android:text="@string/bds_cancel"
+            android:background="@color/mine_accorder_blue"/>
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="42.3dp"
+            android:textSize="@dimen/s14"
+            android:gravity="center"
+            android:textColor="@color/mine_accorder_blue"
+            android:text="@string/bds_cancel"
+            android:background="@color/common_white"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:background="@color/common_color_blank"
+        android:visibility="gone">
+
+    </FrameLayout>
+
+</FrameLayout>

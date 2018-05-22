@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.flh.framework">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application android:allowBackup="true" android:label="@string/app_name"
+        android:supportsRtl="true">
+
+        <activity android:name="com.flh.framework.dialog.TopDialogActivity"
+            android:theme="@style/TopDialogActivityTheme"/>
+
+        <activity android:name="com.flh.framework.notification.NotificationResumeActivity" />
+
+        <!--<receiver android:name=".broadcast.NotificationReceiver"-->
+            <!--android:process=":notifyHandle" />-->
+        <receiver android:name="com.flh.framework.notification.NotificationReceiver"/>
+
+</application>
+
+</manifest>

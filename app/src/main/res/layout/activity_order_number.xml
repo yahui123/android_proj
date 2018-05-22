@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/my_actionbar_styles"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/text_title_textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingTop="@dimen/d20"
+            android:text="@string/bds_Deposits" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d8"
+            android:layout_marginRight="@dimen/d8"
+            android:layout_marginTop="@dimen/d10"
+            android:divider="@color/common_bg_gray"
+            android:dividerHeight="@dimen/d5"
+            android:scrollbars="none" />
+
+        <com.tang.trade.tang.widget.LoadingView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <com.tang.trade.tang.widget.NoDataView
+            android:id="@+id/ll_nodata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

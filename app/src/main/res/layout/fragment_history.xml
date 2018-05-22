@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d5"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_weight="1"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d5"
+            android:text="@string/bds_price"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/quote"
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_weight="1"
+            android:background="@color/common_white"
+            android:gravity="center"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/base"
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_weight="1"
+            android:background="@color/common_white"
+            android:gravity="center"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_marginRight="@dimen/d5"
+            android:layout_weight="1"
+            android:background="@color/common_white"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/d5"
+            android:text="@string/risetime"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/block"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@color/common_white"-->
+        <!--android:gravity="center_vertical|right"-->
+        <!--android:paddingRight="5dp"-->
+        <!--android:text="@string/bds_block"-->
+        <!--android:textColor="@color/main_ed"-->
+        <!--android:textSize="12sp"-->
+        <!--android:layout_marginRight="@dimen/d5"-->
+        <!--android:visibility="gone"/>-->
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/d10"
+            android:divider="@color/common_white"
+            android:listSelector="@color/common_none"
+            android:scrollbars="none" />
+
+        <com.tang.trade.tang.widget.LoadingView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/d50"
+            android:layout_marginTop="@dimen/d160" />
+
+        <com.tang.trade.tang.widget.NoDataView
+            android:id="@+id/ll_nodata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.BaoZhengJinActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/bds_margin2"
+            android:paddingTop="@dimen/d20"
+            style="@style/text_title_textsize"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/d12"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_marginRight="@dimen/d10"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_revalued_quate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/bds_revalued_amount"
+            android:maxLines="1"
+            style="@style/text_black_textsize13"
+            android:singleLine="true"
+            />
+        <TextView
+            android:id="@+id/tv_quate_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="0 BDS"
+            android:textSize="@dimen/s12"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/mine_text_gray"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/d8"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_marginRight="@dimen/d10"
+        android:background="@drawable/bg_line_shape_radiues"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_revalued_currency"
+            android:layout_width="match_parent"
+            android:textColor="@color/mine_text_gray"
+            android:textSize="@dimen/s16"
+            android:maxLines="1"
+            android:background="@null"
+            android:singleLine="true"
+            android:inputType="number"
+            android:paddingLeft="@dimen/d10"
+            android:paddingTop="@dimen/d8"
+            android:hint="请输入保证金额"
+            android:paddingBottom="@dimen/d10"
+            style="@style/text_black_textsize13"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_marginTop="@dimen/d50"
+        android:layout_gravity="center"
+        android:layout_width="230dp"
+        android:layout_height="42.3dp"
+        android:textSize="@dimen/s14"
+        android:gravity="center"
+        android:textColor="@color/common_white"
+        android:text="@string/bds_submit"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_button_shape_radiues"/>
+
+</LinearLayout>

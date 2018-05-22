@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_separator_v2"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:text="@string/bds_acceptor"
+                    style="@style/text_black_textsize13" />
+
+                <TextView
+                    android:id="@+id/tv_acceptance_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="--"
+                    style="@style/text_black_textsize13" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_separator_v2"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:background="@color/common_white"
+                >
+                <TextView
+                    android:padding="@dimen/d10"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bds_phone_number"
+                    style="@style/text_black_textsize13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    />
+
+                <TextView
+                    android:id="@+id/editPhone"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:padding="@dimen/d10"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text=""
+                    android:hint=""
+                    android:inputType="number"
+                    android:src="@mipmap/common_enter_left"
+                    android:textColor="@color/accept_text_gray"
+                    android:gravity="right|center_vertical"
+                    android:textColorHint="@color/common_edit_hint"
+                    style="@style/edittext_style"
+
+                    android:textCursorDrawable="@null"
+                    />
+
+                <Button
+                    android:id="@+id/btn_bianji"
+                    android:layout_width="45dp"
+                    android:layout_height="28dp"
+                    android:layout_margin="10dp"
+                    android:visibility="gone"
+                    android:background="@drawable/bg_button_shape_radiues"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:text="@string/bds_edit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/common_white" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_bg_gray"
+                />
+            <LinearLayout
+                android:id="@+id/linearCode"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:background="@color/common_white">
+                <TextView
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bds_verification_code"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13" />
+
+                <EditText
+                    android:id="@+id/editCode"
+                    android:paddingTop="@dimen/d10"
+                    android:paddingBottom="@dimen/d10"
+                    android:paddingLeft="@dimen/d20"
+                    android:paddingRight="@dimen/d20"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入验证码"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:minWidth="80dp"
+                    android:textColor="@color/accept_text_gray"
+                    android:singleLine="true"
+                    android:src="@mipmap/common_enter_left"
+                    android:text=""
+                    android:textColorHint="@color/common_edit_hint"
+                    style="@style/edittext_style"
+                    android:textCursorDrawable="@null"/>
+
+                <TextView
+                    android:id="@+id/tvCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bds_send_sms"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/d10"
+                    android:paddingRight="@dimen/d10"
+                    android:paddingTop="@dimen/d5"
+                    android:paddingBottom="@dimen/d5"
+                    android:layout_marginRight="@dimen/d10"
+                    android:singleLine="true"
+                    android:background="@drawable/btn_cancel"
+                    style="@style/text_black_textsize13"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_bg_gray"
+                />
+
+            <LinearLayout
+                android:id="@+id/line_select_pay"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/iv_pay_icon"
+                    android:layout_width="46dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/accept_accept_nopay_icon"
+                    android:layout_height="46dp"/>
+
+                <TextView
+                    android:id="@+id/tv_select_pay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+
+                    android:text="@string/bds_withdrawal_method"
+                    style="@style/text_black_textsize13" />
+                <LinearLayout
+                    android:id="@+id/line_pay"
+                    android:layout_width="0dp"
+                    android:visibility="gone"
+                    android:layout_weight="1"
+
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/tv_pay_mothod"
+                            android:layout_width="wrap_content"
+                            style="@style/text_black_textsize13"
+                            android:text="@string/bds_Creditcard"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:layout_marginRight="@dimen/d20"
+                            android:layout_height="wrap_content" />
+                        <TextView
+
+                            android:id="@+id/tv_pay_name"
+                            android:layout_width="wrap_content"
+                            style="@style/text_black_textsize13"
+                            android:text="@string/bds_full_name"
+                            android:maxLines="1"
+                            android:singleLine="true"
+
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_pay_account"
+                        android:layout_width="wrap_content"
+                        style="@style/text_black_textsize13"
+                        android:textColor="@color/accept_accept_gray"
+                        android:text="@string/bds_CreditNum"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/common_separator_v2"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:background="@color/common_white"
+                android:paddingTop="@dimen/d12"
+                android:paddingBottom="@dimen/d14"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_deposit_type"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="@dimen/d8"
+                        android:text="@string/bds_cash_out1_money"
+                        style="@style/text_black_textsize13" />
+                    <TextView
+                        android:layout_marginRight="@dimen/d14"
+                        android:id="@+id/tv_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="@dimen/d8"
+                        android:text="0.0000"
+                        style="@style/text_black_textsize13" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/d10"
+                    android:layout_height="40dp">
+                    <ImageView
+                        android:id="@+id/iv_currency_icon"
+                        android:padding="@dimen/d2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@mipmap/accept_accept_cny_icon"/>
+                    <EditText
+                        android:id="@+id/et_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/common_text_blank"
+                        android:background="@null"
+                        android:text=""
+                        android:textColorHint="@color/accept_text_gray"
+                        android:gravity="center_vertical"
+                        android:textSize="18sp"
+                        style="@style/edittext_style"
+                        android:inputType="number"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/common_separator_v2"/>
+
+            <LinearLayout
+                android:background="@color/common_white"
+                android:id="@+id/line_bottom"
+                android:orientation="vertical"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="40dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/d10"
+                        style="@style/text_black_textsize13"
+                        android:text="@string/bds_acceptance_xinxi"/>
+
+                    <ImageView
+                        android:id="@+id/iv_visible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/d8"
+                        android:src="@mipmap/drop_down_icon" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_separator_v2"/>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/line_xiangqing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/d14"
+                    android:paddingRight="@dimen/d14"
+                    android:paddingTop="@dimen/d8">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/text_black_textsize12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/bds_acceptor" />
+
+                        <TextView
+                            android:id="@+id/tv_acceptance_account2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d8"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="xxx"
+                            android:textColor="@color/accept_accept_gray"
+                            android:textSize="@dimen/s12" />
+
+                        <TextView
+                            style="@style/text_black_textsize12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d10"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/bds_max_withdrawal"
+                            android:textSize="@dimen/s12" />
+
+                        <TextView
+                            android:id="@+id/tv_maximum_deposit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d10"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/accept_accept_gray"
+                            android:textSize="@dimen/s12" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/text_black_textsize12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/bds_acceptor_name" />
+
+                        <TextView
+                            android:id="@+id/tv_acceptance_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d8"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="xxxx"
+                            android:textColor="@color/accept_accept_gray"
+                            android:textSize="@dimen/s12" />
+
+                        <TextView
+                            style="@style/text_black_textsize12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d10"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/bds_Minmum_withdrawal" />
+
+                        <TextView
+                            android:id="@+id/tvWithdrawalAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d10"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/accept_accept_gray"
+                            android:textSize="@dimen/s12" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/text_black_textsize12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/bds_pingtai_margin" />
+
+                        <TextView
+                            android:id="@+id/tv_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d8"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/accept_accept_gray"
+
+                            android:textSize="@dimen/s12" />
+
+                        <TextView
+                            style="@style/text_black_textsize12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d10"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/bds_GatewayServiceFee" />
+
+                        <TextView
+                            android:id="@+id/tvGatewayServiceFee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/d8"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="0"
+                            android:textColor="@color/accept_accept_gray"
+                            android:textSize="@dimen/s12" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/line_phone"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="@dimen/d14"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bds_contact_number"
+                        style="@style/text_black_textsize13"/>
+
+                    <TextView
+                        android:id="@+id/tv_phoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/s12"
+                        android:textColor="@color/common_text_blue_v2"
+                        android:layout_marginLeft="45dp"
+                        />
+                    <ImageView
+                        android:id="@+id/iv_gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/d8"
+                        android:rotation="180"
+                        android:src="@mipmap/drop_down_icon" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="42.3dp"
+                    android:layout_weight="1"
+                    android:text="@string/bds_confirm_withdrawal"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/s14"
+                    android:background="@drawable/bg_button_shape_radiues"
+                    android:textColor="@color/common_white"
+                    android:gravity="center"/>
+
+                <android.support.v4.widget.Space
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/btn_contact"
+                    android:layout_height="42.3dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:background="@drawable/btn_contact"
+                    android:text="@string/bds_immediate_contact"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textColor="@color/common_white"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

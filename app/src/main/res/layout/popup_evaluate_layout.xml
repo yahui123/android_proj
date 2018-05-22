@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:background="@mipmap/blank_bg_pwd"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d25"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/menu_item1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:textColor="@color/common_bg_gray"
+                android:text="@string/bds_fuwu_taidu" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <com.tang.trade.tang.widget.MyRanking
+                    android:id="@+id/myRanking1"
+                    android:layout_width="55dp"
+                    android:layout_gravity="center"
+                    android:layout_height="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/d15"
+            android:layout_marginBottom="@dimen/d15"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:textColor="@color/common_bg_gray"
+                android:text="@string/bds_xiangying_sudu" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <com.tang.trade.tang.widget.MyRanking
+                    android:id="@+id/myRanking2"
+                    android:layout_width="55dp"
+                    android:layout_gravity="center"
+                    android:layout_height="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="13sp"
+                android:textColor="@color/common_bg_gray"
+                android:text="@string/bds_chengxindu" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <com.tang.trade.tang.widget.MyRanking
+                    android:id="@+id/myRanking3"
+                    android:layout_width="55dp"
+                    android:layout_gravity="center"
+                    android:layout_height="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

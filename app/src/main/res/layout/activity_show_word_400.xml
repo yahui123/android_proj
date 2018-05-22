@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_security_showword_bg"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.module.showword.ShowWordActivity">
+
+    <include layout="@layout/include_toolbar_default" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v1" />
+
+    <LinearLayout
+        android:id="@+id/ln_look_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/d11"
+            android:text="@string/alert_look_400" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_common_square_blue_line"
+            android:gravity="center"
+            android:minHeight="@dimen/d100"
+            android:orientation="horizontal"
+            android:padding="@dimen/d1">
+
+            <TextView
+                android:id="@+id/tv_look"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/common_white"
+                android:gravity="center"
+                android:padding="@dimen/d10"
+                android:text="* * * * * * * * * * *"
+                android:textSize="@dimen/s14" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_show_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="@dimen/d10"
+            android:text="注：切勿截图保存"
+            android:textColor="@color/mine_showword_text_gray"
+            android:textSize="@dimen/d13"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ln_password_visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_line_gray" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:src="@mipmap/mine_security_icon_password" />
+
+                <com.tang.trade.widget.LimitEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/hint_look_password_400"
+                    android:inputType="textPassword"
+                    android:maxLength="16"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    android:textColorHint="@color/common_edit_hint"
+                    android:textSize="@dimen/s14" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_line_gray" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_commit"
+            style="@style/btn_disable_400"
+            android:layout_marginTop="@dimen/d50"
+            android:enabled="false"
+            android:text="@string/btn_commit_400" />
+
+    </LinearLayout>
+
+    <ViewStub
+        android:id="@+id/vs_look"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/include_look_child_400" />
+</LinearLayout>

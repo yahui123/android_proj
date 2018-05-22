@@ -1,0 +1,129 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.exchangefragment.OrderFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/d5"
+        android:paddingLeft="@dimen/d20"
+        android:paddingTop="@dimen/d5">
+
+        <Button
+            android:id="@id/btn_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rechange_order_btn_selected"
+            android:text="@string/buy"
+            android:textColor="@color/common_white" />
+
+        <Button
+            android:id="@id/btn_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d20"
+            android:background="@drawable/rechange_order_btn_normal"
+            android:text="@string/sell"
+            android:textColor="@color/rechange_switch_text_selected" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d0.5"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_marginRight="@dimen/d10"
+        android:background="@color/common_bg_gray" />
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d5"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d5"
+            android:text="@string/price"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/quote"
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/base"
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@string/bds_expiration_date"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/button"
+            android:layout_width="@dimen/d0"
+            android:layout_height="@dimen/d30"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/operation"
+            android:textColor="@color/rechange_tab_selected"
+            android:textSize="@dimen/s12" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ListView
+            android:id="@+id/lv_order"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/d10"
+            android:listSelector="@color/common_none"
+            android:scrollbars="none" />
+
+        <com.tang.trade.tang.widget.LoadingView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <com.tang.trade.tang.widget.NoDataView
+            android:id="@+id/ll_nodata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

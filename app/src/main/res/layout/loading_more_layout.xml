@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+<LinearLayout
+    android:id="@+id/rl_load"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="horizontal"
+    android:gravity="center" >
+
+    <ProgressBar
+        android:id="@+id/pro"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:padding="10dp"
+        style="?android:attr/progressBarStyleLarge"
+        android:indeterminateDrawable="@drawable/common_progress_more"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#CBC9C9"
+        android:text="@string/loading1" />
+
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_no_more_data"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:textColor="#CBC9C9"
+        android:text="@string/nomoredata"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"/>
+</FrameLayout>

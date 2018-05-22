@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_bg_gray"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:id="@+id/iv_back"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/common_back" />
+
+
+
+        <TextView
+            android:layout_marginLeft="@dimen/d15"
+            style="@style/text_title_textsize"
+            android:layout_centerHorizontal="true"
+
+            android:text="@string/info1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/d10"/>
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_ffffff"
+        android:gravity="center"
+        android:hint="@string/search"
+        android:drawableLeft="@mipmap/phone"
+        android:textSize="@dimen/s13"
+        />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv_block"
+        android:scrollbars="none"
+        android:listSelector="@color/common_none"
+        ></ListView>
+
+</LinearLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d60">
+
+        <View
+            android:id="@+id/view_mask"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d60" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d60"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10">
+
+            <ImageView
+                android:id="@+id/iv_coin"
+                android:layout_width="@dimen/d26"
+                android:layout_height="@dimen/d26" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:divider="@drawable/divider_transparent_6_6"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_coin_prefix"
+                        style="@style/textstyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d3"
+                        android:text="@string/BDS"
+                        android:textColor="@color/common_text_blank"
+                        android:textSize="@dimen/s9" />
+
+                    <TextView
+                        android:id="@+id/tv_coin_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:text="name"
+                        android:textColor="@color/market_quote_name"
+                        android:textSize="@dimen/s16"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_24h_turnover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:textColor="@color/market_24H_volume"
+                    android:textSize="@dimen/s12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider_transparent_6_6"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <com.tang.trade.tang.widget.CountNumberView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:text="0.345678"
+                    android:textColor="@color/market_global_upper"
+                    android:textSize="@dimen/sp17"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_exchange_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:text="asdfjk"
+                    android:textColor="@color/market_24H_volume"
+                    android:textSize="@dimen/s12"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_percentage"
+                android:layout_width="@dimen/d64"
+                android:layout_height="@dimen/d34"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/bg_market_upper"
+                android:gravity="center"
+                android:text="-33.22%"
+                android:textColor="@color/common_white"
+                android:textSize="13dp" />
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

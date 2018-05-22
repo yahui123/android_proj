@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_white"
+    tools:context="com.tang.trade.tang.ui.MyMortgageActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:id="@+id/iv_back"
+            android:layout_width="40dip"
+            android:layout_height="40dip"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/common_back"
+            android:layout_marginTop="5dp"/>
+
+
+
+        <TextView
+            android:layout_marginLeft="@dimen/d15"
+            android:layout_centerHorizontal="true"
+            style="@style/text_title_textsize"
+            android:text="@string/bds_my_mortgage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/d10"
+            android:layout_marginTop="5dp"/>
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/lv_mortgage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     ></ListView>
+
+
+</LinearLayout>

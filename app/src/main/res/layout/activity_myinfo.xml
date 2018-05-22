@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingTop="@dimen/d20"
+            android:text="@string/myKey"
+            style="@style/text_title_textsize" />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/common_white"
+            android:orientation="vertical"
+            >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d10" />
+
+
+            <TextView
+                android:id="@+id/tv_publickey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/shape_rectangle_bg"
+                android:ellipsize="end"
+                android:lineSpacingExtra="@dimen/d5"
+                android:lines="3"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/common_color_blank"
+                android:textSize="@dimen/s12"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_privatekey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/shape_rectangle_bg"
+                android:ellipsize="end"
+                android:lineSpacingExtra="@dimen/d5"
+                android:lines="3"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/common_color_blank"
+                android:textSize="@dimen/s12"/>
+
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/shape_rectangle_bg"
+                android:ellipsize="end"
+                android:hint="@string/bds_enter_wallet_password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/common_color_blank"
+                android:textSize="@dimen/s12"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d10"
+                android:padding="10dp"
+                android:text="@string/bds_key_info"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="230dp"
+                android:layout_height="42.3dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_button_shape_radiues"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/bds_confirm"
+                android:textColor="@color/common_white"
+                android:textSize="@dimen/s12"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_bg1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/common_bg_gray"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d10" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginLeft="@dimen/d20"
+                android:layout_marginRight="@dimen/d20"
+                android:background="@mipmap/iv_qr_bg"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_qr"
+                    android:layout_width="@dimen/d120"
+                    android:layout_height="@dimen/d120"
+                    android:layout_gravity="center" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="@dimen/d20"
+                android:layout_marginRight="@dimen/d20"
+                android:background="@mipmap/iv_key_bg"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:id="@+id/tv_publickey1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_rectangle_bg"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="@dimen/d5"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:text=""
+                    android:textColor="@color/common_color_blank"
+                    android:textSize="@dimen/s12" />
+
+                <TextView
+                    android:id="@+id/tv_privatekey1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_rectangle_bg"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="@dimen/d5"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:text=""
+                    android:textColor="@color/common_color_blank"
+                    android:textSize="@dimen/s12" />
+
+
+                <EditText
+                    android:id="@+id/et_password1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/shape_rectangle_bg"
+                    android:ellipsize="end"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="@color/common_color_blank"
+                    android:textSize="@dimen/s12" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d10"
+                    android:layout_marginRight="@dimen/d10"
+                    android:padding="10dp"
+                    android:text="@string/bds_key_info"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_submit1"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_ok"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/bds_screenshot_save"
+                    android:textColor="@color/common_white" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

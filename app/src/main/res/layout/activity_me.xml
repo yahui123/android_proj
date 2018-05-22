@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.MeActivity">
+
+    <RelativeLayout
+        style="@style/my_actionbar_styles"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/text_title_textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/myKey" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d5"
+        android:background="@color/common_separator_v1"/>
+
+    <LinearLayout
+        android:id="@+id/line_type1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_witness"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_Witness_program" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_witness"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/tv_vip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_membership_upgrade" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_nuggets_pool"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_nuggets_poll" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_new_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/new_account" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_shezhi_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/tv_languages"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/languages" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/tv_check_version"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_new_version" />
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/d10"
+                android:textColor="@color/common_color_blank"
+                android:textSize="@dimen/s12" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_WeChat"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_wechat_public_account" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_download_address"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_download_address" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <!--切换账户 暂时去掉-->
+        <LinearLayout
+            android:id="@+id/ll_qiehuan"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_qiehuan" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_exit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_exit" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_anquan_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_qrcode_save"
+            style="@style/text_black_textsize15"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:drawableRight="@mipmap/common_enter_left"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d10"
+            android:paddingRight="@dimen/d10"
+            android:text="@string/link_plus_qrcode_save" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d0.5"
+            android:background="@color/common_separator_v1" />
+
+        <TextView
+            android:id="@+id/tv_show_word"
+            style="@style/text_black_textsize15"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:drawableRight="@mipmap/common_enter_left"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d10"
+            android:paddingRight="@dimen/d10"
+            android:text="@string/look_title_400" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d0.5"
+            android:background="@color/common_separator_v1" />
+
+        <TextView
+            android:id="@+id/tv_modify_pwd"
+            style="@style/text_black_textsize15"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:drawableRight="@mipmap/common_enter_left"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/d10"
+            android:paddingRight="@dimen/d10"
+            android:text="@string/link_password_title_400" />
+
+        <LinearLayout
+            android:id="@+id/ll_back_up"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_backup" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_mykey"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/myKey" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d0.5"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_phone_manage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_phone_manage" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/d10"
+                android:textColor="@color/common_color_blank"
+                android:textSize="@dimen/s12" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d0.5"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_pay_manage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_address_management" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/d10"
+                android:textColor="@color/common_color_blank"
+                android:textSize="@dimen/s12" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d0.5"
+            android:background="@color/common_separator_v1" />
+
+        <LinearLayout
+            android:id="@+id/ll_change_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d40"
+            android:background="@color/common_white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/d12"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_black_textsize15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bds_pwd_change" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/d10"
+                android:textColor="@color/common_color_blank"
+                android:textSize="@dimen/s12" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:src="@mipmap/common_enter_left" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d0.5"
+            android:background="@color/common_separator_v1" />
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:background="@color/common_color_blank"
+        android:visibility="gone">
+
+    </FrameLayout>
+</LinearLayout>

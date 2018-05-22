@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.CashInAddressByCardActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingTop="@dimen/d20"
+            android:text="@string/bds_cash_in_address"
+            style="@style/text_title_textsize"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d10"
+        android:text="@string/bds_real_name"
+        android:textColor="@color/common_text_blank"
+        android:textSize="@dimen/s13" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_marginRight="@dimen/d10"
+        android:background="@drawable/bg_line_shape_radiues"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/et_real_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text=""
+            android:textColor="@color/common_text_blank"
+            android:textSize="@dimen/s14" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d10"
+        android:text="@string/bankname"
+        android:maxLength="40"
+        android:textColor="@color/common_text_blank"
+        android:textSize="@dimen/s13" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_marginRight="@dimen/d10"
+        android:background="@drawable/bg_line_shape_radiues"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/et_bank_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text=""
+            android:textColor="@color/common_text_blank"
+            android:textSize="@dimen/s14" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d10"
+        android:text="@string/bds_CreditNum"
+        android:textColor="@color/common_text_blank"
+        android:textSize="@dimen/s13" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d10"
+        android:layout_marginRight="@dimen/d10"
+        android:background="@drawable/bg_line_shape_radiues"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/et_credit_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:maxLength="50"
+            android:inputType="number"
+            android:text=""
+            android:hint="@string/bds_CreditNum"
+            android:textColor="@color/common_text_blank"
+            android:textSize="@dimen/s14" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="230dp"
+        android:layout_height="42.3dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d60"
+        android:background="@drawable/bg_button_shape_radiues"
+        android:gravity="center"
+        android:text="@string/bds_submit"
+        android:textColor="@color/common_white"
+        android:textSize="@dimen/s14" />
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="41.3dp"
+    android:gravity="center"
+    android:layout_gravity="center"
+   >
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_weight="1"
+        android:layout_height="40dp"
+        android:layout_width="0dp"
+        style="@style/text_black_textsize13"
+        android:text="简体中文"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/iv_language"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/iv_language_checked"
+        android:padding="@dimen/d10"
+
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

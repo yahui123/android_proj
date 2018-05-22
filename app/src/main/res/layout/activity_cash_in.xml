@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/cashin_bg"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.CashInActivity">
+
+    <RelativeLayout
+        style="@style/my_actionbar_styles"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/text_title_textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingTop="@dimen/d20"
+            android:text="@string/bds_deposit2" />
+
+        <ImageView
+            android:id="@+id/iv_record"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/accept_cash_record" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/d40"
+        android:layout_marginRight="@dimen/d40"
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/text_black_textsize13"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="10dp" />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/iv_vr"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:padding="@dimen/d5"
+                android:elevation="@dimen/d2"
+                android:background="@color/common_white"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/common_saomiao_bg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/d10">
+
+            <TextView
+                android:id="@+id/tv_transfer_address"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="10dp"
+                android:text="--------"
+                android:textColor="@color/accept_text_gray"
+                android:textSize="@dimen/s13" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/tv_copy"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="230dp"
+            android:layout_height="42.3dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/d30"
+            android:background="@drawable/bg_button_shape_radiues"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/bds_copy_address"
+            android:textAllCaps="false"
+            android:textColor="@color/common_white"
+            android:textSize="@dimen/s14" />
+    </LinearLayout>
+</LinearLayout>

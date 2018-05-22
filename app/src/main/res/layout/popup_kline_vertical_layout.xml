@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:background="@mipmap/market_kline_pup_bg"
+        android:maxWidth="150dp"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/d12"
+        android:paddingLeft="@dimen/d12"
+        android:paddingRight="@dimen/d20"
+        android:paddingTop="@dimen/d12">
+
+        <ListView
+            android:id="@+id/list_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/d10"
+            android:divider="@color/common_separator_v2"
+            android:dividerHeight="0dp"
+            android:listSelector="@color/common_none"
+            android:scrollbars="none"></ListView>
+    </LinearLayout>
+
+</LinearLayout>

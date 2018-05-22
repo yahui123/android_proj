@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/line_tap"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:paddingLeft="@dimen/d15"
+        android:paddingRight="@dimen/d15">
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="@dimen/d25"
+            android:layout_height="@dimen/d25"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/d10"
+            android:padding="5dp"
+            android:src="@mipmap/common_cancel_icon" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/operationHints"
+            android:textColor="@color/common_text_blank"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="@dimen/d25"
+            android:layout_height="@dimen/d25"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/d10"
+            android:padding="5dp"
+            android:src="@mipmap/common_cancel_icon"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/common_bg_gray" />
+    <TextView
+        android:layout_marginTop="@dimen/d15"
+        android:layout_marginBottom="@dimen/d15"
+        android:layout_marginLeft="@dimen/d40"
+        android:layout_marginRight="@dimen/d40"
+        android:layout_width="match_parent"
+        style="@style/text_black_textsize13"
+        android:layout_height="wrap_content"
+
+        android:text="请通过所选方式，线下向该承兑商进行转账操作，以完成充值。"/>
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/d40"
+        android:layout_marginRight="@dimen/d40"
+        android:id="@+id/line_select_pay"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@color/common_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10dp"
+            android:id="@+id/iv_pay_icon"
+            android:layout_width="46dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/accept_accept_nopay_icon"
+            android:layout_height="46dp"/>
+
+        <LinearLayout
+            android:id="@+id/line_pay"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_pay_mothod"
+                    android:layout_width="wrap_content"
+                    style="@style/text_black_textsize13"
+                    android:text="@string/bds_Creditcard"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:layout_marginRight="@dimen/d20"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_pay_name"
+                    android:layout_width="wrap_content"
+                    style="@style/text_black_textsize13"
+                    android:text="@string/bds_full_name"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_pay_account"
+                android:layout_width="wrap_content"
+                style="@style/text_black_textsize13"
+                android:textColor="@color/accept_accept_gray"
+                android:text="@string/bds_CreditNum"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_marginTop="@dimen/d20"
+        android:layout_marginBottom="@dimen/d20"
+        android:layout_gravity="center"
+        android:layout_width="230dp"
+        android:layout_height="42.3dp"
+        android:textSize="@dimen/s14"
+        android:gravity="center"
+        android:textColor="@color/common_white"
+        android:text="@string/bds_confirm"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_button_shape_radiues"
+        />
+
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/common_bg_gray"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/bds_wechat_public_account"
+            style="@style/text_title_textsize"
+            />
+
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/image_vr"
+        android:padding="@dimen/d5"
+        android:src="@mipmap/common_saomiao_bg"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:layout_width="@dimen/d120"
+        android:layout_height="@dimen/d120" />
+
+    <TextView
+        android:id="@+id/tv_node"
+
+        android:text="@string/bds_wechat_public_account_node"
+
+        android:gravity="center"
+        style="@style/text_black_textsize14"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/d20"
+        android:paddingLeft="@dimen/d20"
+        android:paddingRight="@dimen/d20"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

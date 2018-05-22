@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray_v2"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:padding="10dp"
+            android:layout_marginTop="@dimen/d5"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/d20"
+            android:text="@string/bds_upgrade"
+           style="@style/text_title_textsize" />
+
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+        android:background="@color/common_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"
+            android:background="@color/common_white"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/member"
+                android:layout_marginBottom="2dp"
+                />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text_black_textsize13"
+                android:text="@string/bds_lifemember"
+                />
+            <TextView
+                android:text="@string/bds_vip_node"
+                style="@style/text_black_textsize13"
+                android:layout_width="match_parent"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:gravity="right"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v2"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_height="45dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text_black_textsize13"
+                android:text="@string/bds_membsership_fee"
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/text_black_textsize13"
+                android:text="0.00000BDS"
+                android:gravity="right|center_vertical"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v2"
+            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:layout_height="45dp">
+
+            <TextView
+                style="@style/text_black_textsize13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/bds_account_balance2" />
+
+
+            <TextView
+                android:id="@+id/tv_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.00000BDS"
+                android:gravity="right"
+                style="@style/text_black_textsize13"
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/common_color_blank"
+        android:text="@string/bds_can_create_account"
+        android:lines="2"
+        android:ellipsize="end"
+        android:lineSpacingExtra="@dimen/d5"
+        />
+
+
+
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="230dp"
+        android:layout_height="42.3dp"
+        android:background="@drawable/bg_button_shape_radiues"
+        android:padding="5dp"
+
+        android:layout_gravity="center_horizontal"
+        android:text="@string/bds_confirm_upgrade"
+        android:textColor="@color/common_white"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        />
+
+</LinearLayout>

@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/d10"
+    tools:context="com.tang.trade.tang.ui.AcceptanceManagerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/bds_fee_manager"
+            android:paddingTop="@dimen/d20"
+            style="@style/text_title_textsize" />\
+        <ImageView
+            android:id="@+id/iv_time_select"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/mine_accept_time_icom" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v1"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d5"
+                android:background="@color/common_separator_v1"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/bds_currencies"
+                    android:textSize="@dimen/s13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/CNY"
+                    style="@style/text_black_textsize13"
+
+                    />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/bds_bond"
+                    android:textSize="@dimen/s13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_currency_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/BDS"
+
+                    style="@style/text_black_textsize13"
+
+                    />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/bds_me_acceptance_account_monoty"
+                    android:textSize="@dimen/s13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_banlance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/BDS"
+                    style="@style/text_black_textsize13"
+
+                    />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/extractable_amount"
+                    android:textSize="@dimen/s13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_keti_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/BDS"
+                    style="@style/text_black_textsize13"
+
+                    />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/recharge_order_amount"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_order_zhongzhi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/BDS"
+                    style="@style/text_black_textsize13"
+
+                    />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/tixian_order_amount"
+                    android:textSize="@dimen/s13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_order_thixian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/BDS"
+                    style="@style/text_black_textsize13"
+
+                    />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d5"
+                android:background="@color/common_separator_v1"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+
+            <LinearLayout
+                android:id="@+id/line_chongzhi"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d40"
+                android:background="@color/common_white"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.8"
+                    android:padding="@dimen/d10"
+                    android:src="@mipmap/mine_accept_cashin_icon" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:text="@string/bds_deposit"
+                    style="@style/text_black_textsize13"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"
+                    android:src="@mipmap/common_enter_left" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+
+            <LinearLayout
+                android:id="@+id/line_diya"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d40"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mine_accept_margin_icon"
+                    android:alpha="0.8"
+                    android:padding="@dimen/d10"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="@string/bds_margin2"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:id="@+id/line_tixian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mine_accpet_withdraw_icon"
+                    android:alpha="0.8"
+                    android:padding="@dimen/d10"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="@string/bds_Withdraw"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:id="@+id/line_borrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mine_accept_borrow_icon"
+                    android:alpha="0.8"
+                    android:padding="9dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10.5dp"
+                    android:text="@string/bds_borrow"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:id="@+id/line_evening_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mine_accept_pingcang_icon"
+                    android:alpha="0.8"
+                    android:padding="@dimen/d10"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="@string/bds_close_position"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+
+            <LinearLayout
+                android:id="@+id/line_shuhui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.8"
+                    android:padding="@dimen/d10"
+                    android:src="@mipmap/mine_accept_logout_icon" />
+
+                <TextView
+                    style="@style/text_black_textsize13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:text="@string/bds_Cancellation" />
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"
+                    android:src="@mipmap/common_enter_left" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d5"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/bds_Time_translation"
+                    android:textSize="@dimen/s13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:visibility="gone"
+                    style="@style/text_black_textsize13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingRight="20dp"
+                    android:gravity="center_vertical"
+                    android:drawableRight="@mipmap/drop_down_icon"
+                    android:text="--" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/togglebutton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:src="@mipmap/mine_accept_timeswitch_shut"
+                    android:button="@null"
+                    android:layout_marginRight="10dp"
+                    android:textOff=""
+                    android:textOn=""
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_time_guanli"
+                    android:layout_width="@dimen/d40"
+                    android:layout_height="@dimen/d40"
+                    android:padding="10dp"
+                    android:layout_marginRight="@dimen/d10"
+                    android:src="@mipmap/mine_accept_time_icom" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d5"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:id="@+id/line_fee_manage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/bds_fee_manage"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:id="@+id/line_massage_manage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="@string/bds_message_manager"
+                    style="@style/text_black_textsize13"
+               />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+            <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d1"
+            android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:id="@+id/line_jiaoyi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:id="@+id/tv_jiaoyi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/bds_trade_record"
+                    android:textSize="@dimen/s13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/common_text_blank"
+                    />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:id="@+id/line_payway"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/bds_address_management"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d1"
+                android:background="@color/common_separator_v1"/>
+            <LinearLayout
+                android:id="@+id/line_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/bds_transaction_history"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/common_enter_left"
+                    android:alpha="0.8"
+                    android:paddingRight="@dimen/d10"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

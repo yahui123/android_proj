@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_rect"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d10"
+        android:gravity="center_vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/operationHints"
+            android:layout_centerInParent="true"
+            android:textColor="@color/common_text_blank"
+            android:textSize="@dimen/s16"/>
+        <ImageView
+            android:layout_alignParentEnd="true"
+            android:id="@+id/iv_cancel"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/common_cancel_icon"
+            android:padding="@dimen/d9"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/common_bg_gray"
+        />
+
+
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_marginTop="@dimen/d15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bds_deposit_amount"
+        android:textSize="@dimen/s14"
+        android:textColor="@color/common_text_blank"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        android:gravity="center"
+        android:paddingBottom="@dimen/d5"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tv_info2"
+        android:layout_marginTop="@dimen/d5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bds_fee_transef"
+        android:textSize="@dimen/s14"
+        android:textColor="@color/common_text_blank"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
+        android:gravity="center"
+        android:paddingBottom="@dimen/d5"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_sendout"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/confirm"
+        android:textColor="@color/common_white"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d20"
+        />
+</LinearLayout>

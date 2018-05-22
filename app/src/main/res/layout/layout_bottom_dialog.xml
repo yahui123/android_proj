@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/line_tap"
+        android:paddingLeft="@dimen/d15"
+        android:paddingRight="@dimen/d15"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="@dimen/d25"
+            android:layout_height="@dimen/d25"
+            android:src="@mipmap/common_cancel_icon"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/d10"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/bds_confirm_jiaoyi"
+            android:textColor="@color/common_text_blank"
+            android:textSize="15sp" />
+        <ImageView
+            android:visibility="invisible"
+            android:layout_width="@dimen/d25"
+            android:layout_height="@dimen/d25"
+            android:src="@mipmap/common_cancel_icon"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/d10"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/common_bg_gray" />
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/d15"
+        android:paddingRight="@dimen/d15"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <TextView
+            android:id="@+id/tv_type1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/text_black_textsize13"
+            android:text="@string/bds_account_chuzi"
+            />
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_black_textsize13"
+            android:text="--"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/d15"
+        android:paddingRight="@dimen/d15"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <TextView
+            android:id="@+id/tv_type2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/text_black_textsize13"
+            android:text="@string/bds_margin_change"
+            />
+        <TextView
+            android:id="@+id/tv_baozhengjian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_black_textsize13"
+            android:text="0 BDS"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/d15"
+        android:paddingRight="@dimen/d15"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <TextView
+            android:id="@+id/tv_type3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/common_text_blank"
+            android:text="@string/bds_Debt_change"
+            />
+        <TextView
+            android:id="@+id/tv_zhaiwu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/common_text_blank"
+            android:text="0 CNY"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_fee"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/d15"
+        android:paddingRight="@dimen/d15"
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/text_black_textsize13"
+            android:text="@string/bds_fee"
+            />
+        <TextView
+            android:id="@+id/tv_fee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_black_textsize13"
+            android:text="0 BDS"
+            />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_marginTop="@dimen/d20"
+        android:layout_marginBottom="@dimen/d20"
+        android:layout_gravity="center"
+        android:layout_width="230dp"
+        android:layout_height="42.3dp"
+        android:textSize="@dimen/s14"
+        android:gravity="center"
+        android:textColor="@color/common_white"
+        android:text="@string/bds_Submit"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_button_shape_radiues"
+        />
+
+
+</LinearLayout>

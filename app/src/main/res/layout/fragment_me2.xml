@@ -1,0 +1,590 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg_gray"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.fragment.Me2Fragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:background="@color/common_white">
+        <!--<ImageView-->
+        <!--android:id="@+id/iv_gif1"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:enabled="false"/>-->
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/iv_gif1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:enabled="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/mine_home_head_bg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="63dp"
+                    android:layout_height="63dp"
+                    android:layout_marginLeft="@dimen/d25"
+                    android:layout_marginTop="20dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/d23"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ACCOUNTID"
+                        android:textColor="@color/common_white"
+                        android:textSize="18sp"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/d7"
+                        android:text="ID 12121"
+                        android:textColor="@color/common_white"
+                        android:textSize="@dimen/s16"
+
+
+                        />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_dengpao"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/d16"
+                    android:padding="6dp"
+                    android:src="@mipmap/iv_lightbulb_icon"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d17"
+                    android:text="总资产折合(CNY)"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/s16"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_zongzichan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d10"
+                    android:text="0.00000"
+                    android:textColor="@color/mine_yellow"
+                    android:textSize="@dimen/s24"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/d5"
+                android:layout_marginTop="@dimen/d10"
+                android:orientation="horizontal">
+
+                <android.support.v4.widget.Space
+                    android:layout_width="@dimen/d15"
+                    android:layout_height="match_parent" />
+
+                <Button
+                    android:id="@+id/btn_reception"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/d37"
+                    android:layout_marginRight="@dimen/d45"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_reception"
+                    android:text="@string/rollin"
+                    android:textAllCaps="false"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/s16" />
+
+                <Button
+                    android:id="@+id/btn_sendout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/d37"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_sendout"
+                    android:text="@string/rollout"
+                    android:textAllCaps="false"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/s16" />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="@dimen/d15"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.tang.trade.tang.widget.BottomBarView
+            android:id="@+id/iv_manage"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/d2"
+            android:layout_marginTop="25dp"
+            app:drawable_badge="@drawable/mine_news_select"></com.tang.trade.tang.widget.BottomBarView>
+
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d5"
+        android:background="@color/common_separator_v1" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_transfer"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="9dp">
+
+                    <ImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/mine_transferlist_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_count"
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="6dp"
+                        android:text="@string/bds_transaction_history" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d12"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_my_assets"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="@dimen/d10">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:padding="1dp"
+                        android:src="@mipmap/mine_myassets_icon" />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_my_assets" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d2"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_jieru"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="@dimen/d10">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@mipmap/mine_borrow_icon"
+
+                        />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_borrow" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d2"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_pingcang"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="@dimen/d10">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/mine_closeposition_icon" />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_close_position" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d2"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_witness"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="9dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/mine_witness_icon" />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_witness" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d12"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_acceptance_tran"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="26dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/mine_accpor_icon" />
+
+                    <TextView
+                        android:id="@+id/tv_acceptance_tran"
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_open_acceptant" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d12"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_anquan_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/mine_security_icon" />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_anquan_center" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d12"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/tv_shezhi"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/mine_setting_icon" />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_shezhi" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d12"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d5"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_xitong_gonggao"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="9dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/mine_notice_icon" />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_xitong_gonggao" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d12"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_kefu_zhongxin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/mine_support_icon" />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_kefu_center" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d12"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d1"
+                    android:background="@color/common_separator_v1" />
+
+                <LinearLayout
+                    android:id="@+id/ll_bangzhu_zhongxin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/common_white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/mine_helpcenter_icon" />
+
+                    <TextView
+                        style="@style/text_black_textsize16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="7dp"
+                        android:text="@string/bds_bangzhu_center" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:paddingRight="@dimen/d12"
+                        android:src="@mipmap/common_enter_left" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d10"
+                android:background="@color/common_separator_v1" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

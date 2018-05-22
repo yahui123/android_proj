@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    tools:context="com.tang.trade.tang.ui.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:background="@color/common_white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:background="@color/common_bg_gray" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/d3">
+
+        <TextView
+            android:id="@+id/tv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/d3"
+            android:drawableTop="@drawable/main_market"
+            android:gravity="center"
+            android:text="@string/bds_market"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/tv_exchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/d3"
+            android:drawableTop="@drawable/main_exchange"
+            android:gravity="center"
+            android:text="@string/bds_trade"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/s12" />
+
+        <TextView
+            android:id="@+id/tv_acceptance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/d3"
+            android:drawableTop="@drawable/main_acc"
+            android:gravity="center"
+            android:text="@string/bds_acceptance"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/s12" />
+
+        <RelativeLayout
+            android:id="@+id/rl_me"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <FrameLayout
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_above="@+id/tv_me"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="3dp">
+
+                <ImageView
+                    android:id="@+id/iv_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:src="@drawable/main_me" />
+
+                <TextView
+                    android:id="@+id/tv_message_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="right"
+                    android:layout_toEndOf="@+id/iv_me"
+                    android:background="@mipmap/main_point_red"
+                    android:gravity="center"
+                    android:textColor="@color/common_white"
+                    android:textSize="@dimen/s10"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/bds_my"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/s12" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

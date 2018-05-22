@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_white"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:textSize="@dimen/s16"
+        android:paddingTop="@dimen/d70"
+        android:gravity="center_horizontal"
+        android:text="@string/bds_regist_successful"
+        android:textColor="@color/common_text_blue_v2" />
+
+    <TextView
+        android:layout_marginBottom="@dimen/d15"
+        android:layout_width="281dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="@string/bds_Username" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="281dp"
+        android:layout_height="58dp"
+        android:padding="@dimen/d10"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_bule_stoke_gradient_1dp"
+        android:textColorHint="@color/common_edit_hint"
+        android:textSize="@dimen/s13" />
+    <TextView
+
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="@dimen/d15"
+        android:layout_width="281dp"
+        android:layout_gravity="center"
+        android:textSize="@dimen/s13"
+        android:layout_height="wrap_content"
+        android:text="@string/bds_pub_key" />
+
+    <TextView
+            android:id="@+id/tv_publickey"
+            android:layout_width="281dp"
+            android:layout_height="58dp"
+            android:padding="@dimen/d10"
+            android:layout_gravity="center"
+
+            android:background="@drawable/bg_bule_stoke_gradient_1dp"
+            android:textColorHint="@color/common_edit_hint"
+            android:textSize="@dimen/s13" />
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="@dimen/d15"
+        android:layout_width="281dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/s13"
+        android:text="@string/bds_prikey" />
+    <TextView
+        android:id="@+id/tv_privatekey"
+        android:layout_width="281dp"
+        android:minHeight="58dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/d10"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_bule_stoke_gradient_1dp"
+        android:textColorHint="@color/common_edit_hint"
+        android:textSize="@dimen/s13" />
+
+    <TextView
+        android:id="@+id/tv_screen_save"
+        android:layout_width="230dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/btn_blue_gradient_radius"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/bds_baocun_jietu"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/common_white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/iv_gif1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:enabled="false"
+        android:scaleType="fitXY"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:src="@drawable/login_bottom"
+        />
+</LinearLayout>

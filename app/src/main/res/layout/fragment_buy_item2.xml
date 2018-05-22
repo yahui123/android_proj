@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/selector_list_item"
+    android:layout_height="wrap_content" >
+
+    <View
+        android:id="@+id/view_bg"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_gravity="right"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_alignTop="@+id/view_bg"
+        android:ellipsize="end"
+        android:lines="1"
+        android:paddingLeft="@dimen/d10"
+        android:text="@string/bds_price"
+        android:textColor="@color/common_text_blank"
+        android:textSize="@dimen/s12" />
+
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_price"
+        android:text="@string/bds_quantity"
+        android:textColor="#656565"
+        android:textSize="@dimen/s12"
+        android:lines="1"
+        android:ellipsize="end"
+        android:paddingRight="@dimen/d10"
+        android:layout_gravity="center_vertical|right" />
+
+</FrameLayout>

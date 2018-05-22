@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_white"
+    tools:context="com.tang.trade.tang.ui.AccManageManageActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:layout_marginTop="5dp"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/bds_fee_manager"
+            android:paddingTop="@dimen/d20"
+            style="@style/text_title_textsize"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_separator_v2"
+        />
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/line_fee"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="@dimen/d10"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d10"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bds_minimum_deposit"
+                android:textSize="@dimen/s13"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/common_text_blank"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/d10"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d10"
+                android:background="@drawable/bg_line_shape_radiues"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_chongzhiUp_aquate"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/mine_feemanage_text_red"
+                    android:textSize="@dimen/s16"
+                    android:maxLines="1"
+                  android:text="0"
+                    android:textColorHint="@color/mine_feemanage_text_red"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/d10"
+                    android:paddingTop="@dimen/d8"
+                    android:paddingBottom="@dimen/d10"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_chongzhiUp_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="@string/CNY"
+                    android:textColor="@color/mine_feemanage_text_red"
+                    android:textSize="@dimen/s14" />
+            </LinearLayout>
+            <TextView
+                android:layout_marginTop="@dimen/d10"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d10"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bds_Minmum_withdrawal"
+               style="@style/text_black_textsize13"
+                android:maxLines="1"
+                android:singleLine="true"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/d10"
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d10"
+                android:background="@drawable/bg_line_shape_radiues"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_tianxinaBottom"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/mine_feemanage_text_red"
+                    android:textSize="@dimen/s16"
+                    android:maxLines="1"
+                    android:text="0"
+                    android:textColorHint="@color/mine_feemanage_text_red"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/d10"
+                    android:paddingTop="@dimen/d8"
+                    android:paddingBottom="@dimen/d10"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_tixianBottom_currentcy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="@string/CNY"
+                    android:textColor="@color/mine_feemanage_text_red"
+                    android:textSize="@dimen/s14" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:padding="@dimen/d10"
+                android:layout_width="match_parent"
+                android:background="@color/common_white"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accept_deposit_fee"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    style="@style/text_black_textsize13"
+                    />
+                <com.tang.trade.tang.widget.MyEditextSeekbar
+                    android:id="@+id/seekbarDeposit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@color/common_white"
+                android:paddingLeft="@dimen/d10"
+                android:paddingRight="@dimen/d10"
+                android:paddingBottom="@dimen/d10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bds_withdrawal_fee"
+                        android:textSize="@dimen/s13"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/common_text_blank"
+                    />
+
+                <com.tang.trade.tang.widget.MyEditextSeekbar
+                    android:id="@+id/seekbarWithdrawal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_summit"
+            android:layout_width="match_parent"
+            android:layout_height="42.3dp"
+            android:textSize="@dimen/s14"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/common_white"
+            android:text="@string/bds_confirm"
+            android:background="@color/rechange_switch_text_selected"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

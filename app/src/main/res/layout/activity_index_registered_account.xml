@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_white"
+    tools:context="com.tang.trade.tang.ui.loginactivity.IndexRegisteredAccountActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
+        <ProgressBar
+            android:layout_marginTop="28dp"
+            android:id="@+id/progress_bar"
+            style="@style/StyleProgressBarMini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="30"
+            android:background="#D8D8D8"
+            android:max="90"
+            />
+        <LinearLayout
+            android:layout_marginTop="@dimen/d32"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="20dp">
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:layout_height="0dp"/>
+            <ImageView
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d10"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/common_select_true"/>
+            <View
+                android:background="@drawable/bg_stoke_blue_line"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layerType="software"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d10"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/common_select_true"/>
+            <View
+                android:layout_width="0dp"
+                android:background="@drawable/bg_stoke_gray_line"
+                android:layout_weight="2"
+                android:layerType="software"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginLeft="@dimen/d10"
+                android:layout_marginRight="@dimen/d10"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/common_select_false"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:layout_height="0dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/d6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/bds_create_wallet"
+                android:textSize="@dimen/s12"
+                android:gravity="center"
+                android:textColor="@color/common_text_blue_v2" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="@string/bds_redister_account"
+                android:textSize="@dimen/s12"
+                android:textColor="@color/common_text_blue_v2" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/bds_bds_login"
+                android:textSize="@dimen/s12"
+                android:gravity="center"
+                android:textColor="@color/common_edit_hint" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <ImageView
+        android:layout_marginLeft="@dimen/d22"
+        android:layout_width="wrap_content"
+        android:src="@mipmap/iv_borderless_icon"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/d30"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/d12"
+        android:layout_marginRight="@dimen/d12"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:padding="@dimen/d10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/iv_account_icon" />
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/bds_input_username"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/common_text_blank"
+            android:textColorHint="@color/common_edit_hint"
+            android:textSize="@dimen/s13" />
+        <ImageView
+            android:id="@+id/iv_account_spinner"
+            android:padding="@dimen/d10"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/common_spinner" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="22dp"
+        android:background="@color/common_line_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/d12"
+        android:layout_marginRight="@dimen/d12"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:padding="@dimen/d10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/iv_pwd_icon" />
+        <EditText
+            android:id="@+id/et_referrer"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/bds_referrer"
+            android:textColor="@color/common_text_blank"
+            android:textColorHint="@color/common_edit_hint"
+            android:textSize="@dimen/s13" />
+        <ImageView
+            android:id="@+id/eye_password"
+            android:padding="@dimen/d10"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/common_eye_true" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d1"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="22dp"
+        android:background="@color/common_line_gray" />
+    <TextView
+        android:id="@+id/tv_select_node"
+        android:textSize="@dimen/s13"
+        android:textColor="@color/common_text_blue_v2"
+        android:text="@string/bds_sellect_node"
+        android:layout_width="wrap_content"
+        android:padding="@dimen/d10"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/d12"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/btn_confirm"
+        android:layout_width="230dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/btn_blue_gradient_radius"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/bds_signup"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/common_white" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/d26"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_import_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/d70"
+            android:padding="@dimen/d10"
+            android:text="@string/bds_yiyou_account"
+            android:textColor="@color/common_text_blue_v2"
+            android:textSize="@dimen/s13" />
+        <TextView
+            android:id="@+id/tv_import_wallet"
+            android:textSize="@dimen/s13"
+            android:textColor="@color/common_text_blue_v2"
+            android:text="@string/bds_qiehuan_wallet"
+            android:layout_width="wrap_content"
+            android:padding="@dimen/d10"
+            android:layout_gravity="right"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/iv_gif1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:enabled="false"
+        android:scaleType="fitXY"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:src="@drawable/login_bottom"
+        />
+
+</LinearLayout>

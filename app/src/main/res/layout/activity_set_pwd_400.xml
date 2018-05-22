@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar_default" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_line_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@mipmap/common_psw" />
+
+        <EditText
+            android:id="@+id/et_set_pwd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/set_pwd_400"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColorHint="@color/common_text_gray"
+            android:textSize="@dimen/sp14" />
+
+        <ImageView
+            android:id="@+id/iv_eye_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingEnd="@dimen/d15"
+            android:paddingStart="@dimen/d15"
+            android:src="@mipmap/common_eye_false"
+            android:textColorHint="@color/common_edit_hint"
+            android:textSize="@dimen/s14" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_line_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@mipmap/common_psw" />
+
+        <EditText
+            android:id="@+id/et_confirm_pwd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/confirm_pwd_400"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColorHint="@color/common_text_gray"
+            android:textSize="@dimen/sp14" />
+
+        <ImageView
+            android:id="@+id/iv_eye_confirm_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingEnd="@dimen/d15"
+            android:paddingStart="@dimen/d15"
+            android:src="@mipmap/common_eye_false"
+            android:textColorHint="@color/common_edit_hint"
+            android:textSize="@dimen/s14" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_line_gray" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/iv_cicle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/shape_circle_unselect_bg_400" />
+
+        <TextView
+            android:id="@+id/tv_limit1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/pwd_rule_400"
+            android:textColor="@color/common_text_gray"
+            android:textSize="@dimen/sp14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/iv_cicle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/shape_circle_unselect_bg_400" />
+
+        <TextView
+            android:id="@+id/tv_limit2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/pwd_rule2_400"
+            android:textColor="@color/common_text_gray"
+            android:textSize="@dimen/sp14" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="42dp"
+        android:text="此密码为本地密码，同账户在不同设备上可以不同"
+        android:textColor="@color/common_text_gray"
+        android:textSize="@dimen/sp14" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_btn"
+            style="@style/btn_enable_400"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp30"
+            android:text="@string/btn_commit_400" />
+    </RelativeLayout>
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:layout_gravity="bottom"
+        android:enabled="false"
+        android:gravity="bottom"
+        android:scaleType="fitXY"
+        android:src="@drawable/login_bottom" />
+
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        style="@style/my_actionbar_styles"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/d40"
+            android:layout_height="@dimen/d40"
+            android:padding="10dp"
+            android:src="@mipmap/common_back" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:padding="@dimen/d10"
+            android:text="@string/lifemember"
+            style="@style/text_title_textsize"
+            />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="@dimen/d150"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d40"
+        android:background="@drawable/bg_rect"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_qr"
+            android:layout_width="@dimen/d150"
+            android:layout_height="@dimen/d150"
+            />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="111"
+            android:textColor="@color/common_color_blank"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_ok"
+           android:paddingLeft="@dimen/d10"
+            android:paddingRight="@dimen/d10"
+            android:text="@string/copy1"
+            android:textColor="@color/common_white"
+            android:gravity="center"
+            android:paddingTop="@dimen/d3"
+            android:paddingBottom="@dimen/d3"
+            android:layout_marginBottom="10dp"
+            />
+    </LinearLayout>
+
+
+
+
+
+    <TextView
+        android:id="@+id/tv_load"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/btn_ok"
+        android:padding="5dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:text="@string/loadpic"
+        android:textColor="@color/common_white"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        />
+
+</LinearLayout>
