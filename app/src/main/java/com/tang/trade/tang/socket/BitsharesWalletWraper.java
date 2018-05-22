@@ -867,6 +867,10 @@ public class BitsharesWalletWraper {
         return mWalletApi.cli_get_full_accounts(account);
     }
 
+    public signed_transaction borrow_asset(String account,String amount_to_borrow,String asset_symbol,String amount_to_collateral) throws NetworkStatusException {
+        return mWalletApi.borrow_asset(account,amount_to_borrow,asset_symbol,amount_to_collateral);
+    }
+
     public String cli_borrow_asset(String account,String amount_to_borrow, String asset_symbol, String amount_of_collateral) throws NetworkStatusException {
         return mWalletApi.cli_borrow_asset(account,amount_to_borrow,asset_symbol,amount_of_collateral);
     }
@@ -874,21 +878,17 @@ public class BitsharesWalletWraper {
     public HashMap<String,List<HistoryResponseModel.DataBean>> cli_transfer_record(String account,String id) throws NetworkStatusException {
         return mWalletApi.cli_transfer_record(account,id);
     }
-
-
+    
     public AllHistory get_all_history(String baseSymbolId, String qouteSymbolId, int nLimit) throws NetworkStatusException {
         return mWalletApi.get_all_history(baseSymbolId,qouteSymbolId,nLimit);
     }
-
-
-
     //cli 注册账户
     //TODO:注意，此函数注册账户成功后，外部调用代码需要调用cli_import_key(),save_wallet_file()
     //TODO 将此账户存入本地钱包文件中。
     public int cli_register_account(String account_name,String public_key,String register,String referrer ) {
         return mWalletApi.cli_register_account(account_name,public_key,register,referrer);
     }
-
+`
     //cli 升级账户
     public int cli_upgrade_account(String account_name) {
         return mWalletApi.cli_upgrade_account(account_name);

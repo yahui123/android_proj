@@ -1660,6 +1660,47 @@ public class wallet_api {
         return mWebsocketApi.cli_borrow_asset(account, amount_to_borrow, asset_symbol, amount_of_collateral, strWifKey);
     }
 
+    public signed_transaction borrow_asset(String account,String amount_to_borrow,String asset_symbol,String amount_to_collateral) throws NetworkStatusException {
+        operations.call_order_update_operation op = new operations.call_order_update_operation();
+
+        account_object accountObject = lookup_account_names(account).get(0);
+
+        asset_object asset_borrow = lookup_asset_symbols(asset_symbol);
+
+        object_id<asset_object> base_asset = new object_id<asset_object>(0,asset_object.class);
+
+        ArrayList<object_id<asset_object>> list =  new ArrayList<object_id<asset_object>>();
+
+        list.add(base_asset);
+
+        asset_object asset_collateratl = get_assets(list).get(0);
+
+        op.delta_debt = asset_borrow.amount_from_string(amount_to_borrow);
+
+        op.delta_collateral = asset_collateratl.amount_from_string(amount_to_collateral);
+        op.extensions = new HashSet<>();
+
+//        ID_UPDATE_LMMIT_ORDER_OPERATION
+        operations.operation_type operationType = new operations.operation_type();
+        operationType.nOperationType = operations.ID_UPDATE_LMMIT_ORDER_OPERATION;
+        operationType.operationContent = op;
+
+        signed_transaction tx = new signed_transaction();
+        tx.operations = new ArrayList<>();
+        tx.operations.add(operationType);
+
+
+        tx.extensions = new HashSet<>();
+        if (op.fee == null) {
+            if (null != get_global_properties().parameters) {
+                set_operation_fees(tx, get_global_properties().parameters.current_fees);
+            } else {
+                return null;
+            }
+        }
+        return sign_transaction(tx);
+    }
+
     //cli 转账记录
     public HashMap<String, List<HistoryResponseModel.DataBean>> cli_transfer_record(String account, String id) throws NetworkStatusException {
         String name = SPUtils.getString(Const.USERNAME, "");

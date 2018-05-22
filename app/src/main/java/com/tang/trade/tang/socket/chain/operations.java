@@ -426,40 +426,59 @@ public class operations {
             long fee = 20 * GRAPHENE_BLOCKCHAIN_PRECISION;
         };
 
-        asset                     fee;
-        object_id<account_object> funding_account; ///< pays fee, collateral, and cover
-        asset                     delta_collateral; ///< the amount of collateral to add to the margin position
-        asset                     delta_debt; ///< the amount of the debt to be paid off, may be negative to issue new debt
-        Set<types.void_t>         extensions;
+        public asset                     fee;
+        public object_id<account_object> funding_account; ///< pays fee, collateral, and cover
+        public asset                     delta_collateral; ///< the amount of collateral to add to the margin position
+        public asset                     delta_debt; ///< the amount of the debt to be paid off, may be negative to issue new debt
+        public Set<types.void_t>         extensions;
 
         @Override
         public List<authority> get_required_authorities() {
-            return null;
+            return new ArrayList<>();
         }
 
         @Override
         public List<object_id<account_object>> get_required_active_authorities() {
-            return null;
+            List<object_id<account_object>> activeList = new ArrayList<>();
+            activeList.add(fee_payer());
+            return activeList;
         }
 
         @Override
         public List<object_id<account_object>> get_required_owner_authorities() {
-            return null;
+            return new ArrayList<>();
         }
 
         @Override
         public void write_to_encoder(base_encoder baseEncoder) {
 
+            raw_type rawObject = new raw_type();
+            //打包手续费
+            baseEncoder.write(rawObject.get_byte_array(fee.amount));
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(fee.asset_id.get_instance()));
+            //打包账户
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(funding_account.get_instance()));
+            //打包借入资产
+            baseEncoder.write(rawObject.get_byte_array(delta_collateral.amount));
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(delta_collateral.asset_id.get_instance()));
+            //打包抵押资产
+            baseEncoder.write(rawObject.get_byte_array(delta_debt.amount));
+            rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(delta_debt.asset_id.get_instance()));
+            //打包extensions
+            rawObject.pack(baseEncoder, UnsignedInteger.fromIntBits(extensions.size()));
+
         }
 
         @Override
         public long calculate_fee(Object objectFeeParameter) {
-            return 0;
+            assert(fee_parameters_type.class.isInstance(objectFeeParameter));
+            fee_parameters_type feeParametersType = (fee_parameters_type)objectFeeParameter;
+            return feeParametersType.fee;
         }
 
         @Override
         public void set_fee(asset fee) {
-
+            this.fee = fee;
         }
 
         @Override
