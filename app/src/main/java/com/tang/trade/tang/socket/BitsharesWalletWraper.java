@@ -858,11 +858,6 @@ public class BitsharesWalletWraper {
 
     }
 
-
-
-    public String cli_get_bitasset_data(String symbol) throws NetworkStatusException {
-        return mWalletApi.cli_get_bitasset_data(symbol);
-    }
     public String get_bitasset_data(String symbol) throws NetworkStatusException {
 
         return mWalletApi.get_bitasset_data(symbol);

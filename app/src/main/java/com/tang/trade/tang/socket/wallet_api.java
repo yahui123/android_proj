@@ -1635,17 +1635,13 @@ public class wallet_api {
         }
         return keys;
     }
-
-
-
-    //喂价
-    public String cli_get_bitasset_data(String symbol) throws NetworkStatusException {
-        return mWebsocketApi.cli_get_bitasset_data(symbol);
-    }
-
     //喂价
     public String get_bitasset_data(String symbol) throws NetworkStatusException {
-        return mWebsocketApi.get_bitasset_data(symbol);
+        asset_object asset = lookup_asset_symbols(symbol);
+
+        if (asset.bitasset_data_id == null) return null;
+
+        return mWebsocketApi.get_object(asset.bitasset_data_id.toString());
     }
 
     //强平触发价

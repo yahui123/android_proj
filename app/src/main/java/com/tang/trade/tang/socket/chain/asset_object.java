@@ -31,6 +31,7 @@ public class asset_object {
 
     /// Current supply, fee pool, and collected fees are stored in a separate object as they change frequently.
     object_id<asset_dynamic_data_object>  dynamic_asset_data_id;
+    public object_id bitasset_data_id;
 
     public boolean is_base_asset_object() {
         asset base = options.core_exchange_rate.base;

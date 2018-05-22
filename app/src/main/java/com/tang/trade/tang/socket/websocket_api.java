@@ -1474,6 +1474,38 @@ public class websocket_api extends WebSocketListener {
         return sFee;
     }
 
+    public String get_object(String id)  throws NetworkStatusException {
+        _nDatabaseId = get_database_api_id();
+        String strResopnse = null;
+        object_id ObjectId = object_id.create_from_string(id);
+        List<object_id> ids = new ArrayList<>();
+        ids.add(ObjectId);
+
+        Call callObject = new Call();
+        callObject.id = mnCallId.getAndIncrement();
+        callObject.method = "call";
+        callObject.params = new ArrayList<>();
+        callObject.params.add(_nDatabaseId);
+        callObject.params.add("get_objects");
+
+        List<Object> listParams = new ArrayList<>();
+        listParams.add(ids);
+        callObject.params.add(listParams);
+
+        ReplyObjectProcess<Reply<List<limit_order_object>>> replyObject =
+                new ReplyObjectProcess<>(new TypeToken<Reply<List<limit_order_object>>>(){}.getType());
+        Reply<List<limit_order_object>> obj = sendForReply(callObject, replyObject);
+        strResopnse = replyObject.getResponse();
+        try {
+            JSONObject jsonObject = new JSONObject(strResopnse);
+            JSONArray jArrayResult = jsonObject.getJSONArray("result");
+            return jArrayResult.get(0).toString();
+        } catch (JSONException e) {
+            return null;
+        }
+
+    }
+
     public List<limit_order_object> get_limit_orders(List<object_id<limit_order_object>> ids)
             throws NetworkStatusException {
         _nDatabaseId = get_database_api_id();
