@@ -39,6 +39,8 @@ import com.tang.trade.module.register.generate.GenerateWordsActivity;
 import com.tang.trade.tang.MyApp;
 import com.tang.trade.tang.R;
 import com.tang.trade.tang.net.TangConstant;
+import com.tang.trade.tang.socket.BitsharesWalletWraper;
+import com.tang.trade.tang.socket.exception.NetworkStatusException;
 import com.tang.trade.tang.ui.MainActivity;
 import com.tang.trade.tang.ui.loginactivity.ChooseWalletActivity;
 import com.tang.trade.tang.utils.Device;
@@ -137,6 +139,11 @@ public class LoginActivity extends AbsMVPActivity<LoginContract.Presenter> imple
             }
         }
 
+        try {
+            BitsharesWalletWraper.getInstance().get_bitasset_data("CNY");
+        } catch (NetworkStatusException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1919,6 +1919,60 @@ public class websocket_api extends WebSocketListener {
     }
 
 
+    public String get_bitasset_data(String symbol,List<object_id<asset_object>> listAssetObjectId) throws NetworkStatusException {
+        _nDatabaseId = get_database_api_id();
+
+        asset_object asset = get_assets(listAssetObjectId).get(0);
+
+        String feed_price = "0";
+        String baseAmount = "";
+        String quoteAmount = "";
+        String per = "1.5";
+
+        String result = "" ;
+
+        Call callObject = new Call();
+        callObject.id = mnCallId.getAndIncrement();
+        callObject.method = "call";
+        callObject.params = new ArrayList<>();
+        callObject.params.add(_nDatabaseId);
+        callObject.params.add("get_bitasset_data");
+
+        List<Object> listAccountIds = new ArrayList<>();
+        listAccountIds.add(symbol);
+
+        List<Object> listAccountNamesParams = new ArrayList<>();
+        listAccountNamesParams.add(listAccountIds);
+
+        callObject.params.add(listAccountIds);
+        ReplyObjectProcess<Reply<List<asset_object>>> replyObject =
+                new ReplyObjectProcess<>(new TypeToken<Reply<List<asset_object>>>(){}.getType());
+        result = sendForJsonReply(callObject, replyObject);
+        if (result == null && result.equals("")) {
+            return "";
+        }
+
+
+        try {
+            JSONObject jsonObject = new JSONObject(result);
+            String quote_asset_id = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("quote").optString("asset_id");
+            baseAmount = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("base").optString("amount");
+            quoteAmount = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("quote").optString("amount");
+            per = jsonObject.optJSONObject("current_feed").optString("maintenance_collateral_ratio");
+            if (quote_asset_id.equals("1.3.0")){
+                feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(quoteAmount),Double.parseDouble(baseAmount),2));
+            }else{
+                feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(baseAmount),Double.parseDouble(quoteAmount),2));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "";
+        }
+        return feed_price+" "+per;
+
+    }
+
     public String cli_get_bitasset_data(String symbol) throws NetworkStatusException {
         String feed_price = "0";
         String baseAmount = "";
