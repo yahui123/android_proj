@@ -1234,7 +1234,7 @@ public class wallet_api {
         return sign_transaction(tx);
     }
 
-    public signed_transaction with_draw_vesting(String name_or_id, String vesting_name,String amount,String asset_symbol) throws NetworkStatusException {
+    public signed_transaction withdraw_vesting(String name_or_id, String vesting_name,String amount,String asset_symbol) throws NetworkStatusException {
 //        account_object object = mWebsocketApi.get_account(name);
         //待修复
         object_id<vesting_balance_object> object_witness_id = object_id.create_from_string(name_or_id);

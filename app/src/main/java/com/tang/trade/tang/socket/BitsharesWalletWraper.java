@@ -899,6 +899,10 @@ public class BitsharesWalletWraper {
         return mWalletApi.cli_upgrade_account(account_name);
     }
 
+    public signed_transaction withdraw_vesting(String name_or_id, String vesting_name,String amount,String asset_symbol) throws NetworkStatusException {
+        return mWalletApi.withdraw_vesting(name_or_id,vesting_name,amount,asset_symbol);
+    }
+
     //cli 领取冻结资产余额
     public int cli_withdraw_vesting(String assets_id,String str_amount) {
         return mWalletApi.cli_withdraw_vesting(assets_id,str_amount);
