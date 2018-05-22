@@ -1643,6 +1643,11 @@ public class wallet_api {
         return mWebsocketApi.cli_get_bitasset_data(symbol);
     }
 
+    //喂价
+    public String get_bitasset_data(String symbol) throws NetworkStatusException {
+        return mWebsocketApi.get_bitasset_data(symbol);
+    }
+
     //强平触发价
     public String cli_get_full_accounts(String account) throws NetworkStatusException {
         return mWebsocketApi.cli_get_full_accounts(account);

@@ -147,6 +147,7 @@ public class OldLaunchActivity extends AppCompatActivity {
         btn_confirm = findViewById(R.id.btn_confirm);
 
 
+
         if (ScreenUtils.getScreenAspect(this) > 1.9) {
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(0, 0, 0, 280);
