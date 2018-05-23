@@ -25,6 +25,7 @@ import com.tang.trade.tang.socket.chain.object_id;
 import com.tang.trade.tang.socket.chain.operation_history_object;
 import com.tang.trade.tang.socket.chain.operations;
 import com.tang.trade.tang.socket.chain.signed_transaction;
+import com.tang.trade.tang.socket.chain.transaction;
 import com.tang.trade.tang.socket.chain.vesting_balance_object;
 import com.tang.trade.tang.socket.exception.NetworkStatusException;
 import com.tang.trade.tang.socket.fc.crypto.sha256_object;
@@ -980,7 +981,7 @@ public class websocket_api extends WebSocketListener {
     }
 
     //查询区块信息
-    public block_object get_block(Integer nBlockNumber,int index) throws NetworkStatusException {
+    public block_object get_block(int nBlockNumber) throws NetworkStatusException {
         _nDatabaseId = get_database_api_id();
         block_object block = new block_object();
         Call callObject = new Call();
@@ -1012,12 +1013,15 @@ public class websocket_api extends WebSocketListener {
                     block.witnessId = dataobj.getString("witness");
                     JSONArray jarray = dataobj.getJSONArray("transactions");
                     block.transactionCount = jarray.length();
+                    block.transaction_ids = new ArrayList<>();
+                    for (int i =0; i < jarray.length();i ++) {
+                        String json =  jarray.getString(i);
+                        System.out.println(json);
+                        Gson gson = global_config_object.getInstance().getGsonBuilder().create();
+                        transaction trans = gson.fromJson(json,transaction.class);
 
-                    if (index != 0){
-                        String transaction_ids = dataobj.getJSONArray("transaction_ids").optString(index);
-                        block.transactionId = transaction_ids;
+                        block.transaction_ids.add(trans.ids().toString().substring(0,40));
                     }
-
                     return block;
                 } catch (JSONException e) {
                     e.printStackTrace();
