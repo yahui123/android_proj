@@ -22,7 +22,7 @@ public class FullNodeServerSelect {
     public String
     getServer() {
         if (BuildConfig.DEBUG) {
-//            return "ws://47.104.75.23:55555";
+//            return "ws://139.199.124.245:12357";
             return MyApp.CURRENT_NODE;
         } else {
             return MyApp.CURRENT_NODE;

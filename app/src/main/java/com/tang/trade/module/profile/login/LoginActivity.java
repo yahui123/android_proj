@@ -40,6 +40,9 @@ import com.tang.trade.tang.MyApp;
 import com.tang.trade.tang.R;
 import com.tang.trade.tang.net.TangConstant;
 import com.tang.trade.tang.socket.BitsharesWalletWraper;
+import com.tang.trade.tang.socket.account_object;
+import com.tang.trade.tang.socket.chain.block_object;
+import com.tang.trade.tang.socket.chain.object_id;
 import com.tang.trade.tang.socket.exception.NetworkStatusException;
 import com.tang.trade.tang.ui.MainActivity;
 import com.tang.trade.tang.ui.loginactivity.ChooseWalletActivity;
@@ -139,8 +142,24 @@ public class LoginActivity extends AbsMVPActivity<LoginContract.Presenter> imple
             }
         }
 
+        block_object block  = null;
+//            try {
+//                block = BitsharesWalletWraper.getInstance().get_block(5869948,0);
+//            } catch (NetworkStatusException e) {
+//                e.printStackTrace();
+//            }
+
+        account_object object = null;
         try {
-            BitsharesWalletWraper.getInstance().get_bitasset_data("CNY");
+            object = BitsharesWalletWraper.getInstance().get_account_object(userName);
+        } catch (NetworkStatusException e) {
+            e.printStackTrace();
+        }
+        //查询账户id
+        object_id<account_object> loginAccountId = object.id;
+
+        try {
+            BitsharesWalletWraper.getInstance().get_transfer_history(loginAccountId,10);
         } catch (NetworkStatusException e) {
             e.printStackTrace();
         }

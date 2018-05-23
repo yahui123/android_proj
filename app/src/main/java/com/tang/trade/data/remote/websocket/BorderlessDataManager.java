@@ -19,6 +19,7 @@ import com.tang.trade.tang.socket.account_object;
 import com.tang.trade.tang.socket.chain.global_property_object;
 import com.tang.trade.tang.socket.chain.object_id;
 import com.tang.trade.tang.socket.chain.operations;
+import com.tang.trade.tang.socket.chain.signed_transaction;
 import com.tang.trade.tang.socket.chain.types;
 import com.tang.trade.tang.socket.exception.NetworkStatusException;
 import com.tang.trade.tang.socket.private_key;
@@ -593,6 +594,154 @@ public class BorderlessDataManager {
         }).compose(RxJavaUtil.threadTransform()).subscribe(observer);
     }
 
+    /**
+     * 创建账户
+     * @param pubKey
+     * @param strAccountName
+     * @param strRegistar
+     * @param strReferrer
+     * @param refferPercent
+     * @param observer
+     */
+    public void registerForWebSocket(String pubKey, String strAccountName, String strRegistar, String strReferrer, int refferPercent,Observer observer) {
+
+        Observable.create(new BorderlessOnSubscribe<String>() {
+
+            @Override
+            public String onPre() {
+
+                signed_transaction signed_transaction = null;
+
+                try {
+                    signed_transaction = BitsharesWalletWraper.getInstance().create_account_with_pub_key(pubKey,strAccountName,strRegistar,strReferrer,refferPercent);
+                } catch (NetworkStatusException e) {
+                    throw new BorderlessException("账户注册失败", BorderlessCode.PASSWORD_INCORRECT);
+                }
+
+                if (signed_transaction != null) {
+
+                    return SUCCESS;
+                } else {
+
+                    throw new BorderlessException("账户注册失败", BorderlessCode.PASSWORD_INCORRECT);
+                }
+            }
+        }).compose(RxJavaUtil.threadTransform()).subscribe(observer);
+
+    }
+
+
+    /**
+     * 提取矿池收益
+     * @param name_or_id
+     * @param vesting_name
+     * @param amount
+     * @param asset_symbol
+     * @param observer
+     */
+    public void withdrawVestingWebSocket(String name_or_id, String vesting_name,String amount,String asset_symbol,Observer observer) {
+
+        Observable.create(new BorderlessOnSubscribe<String>() {
+
+            @Override
+            public String onPre() {
+
+                signed_transaction signed_transaction = null;
+
+                try {
+                    signed_transaction = BitsharesWalletWraper.getInstance().withdraw_vesting(name_or_id,vesting_name,amount,asset_symbol);
+                } catch (NetworkStatusException e) {
+                    throw new BorderlessException("提取收益失败", BorderlessCode.ERROR_FOR_TOAST);
+                }
+
+                if (signed_transaction != null) {
+
+                    return SUCCESS;
+                } else {
+
+                    throw new BorderlessException("提取收益失败", BorderlessCode.ERROR_FOR_TOAST);
+                }
+            }
+        }).compose(RxJavaUtil.threadTransform()).subscribe(observer);
+
+    }
+
+    /**
+     * 升级终身会员
+     * @param name
+     * @param observer
+     */
+    public void upgradeAccountWebSocket(String name,Observer observer) {
+
+        Observable.create(new BorderlessOnSubscribe<String>() {
+
+            @Override
+            public String onPre() {
+
+                signed_transaction signed_transaction = null;
+
+                try {
+                    signed_transaction = BitsharesWalletWraper.getInstance().upgrade_account(name,true);
+                } catch (NetworkStatusException e) {
+                    throw new BorderlessException("会员升级失败", BorderlessCode.ERROR_FOR_TOAST);
+                }
+
+                if (signed_transaction != null) {
+
+                    return SUCCESS;
+                } else {
+
+                    throw new BorderlessException("会员升级失败", BorderlessCode.ERROR_FOR_TOAST);
+                }
+            }
+        }).compose(RxJavaUtil.threadTransform()).subscribe(observer);
+
+    }
+
+
+    /**
+     * 借入、平仓
+     * @param type  1---借入，2---平仓
+     * @param account
+     * @param amount_to_borrow
+     * @param asset_symbol
+     * @param amount_to_collateral
+     * @param observer
+     */
+    public void borrowWebSocket(int type,String account,String amount_to_borrow,String asset_symbol,String amount_to_collateral,Observer observer) {
+
+        Observable.create(new BorderlessOnSubscribe<String>() {
+
+            @Override
+            public String onPre() {
+
+                signed_transaction signed_transaction = null;
+
+                try {
+                    signed_transaction = BitsharesWalletWraper.getInstance().borrow_asset(account,amount_to_borrow,asset_symbol,amount_to_collateral);
+                } catch (NetworkStatusException e) {
+                    if (type == 1) {
+                        throw new BorderlessException("借入失败", BorderlessCode.ERROR_FOR_TOAST);
+                    }else {
+                        throw new BorderlessException("平仓失败", BorderlessCode.ERROR_FOR_TOAST);
+                    }
+                }
+
+                if (signed_transaction != null) {
+
+                    return SUCCESS;
+                } else {
+
+                    if (type == 1) {
+                        throw new BorderlessException("借入失败", BorderlessCode.ERROR_FOR_TOAST);
+                    }else {
+                        throw new BorderlessException("平仓失败", BorderlessCode.ERROR_FOR_TOAST);
+                    }
+                }
+            }
+        }).compose(RxJavaUtil.threadTransform()).subscribe(observer);
+
+    }
 
 //        Observable.create(new OnSubscribe<Drawable>() {
 //            @Override

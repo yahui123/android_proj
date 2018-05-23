@@ -9,5 +9,6 @@ public class block_object {
         public String blockNumber;
         public String witnessId;
         public int transactionCount;
+        public String transactionId;
 
 }

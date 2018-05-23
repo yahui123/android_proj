@@ -216,7 +216,7 @@ public class TradeHistoryFragment extends Fragment implements View.OnClickListen
                     String strAssetId1 = assetId.toString();
                     String strAssetId2 = assetId2.toString();
 
-                    block_object block_num = BitsharesWalletWraper.getInstance().get_block(op.block_num);
+                    block_object block_num = BitsharesWalletWraper.getInstance().get_block(op.block_num,0);
                     if (block_num == null) {
                         return null;
                     }

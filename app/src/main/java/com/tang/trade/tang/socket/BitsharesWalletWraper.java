@@ -32,10 +32,12 @@ import com.tang.trade.tang.socket.market.MarketTicker;
 import com.tang.trade.tang.socket.market.MarketTrade;
 import com.tang.trade.tang.socket.market.OrderBook;
 import com.tang.trade.tang.utils.BuildConfig;
+import com.tang.trade.tang.utils.CalculateUtils;
 import com.tang.trade.tang.utils.NumberUtils;
 import com.tang.trade.utils.SPUtils;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -630,9 +632,9 @@ public class BitsharesWalletWraper {
 
 
     //获取块信息
-    public block_object get_block(int  nblocknum) throws  NetworkStatusException {
+    public block_object get_block(Integer nblocknum,int index) throws  NetworkStatusException {
 
-        return mWalletApi.get_block(nblocknum);
+        return mWalletApi.get_block(nblocknum , index);
     }
 
 
@@ -860,48 +862,58 @@ public class BitsharesWalletWraper {
 
     public String get_bitasset_data(String symbol) throws NetworkStatusException {
 
-        return mWalletApi.get_bitasset_data(symbol);
-    }
+        String feed_price = "0";
+        String baseAmount = "";
+        String quoteAmount = "";
+        String per = "1.5";
 
-    public String cli_get_full_accounts(String account) throws NetworkStatusException {
-        return mWalletApi.cli_get_full_accounts(account);
+        String result = mWalletApi.get_bitasset_data(symbol);
+
+        if (TextUtils.isEmpty(result)) {
+            return "";
+        }
+
+
+        try {
+            JSONObject jsonObject = new JSONObject(result);
+            String quote_asset_id = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("quote").optString("asset_id");
+            baseAmount = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("base").optString("amount");
+            quoteAmount = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("quote").optString("amount");
+            per = jsonObject.optJSONObject("current_feed").optString("maintenance_collateral_ratio");
+            if (quote_asset_id.equals("1.3.0")) {
+                feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(quoteAmount), Double.parseDouble(baseAmount), 2));
+            } else {
+                feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(baseAmount), Double.parseDouble(quoteAmount), 2));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "";
+        }
+        return feed_price + " " + per;
     }
 
     public signed_transaction borrow_asset(String account,String amount_to_borrow,String asset_symbol,String amount_to_collateral) throws NetworkStatusException {
         return mWalletApi.borrow_asset(account,amount_to_borrow,asset_symbol,amount_to_collateral);
     }
 
-    public String cli_borrow_asset(String account,String amount_to_borrow, String asset_symbol, String amount_of_collateral) throws NetworkStatusException {
-        return mWalletApi.cli_borrow_asset(account,amount_to_borrow,asset_symbol,amount_of_collateral);
-    }
 
     public HashMap<String,List<HistoryResponseModel.DataBean>> cli_transfer_record(String account,String id) throws NetworkStatusException {
         return mWalletApi.cli_transfer_record(account,id);
     }
-    
+
+
     public AllHistory get_all_history(String baseSymbolId, String qouteSymbolId, int nLimit) throws NetworkStatusException {
         return mWalletApi.get_all_history(baseSymbolId,qouteSymbolId,nLimit);
     }
-    //cli 注册账户
-    //TODO:注意，此函数注册账户成功后，外部调用代码需要调用cli_import_key(),save_wallet_file()
-    //TODO 将此账户存入本地钱包文件中。
-    public int cli_register_account(String account_name,String public_key,String register,String referrer ) {
-        return mWalletApi.cli_register_account(account_name,public_key,register,referrer);
-    }
-`
-    //cli 升级账户
-    public int cli_upgrade_account(String account_name) {
-        return mWalletApi.cli_upgrade_account(account_name);
-    }
+
+
 
     public signed_transaction withdraw_vesting(String name_or_id, String vesting_name,String amount,String asset_symbol) throws NetworkStatusException {
         return mWalletApi.withdraw_vesting(name_or_id,vesting_name,amount,asset_symbol);
     }
 
-    //cli 领取冻结资产余额
-    public int cli_withdraw_vesting(String assets_id,String str_amount) {
-        return mWalletApi.cli_withdraw_vesting(assets_id,str_amount);
-    }
+
 
     public HashMap<String,String> cli_get_block(String block_num,int index) throws NetworkStatusException {
         return mWalletApi.cli_get_block(block_num,index);

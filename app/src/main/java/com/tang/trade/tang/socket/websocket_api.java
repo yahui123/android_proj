@@ -86,7 +86,7 @@ public class websocket_api extends WebSocketListener {
     private AtomicInteger mnCallId = new AtomicInteger(1);
     private HashMap<Integer, IReplyObjectProcess> mHashMapIdToProcess = new HashMap<>();
     private String gRespJson;
-    private String chainid = "4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84";
+    private String chainid = "4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8";
 
 
     /*
@@ -505,7 +505,7 @@ public class websocket_api extends WebSocketListener {
         ReplyObjectProcess<Reply<sha256_object>> replyObject =
                 new ReplyObjectProcess<>(new TypeToken<Reply<sha256_object>>(){}.getType());
 
-        replyObject.processTextToObject("{\"id\":65,\"jsonrpc\":\"2.0\",\"result\":\"4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84\"}");
+        replyObject.processTextToObject("{\"id\":65,\"jsonrpc\":\"2.0\",\"result\":\"4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8\"}");
         Reply<sha256_object> replyObj = replyObject.getReplyObject();
         return replyObj.result;
     }
@@ -980,7 +980,7 @@ public class websocket_api extends WebSocketListener {
     }
 
     //查询区块信息
-    public block_object get_block(int nBlockNumber) throws NetworkStatusException {
+    public block_object get_block(Integer nBlockNumber,int index) throws NetworkStatusException {
         _nDatabaseId = get_database_api_id();
         block_object block = new block_object();
         Call callObject = new Call();
@@ -1012,6 +1012,11 @@ public class websocket_api extends WebSocketListener {
                     block.witnessId = dataobj.getString("witness");
                     JSONArray jarray = dataobj.getJSONArray("transactions");
                     block.transactionCount = jarray.length();
+
+                    if (index != 0){
+                        String transaction_ids = dataobj.getJSONArray("transaction_ids").optString(index);
+                        block.transactionId = transaction_ids;
+                    }
 
                     return block;
                 } catch (JSONException e) {
@@ -1872,151 +1877,8 @@ public class websocket_api extends WebSocketListener {
     }
 
 
-    public String get_bitasset_data(String symbol,List<object_id<asset_object>> listAssetObjectId) throws NetworkStatusException {
-        _nDatabaseId = get_database_api_id();
-
-        asset_object asset = get_assets(listAssetObjectId).get(0);
-
-        String feed_price = "0";
-        String baseAmount = "";
-        String quoteAmount = "";
-        String per = "1.5";
-
-        String result = "" ;
-
-        Call callObject = new Call();
-        callObject.id = mnCallId.getAndIncrement();
-        callObject.method = "call";
-        callObject.params = new ArrayList<>();
-        callObject.params.add(_nDatabaseId);
-        callObject.params.add("get_bitasset_data");
-
-        List<Object> listAccountIds = new ArrayList<>();
-        listAccountIds.add(symbol);
-
-        List<Object> listAccountNamesParams = new ArrayList<>();
-        listAccountNamesParams.add(listAccountIds);
-
-        callObject.params.add(listAccountIds);
-        ReplyObjectProcess<Reply<List<asset_object>>> replyObject =
-                new ReplyObjectProcess<>(new TypeToken<Reply<List<asset_object>>>(){}.getType());
-        result = sendForJsonReply(callObject, replyObject);
-        if (result == null && result.equals("")) {
-            return "";
-        }
 
 
-        try {
-            JSONObject jsonObject = new JSONObject(result);
-            String quote_asset_id = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("quote").optString("asset_id");
-            baseAmount = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("base").optString("amount");
-            quoteAmount = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("quote").optString("amount");
-            per = jsonObject.optJSONObject("current_feed").optString("maintenance_collateral_ratio");
-            if (quote_asset_id.equals("1.3.0")){
-                feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(quoteAmount),Double.parseDouble(baseAmount),2));
-            }else{
-                feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(baseAmount),Double.parseDouble(quoteAmount),2));
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return "";
-        }
-        return feed_price+" "+per;
-
-    }
-
-    public String cli_get_bitasset_data(String symbol) throws NetworkStatusException {
-        String feed_price = "0";
-        String baseAmount = "";
-        String quoteAmount = "";
-        String per = "1.5";
-
-        String result = "" ;
-        if (!TextUtils.isEmpty(result)) {
-            if (result.indexOf("error") != -1 || result.indexOf("exception")!= -1) {
-                String strError = result;
-                return "";
-            }
-            try {
-                JSONObject jsonObject = new JSONObject(result);
-                String quote_asset_id = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("quote").optString("asset_id");
-                baseAmount = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("base").optString("amount");
-                quoteAmount = jsonObject.optJSONObject("current_feed").optJSONObject("settlement_price").optJSONObject("quote").optString("amount");
-                per = jsonObject.optJSONObject("current_feed").optString("maintenance_collateral_ratio");
-                if (quote_asset_id.equals("1.3.0")){
-                    feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(quoteAmount),Double.parseDouble(baseAmount),2));
-                }else{
-                    feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(baseAmount),Double.parseDouble(quoteAmount),2));
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-                return "";
-            }
-
-
-        }
-        else {
-            return "";
-        }
-
-        return feed_price+" "+per;
-    }
-
-
-
-    public String cli_get_full_accounts(String account) throws NetworkStatusException {
-        String baseAmount = "";
-        String quoteAmount = "";
-
-            String result = "";
-
-            if (!TextUtils.isEmpty(result)) {
-                if (result.indexOf("error") != -1 || result.indexOf("exception")!= -1) {
-                    String strError = result;
-                    return "";
-                }
-                try {
-                    JSONObject jsonObject = new JSONObject(result);
-//                    baseAmount = jsonObject.optJSONObject("current_feed").optJSONObject("core_exchange_rate").optJSONObject("base").optString("amount");
-//                    quoteAmount = jsonObject.optJSONObject("current_feed").optJSONObject("core_exchange_rate").optJSONObject("quote").optString("amount");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    return "";
-                }
-
-
-            }
-            else {
-                return "";
-            }
-
-        return baseAmount+" "+quoteAmount;
-    }
-
-
-    /**
-     * 借入
-     * @param account
-     * @return
-     * @throws NetworkStatusException
-     */
-    public String cli_borrow_asset(String account,String amount_to_borrow, String asset_symbol, String amount_of_collateral,String privateKey) throws NetworkStatusException {
-
-        String result = "";
-
-        if (!TextUtils.isEmpty(result)) {
-            if (result.indexOf("error") != -1 || result.indexOf("exception")!= -1) {
-                String strError = result;
-                return "";
-            }
-        }
-        else {
-            return "";
-        }
-        return result;
-    }
 
 
     /**
@@ -2106,92 +1968,6 @@ public class websocket_api extends WebSocketListener {
         return allHistory;
     }
 
-    /***
-     * cli 创建账户
-     * @param  account_name 注册的账户名
-     * @param  public_key   注册的账户公钥
-     * @param  register     注册人名称
-     * @param  register_pri 注册人私钥
-     * @param  referrer     引荐人名称
-     * */
-
-    public boolean cli_register_account(String account_name,String public_key,String register,String register_pri,String referrer)
-    {
-        boolean bResult = false;
-
-            //注册账户，需要注册人的私钥
-            String result = "";
-            if (!result.contains("Assert Exception:")) {
-                if (result.contains("ref_block_num") && result.contains("operations") && result.contains("signatures")) {
-                    bResult = true;
-                } else {
-                    bResult = false;
-                }
-            }else {
-                bResult = false;
-            }
-
-            Log.i("resule",result);
-
-
-        return bResult;
-
-    }
-
-    /***
-     * cli 升级账户
-     * @param  account_name 升级的账户名称
-     * @param  account_pri  升级账户的私钥*/
-    public boolean cli_upgrade_account (String account_name,String account_pri)
-    {
-        boolean bResult = false;
-
-            //升级账户，需要账户的私钥
-            String result = "";
-            if (!result.contains("Assert Exception:")) {
-                if (result.contains("ref_block_num") && result.contains("operations") && result.contains("signatures")) {
-                    bResult = true;
-                } else {
-                    bResult = false;
-                }
-            }else {
-                bResult = false;
-            }
-            Log.i("result",result);
-
-        return bResult;
-    }
-
-
-    /***
-     * 领取冻结资产收益
-     * @param assets_id  账户id
-     * @param str_amount  领取的数量
-     * @param account_name 账户名称
-     * @param account_pri 用户签名的账户私钥
-     * @return
-     *  -1 异常
-     *  0  失败
-     *  1  成功
-     * @*/
-    public int cli_withdraw_vesting(String assets_id,String str_amount,String account_name,String account_pri) {
-
-
-            //升级账户，需要账户的私钥
-            String result = "";
-
-            Log.i("result",result);
-            if (!result.contains("Assert Exception:")) {
-                if (result.contains("ref_block_num") && result.contains("operations") && result.contains("signatures")) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }else {
-                return 0;
-            }
-
-    }
 
 
 

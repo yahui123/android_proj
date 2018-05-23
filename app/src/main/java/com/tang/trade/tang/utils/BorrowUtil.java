@@ -26,7 +26,6 @@ import com.tang.trade.tang.socket.chain.full_account;
 import com.tang.trade.tang.socket.chain.object_id;
 import com.tang.trade.tang.socket.chain.operations;
 import com.tang.trade.tang.socket.exception.NetworkStatusException;
-import com.tang.trade.tang.ui.JieRuActivity;
 import com.tang.trade.utils.SPUtils;
 
 import org.json.JSONException;

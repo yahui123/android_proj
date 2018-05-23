@@ -14,6 +14,9 @@ import android.widget.TextView;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 import com.tang.trade.app.Const;
+import com.tang.trade.data.remote.http.DataError;
+import com.tang.trade.data.remote.websocket.AsyncObserver;
+import com.tang.trade.data.remote.websocket.BorderlessDataManager;
 import com.tang.trade.tang.MyApp;
 import com.tang.trade.tang.R;
 import com.tang.trade.tang.adapter.PoolAdapter;
@@ -52,6 +55,7 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import de.bitsharesmunich.graphenej.Address;
 import de.bitsharesmunich.graphenej.errors.MalformedAddressException;
+import io.reactivex.disposables.Disposable;
 
 import static com.tang.trade.tang.ui.loginactivity.ChooseWalletActivity.CURRTEN_BIN;
 import static com.tang.trade.tang.ui.loginactivity.ChooseWalletActivity.PASSWORD;
@@ -232,103 +236,40 @@ public class OrePoolActivity extends BaseActivity implements PoolAdapter.onOnBut
     public void initData() {
 
     }
-    private void  withdarw_vesting(final String amount,account_object upgradeAccount,String assets_id) {
+    private void  withdarw_vesting(final String amount,String assets_id) {
 
-        progressDialog.show();
         //vesting_balance_object balance_object =null;
         if (vestObjList != null && !vestObjList.isEmpty()&&!TextUtils.isEmpty(fee)) {
             //balance_object=vestObjList.get(positon);
         }else {
             MyApp.showToast(getString(R.string.network));
-            progressDialog.dismiss();
             return;
         }
 
-        //获取账户 private key
-        types.public_key_type publicKeyType =  upgradeAccount.owner.get_keys().get(0);
-        String strPublicKey = publicKeyType.toString();
-        types.private_key_type privateKey = BitsharesWalletWraper.getInstance().get_wallet_hash().get(publicKeyType);
-        String strPrivateKey = null;
-
-        if (privateKey != null) {
-            strPrivateKey = privateKey.toString();
-        } else{
-            BitsharesWalletWraper.getInstance().clear();
-            BitsharesWalletWraper.getInstance().load_wallet_file(TangConstant.PATH+CURRTEN_BIN,PASSWORD);
-            BitsharesWalletWraper.getInstance().unlock(PASSWORD);
-            privateKey = BitsharesWalletWraper.getInstance().get_wallet_hash().get(publicKeyType);
-            if (privateKey != null) {
-                strPrivateKey = privateKey.toString();
+        BorderlessDataManager.getInstance().withdrawVestingWebSocket(assets_id, SPUtils.getString(Const.USERNAME, ""), amount, "BDS", new AsyncObserver() {
+            @Override
+            public void onError(DataError error) {
+                MyApp.showToast(getString(R.string.bds_extractionFailed));
+                progressDialog.dismiss();
             }
-        }
 
-        if (strPrivateKey == null){
-            progressDialog.dismiss();
-            return;
-        }
+            @Override
+            public void onSubscribe(Disposable d) {
+                progressDialog.show();
+            }
 
+            @Override
+            public void onNext(Object o) {
+                MyApp.showToast(getString(R.string.bds_extraction));
+                startTimer();
+                progressDialog.dismiss();
+            }
 
-        //请求public key
+            @Override
+            public void onComplete() {
 
-        memo_data memo = new memo_data();
-        memo.from = upgradeAccount.options.memo_key;
-        memo.to = upgradeAccount.options.memo_key;
-
-        try {
-            Address address = new Address(BuildConfig.strPubWifKey);
-            public_key publicKey = new public_key(address.getPublicKey().toBytes());
-            //加密
-            memo.set_message(
-                    privateKey.getPrivateKey(),
-                    publicKey,
-                    strPrivateKey,
-                    1
-            );
-
-            String encryptoData = memo.get_message_data();
-            //升级
-            String command = String.format("withdraw_vesting \"%s\" \"%s\" \"BDS\" true",assets_id,amount);
-
-            HashMap<String, String> hashMap = new HashMap<String, String>();
-            hashMap.put("type", "2");
-            hashMap.put("name", SPUtils.getString(Const.USERNAME,""));
-            hashMap.put("1", encryptoData);
-            hashMap.put("2", strPublicKey);
-            hashMap.put("command",command);
-            //执行命令
-            AcceptorApi.acceptantHttp(hashMap,"and_run_command",new JsonCallBack<HttpResponseModel>(HttpResponseModel.class) {
-                @Override
-                public void onSuccess(Response<HttpResponseModel> response) {
-                    HttpResponseModel httpResponseModel = response.body();
-                    if (httpResponseModel.getStatus().contains("success")){
-                        MyApp.showToast(getString(R.string.bds_extraction));
-                      startTimer();
-                        progressDialog.dismiss();
-                    }else {
-                        MyApp.showToast(httpResponseModel.getMsg());
-                        progressDialog.dismiss();
-                    }
-                }
-
-                @Override
-                public void onStart(Request<HttpResponseModel, ? extends Request> request) {
-                    super.onStart(request);
-                }
-
-                @Override
-                public void onError(Response<HttpResponseModel> response) {
-                    super.onError(response);
-                    MyApp.showToast(getString(R.string.network));
-                    progressDialog.dismiss();
-                }
-            });
-
-        } catch (MalformedAddressException e) {
-            e.printStackTrace();
-            MyApp.showToast(getString(R.string.bds_extractionFailed));
-            progressDialog.dismiss();
-
-        }
+            }
+        });
 
     }
 
@@ -339,17 +280,12 @@ public class OrePoolActivity extends BaseActivity implements PoolAdapter.onOnBut
             if (!TextUtils.isEmpty(str)&&Double.parseDouble(str)>0){
                 if (Double.parseDouble(fee)<Double.parseDouble(balance)){
                     stopTimer();
-                    progressDialog.show();
                     if (SPUtils.getBoolean(Const.IS_LIFE_MEMBER,false)) {
-                        //cli
-//                        if (BitsharesWalletWraper.getInstance().getCliUsedSwitch()) {
-//                            new OrePoolTask().execute(vestObjList.get(position).id,vestObjList.get(position).Available_to_claim);
-//                        } else {
-                            withdarw_vesting(vestObjList.get(position).Available_to_claim, upgradeAccount,vestObjList.get(position).id);
-//                        }
+
+                        withdarw_vesting(vestObjList.get(position).Available_to_claim,vestObjList.get(position).id);
+
                     } else {
                         MyApp.showToast(getString(R.string.bds_extractionFailed));
-                        progressDialog.dismiss();
                     }
 
                 }else {
@@ -428,38 +364,6 @@ public class OrePoolActivity extends BaseActivity implements PoolAdapter.onOnBut
     }
 
 
-    public class OrePoolTask extends AsyncTask<String, Void,Integer> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog.show();
-        }
-
-        @Override
-        protected Integer doInBackground(String... params) {
-
-            int result =  BitsharesWalletWraper.getInstance().cli_withdraw_vesting(params[0],params[1]);
-            Log.i("register_account",result+"");
-
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(Integer i) {
-            super.onPostExecute(i);
-            if (i == 1){
-                MyApp.showToast(getString(R.string.bds_bds_lingqu));
-                startTimer();
-            }else if ( i == 0){
-                MyApp.showToast(getString(R.string.bds_bds_fail));
-            }else if ( i == -1){
-                MyApp.showToast(getString(R.string.network));
-            }
-            progressDialog.dismiss();
-
-        }
-    }
 
 
 }

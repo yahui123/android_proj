@@ -20,6 +20,9 @@ import android.widget.TextView;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 import com.tang.trade.app.Const;
+import com.tang.trade.data.remote.http.DataError;
+import com.tang.trade.data.remote.websocket.AsyncObserver;
+import com.tang.trade.data.remote.websocket.BorderlessDataManager;
 import com.tang.trade.tang.MyApp;
 import com.tang.trade.tang.R;
 import com.tang.trade.tang.net.AcceptorApi;
@@ -59,6 +62,7 @@ import java.util.List;
 import butterknife.BindView;
 import de.bitsharesmunich.graphenej.Address;
 import de.bitsharesmunich.graphenej.errors.MalformedAddressException;
+import io.reactivex.disposables.Disposable;
 
 import static com.tang.trade.tang.ui.loginactivity.ChooseWalletActivity.CURRTEN_BIN;
 import static com.tang.trade.tang.ui.loginactivity.ChooseWalletActivity.PASSWORD;
@@ -147,7 +151,7 @@ public class BorrowingActivity extends BaseActivity {
         @Override
         public void run() {
             try {
-                String data = BitsharesWalletWraper.getInstance().cli_get_bitasset_data(selectCurrency);
+                String data = BitsharesWalletWraper.getInstance().get_bitasset_data(selectCurrency);
                 if (!TextUtils.isEmpty(data)) {
                     feed_price = data.split(" ")[0];
                     per = Double.parseDouble(data.split(" ")[1])/1000;
@@ -351,7 +355,7 @@ public class BorrowingActivity extends BaseActivity {
 
         et_jieru_aquate.setText("0");
 
-        getFeedPrice(selectCurrency);
+        handler.post(runnable);
 
         new Thread(runnable2).start();
 
@@ -381,8 +385,7 @@ public class BorrowingActivity extends BaseActivity {
                 strType = new String[]{"CNY", "USD"};
                 selectCurrency = strType[0];
 
-                getFeedPrice(selectCurrency);
-
+                handler.post(runnable);
                 getKyohei(selectCurrency);
                 setBalance(selectCurrency, SPUtils.getString(Const.USERNAME,""));
                 setBalance("BDS", SPUtils.getString(Const.USERNAME,""));
@@ -549,49 +552,6 @@ public class BorrowingActivity extends BaseActivity {
 
     }
 
-    public void getFeedPrice(String symbol) {
-        String command = String.format("get_bitasset_data %s",symbol);
-        //执行命令
-        HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("type", "1");
-        hashMap.put("name", "");
-        hashMap.put("1", "");
-        hashMap.put("2", "");
-        hashMap.put("command",command);
-        AcceptorApi.acceptantHttp(hashMap,"and_run_command",new JsonCallBack<HttpResponseModel>(HttpResponseModel.class) {
-            @Override
-            public void onSuccess(Response<HttpResponseModel> response) {
-                HttpResponseModel body = response.body();
-                if (body.getStatus().contains("success")){
-                    String quote_asset_id = body.getData().get(0).getCurrent_feed().getCore_exchange_rate().getQuote().getAsset_id();
-                    String baseAmount = body.getData().get(0).getCurrent_feed().getCore_exchange_rate().getBase().getAmount();
-                    String quoteAmount = body.getData().get(0).getCurrent_feed().getCore_exchange_rate().getQuote().getAmount();
-                    if (quote_asset_id.equals("1.3.0")){
-                        feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(quoteAmount),Double.parseDouble(baseAmount),2));
-                    }else{
-                        feed_price = NumberUtils.formatNumber2(CalculateUtils.div(Double.parseDouble(baseAmount),Double.parseDouble(quoteAmount),2));
-                    }
-                }
-                if (Double.parseDouble(feed_price) == 0){
-                    tv_wei_price.setText("0.00000");
-                }else {
-                    tv_wei_price.setText(CalculateUtils.div(1,Double.parseDouble(feed_price),5));
-                }
-            }
-
-            @Override
-            public void onStart(Request<HttpResponseModel, ? extends Request> request) {
-                super.onStart(request);
-            }
-
-            @Override
-            public void onError(Response<HttpResponseModel> response) {
-                super.onError(response);
-            }
-        });
-
-    }
-
 
     private void setSelectCurrenty(){
         // 点击【充值币种】的场合，弹出单选对话框，选择币种
@@ -606,17 +566,13 @@ public class BorrowingActivity extends BaseActivity {
                     tv_cash_in_currency.setText(selectCurrency);
                     tv_select_currency.setText(selectCurrency);
 //
-//                    if (BitsharesWalletWraper.getInstance().getCliUsedSwitch()){
-//                        handler.post(runnable);
-//                    }else {
-//                        getFeedPrice(selectCurrency);
-//                    }
-//
-//                    et_jieru_aquate.setText("0.00");
-//
-//                    new Thread(runnable2).start();
-//                    tv_wei_symbol.setText(selectCurrency+"/BDS");
-//                    tv_qing_symloy.setText(selectCurrency+"/BDS");
+                    handler.post(runnable);
+
+                    et_jieru_aquate.setText("0.00");
+
+                    new Thread(runnable2).start();
+                    tv_wei_symbol.setText(selectCurrency+"/BDS");
+                    tv_qing_symloy.setText(selectCurrency+"/BDS");
                     progressDialog.show();
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -680,7 +636,7 @@ public class BorrowingActivity extends BaseActivity {
                         }
                     }
 
-                    httpBorrow(debtChange,collateralChange);
+                    borrow(debtChange,collateralChange);
 
 
                 }
@@ -691,8 +647,7 @@ public class BorrowingActivity extends BaseActivity {
     }
 
 
-    private void httpBorrow(String debtChange,String collateralChange){
-        progressDialog.show();
+    private void borrow(String debtChange,String collateralChange){
         account_object myAccount = null;
         //获取账户 private key
         try {
@@ -703,141 +658,38 @@ public class BorrowingActivity extends BaseActivity {
         //网络异常
         if (null == myAccount) {
             MyApp.showToast(getString(R.string.network));
-            progressDialog.dismiss();
             return ;
         }
-        types.public_key_type publicKeyType =  myAccount.owner.get_keys().get(0);
-        String strPublicKey = publicKeyType.toString();
-        types.private_key_type privateKey = BitsharesWalletWraper.getInstance().get_wallet_hash().get(publicKeyType);
-        String strPrivateKey = null;
-
-        if (privateKey != null) {
-            strPrivateKey = privateKey.toString();
-        } else{
-            BitsharesWalletWraper.getInstance().clear();
-            BitsharesWalletWraper.getInstance().load_wallet_file(TangConstant.PATH+CURRTEN_BIN,PASSWORD);
-            BitsharesWalletWraper.getInstance().unlock(PASSWORD);
-            privateKey = BitsharesWalletWraper.getInstance().get_wallet_hash().get(publicKeyType);
-            if (privateKey != null) {
-                strPrivateKey = privateKey.toString();
-            }
-        }
-
-        //请求public key
-
-        memo_data memo = new memo_data();
-        memo.from = myAccount.options.memo_key;
-        memo.to = myAccount.options.memo_key;
 
 
-        Address address = null;
-        try {
-            address = new Address(BuildConfig.strPubWifKey);
-        } catch (MalformedAddressException e) {
-            e.printStackTrace();
-            MyApp.showToast(getString(R.string.network));
-            progressDialog.dismiss();
-            return ;
-        }
-        public_key publicKey = new public_key(address.getPublicKey().toBytes());
-        //加密
-        memo.set_message(
-                privateKey.getPrivateKey(),
-                publicKey,
-                strPrivateKey,
-                1
-        );
-
-        String encryptoPrivateKey = memo.get_message_data();
-
-        String command = String.format("borrow_asset %s %s %s %s true",SPUtils.getString(Const.USERNAME,""),debtChange,selectCurrency,collateralChange);
-
-        HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("type", "2");
-        hashMap.put("name", SPUtils.getString(Const.USERNAME,""));
-        hashMap.put("1", encryptoPrivateKey);
-        hashMap.put("2", strPublicKey);
-        hashMap.put("command",command);
-        //执行命令
-        AcceptorApi.acceptantHttp(hashMap,"and_run_command",new JsonCallBack<HttpResponseModel>(HttpResponseModel.class) {
+        BorderlessDataManager.getInstance().borrowWebSocket(2, SPUtils.getString(Const.USERNAME, ""), debtChange, selectCurrency, collateralChange, new AsyncObserver() {
             @Override
-            public void onSuccess(Response<HttpResponseModel> response) {
-                HttpResponseModel httpResponseModel = response.body();
-                if (httpResponseModel.getStatus().contains("success")){
-                    MyApp.showToast(getString(R.string.bds_borrowed_successfully));
-                    finish();
-                    progressDialog.dismiss();
-                }else {
-                    MyApp.showToast(httpResponseModel.getMsg());
-                    progressDialog.dismiss();
-                }
-            }
-
-            @Override
-            public void onStart(Request<HttpResponseModel, ? extends Request> request) {
-                super.onStart(request);
-            }
-
-            @Override
-            public void onError(Response<HttpResponseModel> response) {
-                super.onError(response);
+            public void onError(DataError error) {
                 MyApp.showToast(getString(R.string.network));
                 progressDialog.dismiss();
             }
+
+            @Override
+            public void onSubscribe(Disposable d) {
+                progressDialog.show();
+            }
+
+            @Override
+            public void onNext(Object o) {
+                MyApp.showToast(getString(R.string.bds_borrowed_successfully));
+                finish();
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
         });
 
+
     }
 
-    private int borrow(String debtChange,String collateralChange){
-        int i = 1;
-        String result = "";
-        try {
-            result = BitsharesWalletWraper.getInstance().cli_borrow_asset(SPUtils.getString(Const.USERNAME,""),debtChange,selectCurrency,collateralChange);
-        } catch (NetworkStatusException e) {
-            e.printStackTrace();
-        }
-
-        Log.i("result",result);
-        if (TextUtils.isEmpty(result)){
-            i = 1;
-        }else if (result.contains("ref_block_num") && result.contains("signatures")){
-            i = 0;
-        }else  if (result.contains("exception")){
-            i = 1;
-        }else  if (result.contains("timeout_exception")){
-            i = 2;
-        }
-        return i;
-    }
-
-    public class borrowTask extends AsyncTask<String, Void,Integer> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog.show();
-        }
-
-        @Override
-        protected Integer doInBackground(String... params) {
-            return borrow(params[0],params[1]);
-        }
-
-        @Override
-        protected void onPostExecute(Integer i) {
-            super.onPostExecute(i);
-            if (i == 1){
-                MyApp.showToast(getString(R.string.bds_borrow_fail));
-            }else if ( i == 0){
-                MyApp.showToast(getString(R.string.bds_borrow_successfully));
-                finish();
-            }else if ( i == 2){
-                MyApp.showToast(getString(R.string.network));
-            }
-            progressDialog.dismiss();
-
-        }
-    }
 
     @Override
     protected void onDestroy() {

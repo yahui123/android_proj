@@ -589,8 +589,8 @@ public class wallet_api {
         return mWebsocketApi.get_block_header(nBlockNumber);
     }
 
-    public block_object get_block(int nBlockNumber) throws NetworkStatusException {
-        return mWebsocketApi.get_block(nBlockNumber);
+    public block_object get_block(Integer nBlockNumber,int index) throws NetworkStatusException {
+        return mWebsocketApi.get_block(nBlockNumber,index);
     }
 
     public asset_object lookup_asset_symbols(String strAssetSymbol) throws NetworkStatusException {
@@ -1639,26 +1639,12 @@ public class wallet_api {
     public String get_bitasset_data(String symbol) throws NetworkStatusException {
         asset_object asset = lookup_asset_symbols(symbol);
 
-        if (asset.bitasset_data_id == null) return null;
+
+        if (asset == null || asset.bitasset_data_id == null) return null;
 
         return mWebsocketApi.get_object(asset.bitasset_data_id.toString());
     }
 
-    //强平触发价
-    public String cli_get_full_accounts(String account) throws NetworkStatusException {
-        return mWebsocketApi.cli_get_full_accounts(account);
-    }
-
-    //cli 资产借入
-    public String cli_borrow_asset(String account, String amount_to_borrow, String asset_symbol, String amount_of_collateral) throws NetworkStatusException {
-        //TODO: 配合cli的使用，需要获取注册人私钥.
-        String strWifKey = getWifKeyWithAccount(account);
-        //TODO: 检查注册账户私钥是否存在.
-        // 如果不存在请检查钱包文件是否有该账户名称，并且看代码是否执行过load_wallet_file（）函数
-        if (strWifKey.isEmpty())
-            return "";
-        return mWebsocketApi.cli_borrow_asset(account, amount_to_borrow, asset_symbol, amount_of_collateral, strWifKey);
-    }
 
     public signed_transaction borrow_asset(String account,String amount_to_borrow,String asset_symbol,String amount_to_collateral) throws NetworkStatusException {
         operations.call_order_update_operation op = new operations.call_order_update_operation();
@@ -1674,7 +1660,7 @@ public class wallet_api {
         list.add(base_asset);
 
         asset_object asset_collateratl = get_assets(list).get(0);
-
+        op.funding_account = accountObject.id;
         op.delta_debt = asset_borrow.amount_from_string(amount_to_borrow);
 
         op.delta_collateral = asset_collateratl.amount_from_string(amount_to_collateral);
@@ -1717,74 +1703,6 @@ public class wallet_api {
         return mWebsocketApi.get_all_history(baseSymbolId, qouteSymbolId, nLimit);
     }
 
-    /***
-     * cli 注册账户
-     * @param account_name  账户名称
-     * @param public_key    账户公钥
-     * @param register      注册人
-     * @param referrer      引荐人
-     * @return
-     *  -1 账户本地私钥不存在
-     *  0 升级失败
-     *  1 升级成功
-     * */
-    public int cli_register_account(String account_name, String public_key, String register, String referrer) {
-
-        //TODO: 配合cli的使用，需要获取注册人私钥.
-        String regWifKey = getWifKeyWithAccount(register);
-        //TODO: 检查注册账户私钥是否存在.
-        // 如果不存在请检查钱包文件是否有该注册人，并且看代码是否执行过load_wallet_file（）函数
-        if (regWifKey.isEmpty())
-            return -1;
-        if (mWebsocketApi.cli_register_account(account_name, public_key, register, regWifKey, referrer))
-            return 1;
-        else
-            return 0;
-    }
-
-    /***
-     * cli 升级账户
-     * @param account_name  账户名称
-     * @return
-     *  -1 账户本地私钥不存在
-     *  0 升级失败
-     *  1 升级成功
-     * */
-    public int cli_upgrade_account(String account_name) {
-        //TODO:配合cli的使用，需要获取升级账户的私钥
-        String accWifKey = getWifKeyWithAccount(account_name);
-        //TODO: 检查账户私钥是否存在.
-        // 如果不存在请检查钱包文件是否有该账户名称，并且看代码是否执行过load_wallet_file（）函数
-        if (accWifKey.isEmpty())
-            return -1;
-        if (mWebsocketApi.cli_upgrade_account(account_name, accWifKey)) {
-            return 1;
-        } else {
-            return 0;
-        }
-
-    }
-
-
-    /***
-     * cli 领取冻结资产
-     * @param str_amount 领取金额
-     * @return
-     * -1 本地内存账户不存在
-     * -2 本地内存账户私钥不存在
-     * 0  领取资产失败
-     * 1  领取资产成功*/
-    public int cli_withdraw_vesting(String assets_id, String str_amount) {
-
-        //TODO: 根据账户名查询账户私钥
-        // 如果不存在请检查钱包文件是否有该账户名称，并且看代码是否执行过load_wallet_file（）函数
-        String accWifKey = getWifKeyWithAccount(SPUtils.getString(Const.USERNAME, ""));
-        if (accWifKey.isEmpty()) {
-            return -2;
-        }
-
-        return mWebsocketApi.cli_withdraw_vesting(assets_id, str_amount, SPUtils.getString(Const.USERNAME, ""), accWifKey);
-    }
 
 
 

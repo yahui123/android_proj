@@ -52,6 +52,7 @@ public class CreateUserPresenter extends AbsBasePresenter<CreateUserContract.Vie
 
     @Override
     public void sendRegister(String user, String publiclKey, String referName, String privateKey) {
+
         mModel.register(user, publiclKey, referName, privateKey, new BorderObserver<Object>() {
             @Override
             public void onSubscribe(Disposable d) {

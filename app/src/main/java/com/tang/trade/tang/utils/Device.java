@@ -184,23 +184,6 @@ public class Device {
     }
 
     public static boolean pingIpAddress() {
-//        int status = -1;
-//
-//        if (BitsharesWalletWraper.getInstance().getCliUsedSwitch()){
-//            try {
-//                String node = MyApp.CURRENT_NODE;
-//                status =  CliCmdExecutor.TryConnect("4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84",node);
-//            } catch (JNIException e) {
-//                e.printStackTrace();
-//            }
-//
-//            if (status == -1) {
-//                return false;
-//            }
-//
-//        }else {
-//
-//        }
 
         global_property_object global_property_object = null;
         int len = MyApp.CURRENT_NODE.substring(MyApp.CURRENT_NODE.lastIndexOf(":")+1,MyApp.CURRENT_NODE.length()).length();

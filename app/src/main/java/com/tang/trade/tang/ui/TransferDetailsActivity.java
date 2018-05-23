@@ -11,6 +11,7 @@ import com.tang.trade.tang.adapter.TransferDetailsAdapter;
 import com.tang.trade.tang.net.model.AccDetailsModel;
 import com.tang.trade.tang.net.model.HistoryResponseModel;
 import com.tang.trade.tang.socket.BitsharesWalletWraper;
+import com.tang.trade.tang.socket.chain.block_object;
 import com.tang.trade.tang.socket.exception.NetworkStatusException;
 import com.tang.trade.tang.ui.base.BaseActivity;
 
@@ -70,10 +71,10 @@ public class TransferDetailsActivity extends BaseActivity {
         Intent intent = getIntent();
         dataBean = (HistoryResponseModel.DataBean) intent.getSerializableExtra("detials");
 
-        HashMap<String,String> map = null;
+        block_object block  = null;
         if (dataBean != null){
             try {
-                map = BitsharesWalletWraper.getInstance().cli_get_block(dataBean.getBlockNum(),Integer.parseInt(dataBean.getIndex()));
+                block = BitsharesWalletWraper.getInstance().get_block(Integer.parseInt(dataBean.getBlockNum()),Integer.parseInt(dataBean.getIndex()));
             } catch (NetworkStatusException e) {
                 e.printStackTrace();
             }
@@ -81,8 +82,8 @@ public class TransferDetailsActivity extends BaseActivity {
         }
 
         data.add(new AccDetailsModel("区块",dataBean.getBlockNum()));
-        if (map != null){
-            data.add(new AccDetailsModel("时间",map.get("date")));
+        if (block != null){
+            data.add(new AccDetailsModel("时间",block.timeStame));
         }else {
             data.add(new AccDetailsModel("时间",""));
         }
@@ -93,8 +94,8 @@ public class TransferDetailsActivity extends BaseActivity {
         data.add(new AccDetailsModel("手续费",dataBean.getFee()));
         data.add(new AccDetailsModel("交易ID所在区块索引",dataBean.getIndex()));
         data.add(new AccDetailsModel("操作历史ID",dataBean.getId()));
-        if (map != null){
-            data.add(new AccDetailsModel("交易ID",map.get("transaction_ids")));
+        if (block != null){
+            data.add(new AccDetailsModel("交易ID",block.transactionId));
         }else{
             data.add(new AccDetailsModel("交易ID",""));
         }

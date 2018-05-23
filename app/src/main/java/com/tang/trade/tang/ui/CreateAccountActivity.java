@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
 import com.tang.trade.app.Const;
+import com.tang.trade.data.remote.http.DataError;
+import com.tang.trade.data.remote.websocket.AsyncObserver;
+import com.tang.trade.data.remote.websocket.BorderlessDataManager;
 import com.tang.trade.tang.MyApp;
 import com.tang.trade.tang.R;
 import com.tang.trade.tang.net.AcceptorApi;
@@ -46,6 +49,7 @@ import butterknife.BindView;
 import de.bitsharesmunich.graphenej.Address;
 import de.bitsharesmunich.graphenej.BrainKey;
 import de.bitsharesmunich.graphenej.errors.MalformedAddressException;
+import io.reactivex.disposables.Disposable;
 
 import static com.tang.trade.tang.net.TangConstant.PATH;
 import static com.tang.trade.tang.ui.loginactivity.ChooseWalletActivity.CURRTEN_BIN;
@@ -69,46 +73,6 @@ public class CreateAccountActivity extends BaseActivity {
     ImageView iv_back;
 
 
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 0) {
-                final String userName = et_user.getText().toString();
-                if (userName.isEmpty()) {
-                    MyApp.showToast(getString(R.string.bds_note_null_accout));
-                } else {
-                    suggestPrivateKey = null;
-                    while (suggestPrivateKey == null) {
-                        suggest_brain_key(userName);
-                    }
-
-                    if (userName.matches("^[^\\u4e00-\\u9fa5]{0,}$") == true) {
-
-                        if (MyTextTuils.containsEmoji(userName)) {
-                            MyApp.showToast(getString(R.string.bds_no_enjoy));
-                            return;
-                        }
-
-                        createAccount(userName);
-
-                    } else {
-                        MyApp.showToast(getString(R.string.bds_contain_chinese));
-                    }
-
-
-                }
-
-            }
-        }
-    };
-
-    Thread thread = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            handler.sendEmptyMessage(0);
-        }
-    });
 
 
     @Override
@@ -160,141 +124,53 @@ public class CreateAccountActivity extends BaseActivity {
 
 
     private void createAccount(String account_name) {
-        progressDialog.show();
+
         final String loginUser = SPUtils.getString(Const.USERNAME, "");
-//        final String loginUser="init0";
-        //获取账户 private key
-        try {
-            account_object upgradeAccount = BitsharesWalletWraper.getInstance().get_account_object(loginUser);
-            if (null == upgradeAccount) {
+
+        BorderlessDataManager.getInstance().registerForWebSocket(suggestPublicKey, account_name, loginUser, loginUser, 0, new AsyncObserver() {
+            @Override
+            public void onError(DataError error) {
                 MyApp.showToast(getString(R.string.network));
                 progressDialog.dismiss();
-                return;
             }
 
-            //判断新创建的账户是否存在
-            account_object account = BitsharesWalletWraper.getInstance().get_account_object(account_name);
-            if (null != account) {
-                MyApp.showToast(getString(R.string.bds_AccountAlreadyExists));
-                progressDialog.dismiss();
-                return;
+            @Override
+            public void onSubscribe(Disposable d) {
+                progressDialog.show();
             }
-            types.public_key_type publicKeyType = upgradeAccount.owner.get_keys().get(0);
-            String strPublicKey = publicKeyType.toString();
-            types.private_key_type privateKey = BitsharesWalletWraper.getInstance().get_wallet_hash().get(publicKeyType);
-            String strPrivateKey = null;
 
-            if (privateKey != null) {
-                strPrivateKey = privateKey.toString();
-            } else {
-                BitsharesWalletWraper.getInstance().clear();
-                BitsharesWalletWraper.getInstance().load_wallet_file(TangConstant.PATH + CURRTEN_BIN, PASSWORD);
-                BitsharesWalletWraper.getInstance().unlock(PASSWORD);
-                privateKey = BitsharesWalletWraper.getInstance().get_wallet_hash().get(publicKeyType);
-                if (privateKey != null) {
-                    strPrivateKey = privateKey.toString();
+            @Override
+            public void onNext(Object o) {
+                BitsharesWalletWraper.getInstance().set_wallet_file_path(TangConstant.PATH + CURRTEN_BIN);
+                int flag = BitsharesWalletWraper.getInstance().load_wallet_file(PATH + CURRTEN_BIN, PASSWORD);
+                int nRet;
+                if (flag != -1) {
+                    //java Android 钱包解锁
+                    nRet = BitsharesWalletWraper.getInstance().unlock(PASSWORD);
+                } else {
+                    MyApp.showToast(getString(R.string.bds_wallet_load_err));
+                    return;
                 }
-            }
 
-            if (strPrivateKey == null) {
+                //解锁成功
+                if (nRet != 0) {
+                    MyApp.showToast(getString(R.string.registerfail));
+
+                }
+                if (0 == BitsharesWalletWraper.getInstance().import_key(et_user.getText().toString(), PASSWORD, suggestPrivateKey)) {
+                    MyApp.showToast(getString(R.string.registersuccess));
+                    finish();
+                } else {
+                    MyApp.showToast(getString(R.string.registerfail));
+                }
                 progressDialog.dismiss();
-                return;
             }
 
-
-            //请求public key
-
-            memo_data memo = new memo_data();
-            memo.from = upgradeAccount.options.memo_key;
-            memo.to = upgradeAccount.options.memo_key;
-
-            try {
-                Address address = new Address(BuildConfig.strPubWifKey);
-                public_key publicKey = new public_key(address.getPublicKey().toBytes());
-                //加密
-                memo.set_message(
-                        privateKey.getPrivateKey(),
-                        publicKey,
-                        strPrivateKey,
-                        1
-                );
-
-
-                String encryptoData = memo.get_message_data();
-
-                String command = String.format("register_account %s %s %s %s %s 40 true",
-                        account_name,
-                        suggestPublicKey,
-                        suggestPublicKey,
-                        SPUtils.getString(Const.USERNAME, ""),
-                        SPUtils.getString(Const.USERNAME, ""));
-                HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("type", "2");
-                hashMap.put("name", SPUtils.getString(Const.USERNAME, ""));
-                hashMap.put("1", encryptoData);
-                hashMap.put("2", strPublicKey);
-                hashMap.put("command", command);
-                //执行命令
-                AcceptorApi.acceptantHttp(hashMap, "and_run_command", new JsonCallBack<HttpResponseModel>(HttpResponseModel.class) {
-                    @Override
-                    public void onSuccess(Response<HttpResponseModel> response) {
-                        HttpResponseModel httpResponseModel = response.body();
-                        if (httpResponseModel.getStatus().contains("success")) {
-                            BitsharesWalletWraper.getInstance().set_wallet_file_path(TangConstant.PATH + CURRTEN_BIN);
-                            int flag = BitsharesWalletWraper.getInstance().load_wallet_file(PATH + CURRTEN_BIN, PASSWORD);
-                            int nRet;
-                            if (flag != -1) {
-                                //java Android 钱包解锁
-                                nRet = BitsharesWalletWraper.getInstance().unlock(PASSWORD);
-                            } else {
-                                MyApp.showToast(getString(R.string.bds_wallet_load_err));
-                                return;
-                            }
-
-                            //解锁成功
-                            if (nRet != 0) {
-                                MyApp.showToast(getString(R.string.registerfail));
-
-                            }
-                            if (0 == BitsharesWalletWraper.getInstance().import_key(et_user.getText().toString(), PASSWORD, suggestPrivateKey)) {
-                                MyApp.showToast(getString(R.string.registersuccess));
-                                finish();
-                            } else {
-                                MyApp.showToast(getString(R.string.registerfail));
-                            }
-                            progressDialog.dismiss();
-                        } else {
-                            MyApp.showToast(httpResponseModel.getMsg());
-                            progressDialog.dismiss();
-                        }
-                    }
-
-                    @Override
-                    public void onStart(Request<HttpResponseModel, ? extends Request> request) {
-                        super.onStart(request);
-                    }
-
-                    @Override
-                    public void onError(Response<HttpResponseModel> response) {
-                        super.onError(response);
-                        MyApp.showToast(getString(R.string.network));
-                        progressDialog.dismiss();
-                    }
-                });
-
-            } catch (MalformedAddressException e) {
-                e.printStackTrace();
-                MyApp.showToast(getString(R.string.registerfail));
-                progressDialog.dismiss();
+            @Override
+            public void onComplete() {
 
             }
-
-        } catch (NetworkStatusException e) {
-            e.printStackTrace();
-            MyApp.showToast(getString(R.string.network));
-            progressDialog.dismiss();
-        }
-
+        });
 
     }
 
@@ -311,7 +187,30 @@ public class CreateAccountActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.btn_ok:
-                handler.post(thread);
+                final String userName = et_user.getText().toString();
+                if (userName.isEmpty()) {
+                    MyApp.showToast(getString(R.string.bds_note_null_accout));
+                } else {
+                    suggestPrivateKey = null;
+                    while (suggestPrivateKey == null) {
+                        suggest_brain_key(userName);
+                    }
+
+                    if (userName.matches("^[^\\u4e00-\\u9fa5]{0,}$") == true) {
+
+                        if (MyTextTuils.containsEmoji(userName)) {
+                            MyApp.showToast(getString(R.string.bds_no_enjoy));
+                            return;
+                        }
+
+                        createAccount(userName);
+
+                    } else {
+                        MyApp.showToast(getString(R.string.bds_contain_chinese));
+                    }
+
+
+                }
                 break;
         }
     }
