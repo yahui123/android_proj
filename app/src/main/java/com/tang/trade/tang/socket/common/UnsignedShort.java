@@ -8,6 +8,9 @@ public class UnsignedShort extends Number {
     public UnsignedShort(short value) {
         this.value = value;
     }
+    public static UnsignedShort valueOf(String string) {
+        return new UnsignedShort(Integer.valueOf(string).shortValue());
+    }
 
     @Override
     public int intValue() {

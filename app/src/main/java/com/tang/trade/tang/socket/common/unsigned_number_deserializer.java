@@ -26,9 +26,21 @@ public class unsigned_number_deserializer {
 
         @Override
         public UnsignedInteger deserialize(JsonElement json,
-                                        Type typeOfT,
-                                        JsonDeserializationContext context) throws JsonParseException {
+                                           Type typeOfT,
+                                           JsonDeserializationContext context) throws JsonParseException {
             UnsignedInteger uIntegerObject = UnsignedInteger.valueOf(json.getAsString());
+
+            return uIntegerObject;
+        }
+    }
+
+    public static class UnsignedShortDeserialize implements JsonDeserializer<UnsignedShort> {
+
+        @Override
+        public UnsignedShort deserialize(JsonElement json,
+                                         Type typeOfT,
+                                         JsonDeserializationContext context) throws JsonParseException {
+            UnsignedShort uIntegerObject = UnsignedShort.valueOf(json.getAsString());
 
             return uIntegerObject;
         }

@@ -35,6 +35,8 @@ public class global_config_object {
         mGsonBuilder.registerTypeAdapter(ripemd160_object.class, new ripemd160_object.ripemd160_object_deserializer());
         mGsonBuilder.registerTypeAdapter(sha256_object.class, new sha256_object.sha256_object_deserializer());
         mGsonBuilder.registerTypeAdapter(UnsignedLong.class, new unsigned_number_deserializer.UnsignedLongDeserialize());
+        mGsonBuilder.registerTypeAdapter(UnsignedShort.class, new unsigned_number_deserializer.UnsignedShortDeserialize());
+        mGsonBuilder.registerTypeAdapter(UnsignedInteger.class, new unsigned_number_deserializer.UnsignedIntegerDeserialize());
         mGsonBuilder.registerTypeAdapter(Date.class, new gson_common_deserializer.DateDeserializer());
         mGsonBuilder.registerTypeAdapter(ByteBuffer.class, new gson_common_deserializer.ByteBufferDeserializer());
         //mGsonBuilder.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
