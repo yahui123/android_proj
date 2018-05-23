@@ -571,7 +571,9 @@ public class wallet_api {
     public List<operation_history_object> get_account_history_with_last_id(object_id<account_object> accountId, int nLimit,String id) throws NetworkStatusException {
 
         List<operation_history_object> list = mWebsocketApi.get_account_history_with_last_id(accountId, nLimit,id);
-
+        if (list == null || list.size()<=0){
+            return null;
+        }
         for ( operation_history_object ob : list ) {
             if (ob.op.nOperationType == 0) {
                 operations.transfer_operation transfer = (operations.transfer_operation) ob.op.operationContent;
@@ -1333,7 +1335,7 @@ public class wallet_api {
         operation.options.voting_account = new object_id<account_object>(1,2,5);
         operation.options.votes = new HashSet<>();
         operation.options.extensions = new HashSet<String>();
-        operation.extensions = new HashSet<>();
+        operation.extensions = new HashMap();
         if (publicMemoKey != null)
             operation.options.memo_key = publicOwnerKey;
 
@@ -1713,14 +1715,47 @@ public class wallet_api {
     }
 
     //cli 转账记录
-    public HashMap<String, List<HistoryResponseModel.DataBean>> cli_transfer_record(String account, String id) throws NetworkStatusException {
-        String name = SPUtils.getString(Const.USERNAME, "");
-        String strWifKey = getWifKeyWithAccount(name);
-        //TODO: 检查注册账户私钥是否存在.
-        // 如果不存在请检查钱包文件是否有该账户名称，并且看代码是否执行过load_wallet_file（）函数
-        if (strWifKey.isEmpty())
-            return null;
-        return mWebsocketApi.cli_transfer_record(account, id, name, strWifKey);
+    public HashMap<String, List<HistoryResponseModel.DataBean>> transfer_record(String account, String id) throws NetworkStatusException {
+
+        HashMap<String,List<HistoryResponseModel.DataBean>> map = new HashMap();
+        List<HistoryResponseModel.DataBean> data = new ArrayList<>();
+
+        account_object name = lookup_account_names(account).get(0);
+        if (name == null || name.id==null){
+            return map;
+        }
+
+        List<operation_history_object> list = get_account_history_with_last_id(name.id,10,id);
+
+        String op_id = "op_id";
+        HistoryResponseModel.DataBean dataBean = null;
+
+        if (list == null || list.size()<=0){
+            return map;
+        }
+        for (operation_history_object ob : list) {
+            op_id = ob.id;
+            String description = ob.description;
+            String memo = ob.memo;
+
+            if (description.contains("Transfer")){
+                String []transfers = description.split(" ");
+                dataBean = new HistoryResponseModel.DataBean();
+                dataBean.setSymbol(transfers[2]);
+                dataBean.setAmount(NumberUtils.formatNumber8(transfers[1]));
+                dataBean.setFrom(transfers[4]);
+                dataBean.setTo(transfers[6]);
+                dataBean.setFee(transfers[transfers.length-2]);
+                dataBean.setMemo(memo);
+                dataBean.setBlockNum(ob.block_num+"");
+                dataBean.setId(ob.id);
+                dataBean.setIndex(ob.op_in_trx+"");
+                data.add(dataBean);
+            }
+        }
+
+        map.put(op_id,data);
+        return map;
     }
 
 
@@ -1728,17 +1763,5 @@ public class wallet_api {
         return mWebsocketApi.get_all_history(baseSymbolId, qouteSymbolId, nLimit);
     }
 
-
-
-
-    public HashMap<String, String> cli_get_block(String block_num, int index) throws NetworkStatusException {
-        String name = SPUtils.getString(Const.USERNAME, "");
-        String strWifKey = getWifKeyWithAccount(name);
-        //TODO: 检查注册账户私钥是否存在.
-        // 如果不存在请检查钱包文件是否有该账户名称，并且看代码是否执行过load_wallet_file（）函数
-        if (strWifKey.isEmpty())
-            return null;
-        return mWebsocketApi.cli_get_block(block_num, index, name, strWifKey);
-    }
 
 }

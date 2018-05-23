@@ -113,7 +113,7 @@ public class WalletActivity extends BaseActivity {
                 try {
                     Integer nextBlockNum = Integer.parseInt(blockChainInfo.head_block_num);
                     for (int i=0; i< 10; ++i) {
-                        block_object blockObj =  BitsharesWalletWraper.getInstance().get_block(nextBlockNum,0);
+                        block_object blockObj =  BitsharesWalletWraper.getInstance().get_block(nextBlockNum,10000);
                         if (blockObj == null) {
                             continue;
                         }

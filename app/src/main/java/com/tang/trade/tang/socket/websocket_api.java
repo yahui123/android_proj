@@ -982,7 +982,7 @@ public class websocket_api extends WebSocketListener {
     }
 
     //查询区块信息
-    public block_object get_block(int nBlockNumber) throws NetworkStatusException {
+    public block_object get_block(Integer nBlockNumber,int index) throws NetworkStatusException {
         _nDatabaseId = get_database_api_id();
         block_object block = new block_object();
         Call callObject = new Call();
@@ -1017,11 +1017,14 @@ public class websocket_api extends WebSocketListener {
                     block.transaction_ids = new ArrayList<>();
                     for (int i =0; i < jarray.length();i ++) {
                         String json =  jarray.getString(i);
-                        System.out.println(json);
                         Gson gson = global_config_object.getInstance().getGsonBuilder().create();
                         transaction trans = gson.fromJson(json,transaction.class);
 
                         block.transaction_ids.add(trans.ids().toString().substring(0,40));
+                    }
+
+                    if (index != 10000){
+                        block.transactionId = block.transaction_ids.get(index);
                     }
                     return block;
                 } catch (JSONException e) {
@@ -1693,7 +1696,6 @@ public class websocket_api extends WebSocketListener {
                                       ReplyObjectProcess<Reply<T>> replyObjectProcess) throws NetworkStatusException {
         Gson gson = global_config_object.getInstance().getGsonBuilder().create();
         String strMessage = gson.toJson(callObject);
-
         synchronized (mHashMapIdToProcess) {
             mHashMapIdToProcess.put(callObject.id, replyObjectProcess);
         }
@@ -1883,66 +1885,6 @@ public class websocket_api extends WebSocketListener {
 
 
 
-
-
-
-    /**
-     * 转账记录
-     * @param account
-     * @return
-     * @throws NetworkStatusException
-     */
-    public HashMap<String,List<HistoryResponseModel.DataBean>> cli_transfer_record(String account,String id,String account_name ,String account_pri) throws NetworkStatusException {
-        HashMap<String,List<HistoryResponseModel.DataBean>> map = new HashMap();
-        List<HistoryResponseModel.DataBean> data = new ArrayList<>();
-        String result = "";
-
-            if (!TextUtils.isEmpty(result)) {
-                if (result.indexOf("error") != -1 || result.indexOf("exception")!= -1) {
-                    String strError = result;
-                    return map;
-                }
-            }
-            else {
-                return map;
-            }
-
-            try {
-                JSONArray jsonArray = new JSONArray(result);
-                String op_id = "op_id";
-                HistoryResponseModel.DataBean dataBean = null;
-                if (jsonArray.length()>0){
-                    op_id = jsonArray.optJSONObject(jsonArray.length()-1).optJSONObject("op").optString("id");
-                    for (int i = 0 ; i < jsonArray.length() ; i++){
-                        JSONObject object = jsonArray.optJSONObject(i);
-                        String description = object.optString("description");
-                        String memo = object.optString("memo");
-                        if (description.contains("Transfer")){
-                            String []transfers = description.split(" ");
-                            dataBean = new HistoryResponseModel.DataBean();
-                            dataBean.setSymbol(transfers[2]);
-                            dataBean.setAmount(NumberUtils.formatNumber8(transfers[1]));
-                            dataBean.setFrom(transfers[4]);
-                            dataBean.setTo(transfers[6]);
-                            dataBean.setFee(transfers[transfers.length-2]);
-                            dataBean.setMemo(memo);
-                            dataBean.setBlockNum(jsonArray.optJSONObject(i).optJSONObject("op").optString("block_num"));
-                            dataBean.setId(jsonArray.optJSONObject(i).optJSONObject("op").optString("id"));
-                            dataBean.setIndex(jsonArray.optJSONObject(i).optJSONObject("op").optString("op_in_trx"));
-                            data.add(dataBean);
-                        }
-
-                    }
-                }
-                map.put(op_id,data);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-        return map;
-    }
-
     /***
      * 最新交易
      * @param nLimit
@@ -1974,40 +1916,6 @@ public class websocket_api extends WebSocketListener {
     }
 
 
-
-
-    public HashMap<String,String> cli_get_block(String block_num,int index,String account_name,String account_pri) throws NetworkStatusException {
-        HashMap<String,String> map = new HashMap();
-        List<HistoryResponseModel.DataBean> data = new ArrayList<>();
-        String result = "";
-
-
-            if (!TextUtils.isEmpty(result)) {
-                if (result.indexOf("error") != -1 || result.indexOf("exception")!= -1) {
-                    String strError = result;
-                    return map;
-                }
-            }
-            else {
-                return map;
-            }
-
-            try {
-                JSONObject jsonObject = new JSONObject(result);
-//                String time = jsonObject.getJSONArray("transactions").getJSONObject(index).optString("expiration");
-                String time = jsonObject.optString("timestamp");
-                String date = TimeUtils.utc2Local(time.replace("T"," "));
-                String transaction_ids = jsonObject.getJSONArray("transaction_ids").optString(index);
-
-                map.put("date",date);
-                map.put("transaction_ids",transaction_ids);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-        return map;
-    }
 
 
 

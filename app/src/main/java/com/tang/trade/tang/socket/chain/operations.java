@@ -734,7 +734,7 @@ public class operations {
         public authority owner;
         public authority active;
         public types.account_options options;
-        public Set<types.void_t>         extensions;
+        public HashMap        extensions;
 
         public long calculate_fee(fee_parameters_type feeParametersType) {
             long lFeeRequired = feeParametersType.basic_fee;

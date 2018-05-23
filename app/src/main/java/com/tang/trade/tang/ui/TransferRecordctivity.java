@@ -112,7 +112,7 @@ public class TransferRecordctivity extends BaseActivity {
 
             for (int i = 0; i < 10; i++) {
                 try {
-                     map = BitsharesWalletWraper.getInstance().cli_transfer_record(username, id);
+                     map = BitsharesWalletWraper.getInstance().transfer_record(username, id);
                     for (Map.Entry<String, List<HistoryResponseModel.DataBean>> vo : map.entrySet()) {
                         id = vo.getKey();
                         data.addAll((ArrayList<HistoryResponseModel.DataBean>) vo.getValue());

@@ -904,8 +904,8 @@ public class BitsharesWalletWraper {
     }
 
 
-    public HashMap<String,List<HistoryResponseModel.DataBean>> cli_transfer_record(String account,String id) throws NetworkStatusException {
-        return mWalletApi.cli_transfer_record(account,id);
+    public HashMap<String,List<HistoryResponseModel.DataBean>> transfer_record(String account,String id) throws NetworkStatusException {
+        return mWalletApi.transfer_record(account,id);
     }
 
 
@@ -919,11 +919,6 @@ public class BitsharesWalletWraper {
         return mWalletApi.withdraw_vesting(name_or_id,vesting_name,amount,asset_symbol);
     }
 
-
-
-    public HashMap<String,String> cli_get_block(String block_num,int index) throws NetworkStatusException {
-        return mWalletApi.cli_get_block(block_num,index);
-    }
 
 
     public String getSignMessage(String public_key){

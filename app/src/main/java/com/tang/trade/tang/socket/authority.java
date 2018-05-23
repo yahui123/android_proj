@@ -105,7 +105,23 @@ public class authority {
 
         rawObject.pack(baseEncoder,UnsignedInteger.fromIntBits(key_auths.size()));
         for (ArrayList key : key_auths) {
+            if (key.get(0).getClass() != types.public_key_type.class) {
+                String pub = (String)key.get(0);
+
+                try {
+                    key.set(0,new types.public_key_type(pub));
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+            }
+
             types.public_key_type pub = (types.public_key_type) key.get(0);
+            if (key.get(1).getClass() != Integer.class) {
+                Double d = (Double) key.get(1);
+
+                key.set(1,new Integer(d.intValue()));
+            }
+
             Integer weight = (Integer) key.get(1);
             baseEncoder.write(pub.key_data);
             baseEncoder.write(rawObject.get_byte_array(weight.shortValue()));
