@@ -6,6 +6,7 @@ import com.tang.trade.tang.socket.account_object;
 import com.tang.trade.tang.socket.authority;
 import com.tang.trade.tang.socket.chain.operations.base_operation;
 import com.tang.trade.tang.socket.chain.operations.operation_type;
+import com.tang.trade.tang.socket.common.UnsignedShort;
 import com.tang.trade.tang.socket.fc.bitutil;
 import com.tang.trade.tang.socket.fc.crypto.ripemd160_object;
 import com.tang.trade.tang.socket.fc.crypto.sha256_object;
@@ -28,14 +29,14 @@ public class transaction {
      * Least significant 16 bits from the reference block number. If @ref relative_expiration is zero, this field
      * must be zero as well.
      */
-    public Integer ref_block_num = 0;
+    public UnsignedShort ref_block_num = UnsignedShort.ZERO;
     /**
      * The first non-block-number 32-bits of the reference block ID. Recall that block IDs have 32 bits of block
      * number followed by the actual block hash, so this field should be set using the second 32 bits in the
      *
      * @ref block_id_type
      */
-    public Integer ref_block_prefix = 0;
+    public UnsignedInteger ref_block_prefix = UnsignedInteger.ZERO;
 
     /**
      * This field specifies the absolute expiration for this transaction.
@@ -49,10 +50,9 @@ public class transaction {
     }
 
     public void set_reference_block(ripemd160_object reference_block) {
-        ref_block_num = Integer.valueOf(bitutil.endian_reverse_u32(reference_block.hash[0]));
-
+        ref_block_num = new UnsignedShort((short)bitutil.endian_reverse_u32(reference_block.hash[0]));
         //ref_block_prefix = new UnsignedInteger(reference_block.hash[1]);
-        ref_block_prefix = Integer.valueOf(UnsignedInteger.fromIntBits(reference_block.hash[1]).intValue());
+        ref_block_prefix = UnsignedInteger.fromIntBits(reference_block.hash[1]);
     }
 
     public void set_expiration(Date expiration_time) {
