@@ -564,9 +564,34 @@ public class wallet_api {
         return mWebsocketApi.list_account_balances(accountId);
     }
 
-
     public List<operation_history_object> get_account_history(object_id<account_object> accountId, int nLimit) throws NetworkStatusException {
         return mWebsocketApi.get_account_history(accountId, nLimit);
+    }
+
+    public List<operation_history_object> get_account_history_with_last_id(object_id<account_object> accountId, int nLimit,String id) throws NetworkStatusException {
+
+        List<operation_history_object> list = mWebsocketApi.get_account_history_with_last_id(accountId, nLimit,id);
+
+        for ( operation_history_object ob : list ) {
+            if (ob.op.nOperationType == 0) {
+                operations.transfer_operation transfer = (operations.transfer_operation) ob.op.operationContent;
+
+                if (transfer.memo != null) {
+                    ob.memo = decrypt_memo_message(transfer.memo);
+                }
+
+                asset_object asset = lookup_asset_symbols(transfer.amount.asset_id.toString());
+
+                account_object from = mWebsocketApi.get_account(transfer.from.toString());
+                account_object to = mWebsocketApi.get_account(transfer.to.toString());
+
+                asset_object fee = lookup_asset_symbols(transfer.fee.asset_id.toString());
+
+                ob.description = "Transfer " + String.valueOf(transfer.amount.amount / Float.parseFloat(String.valueOf(asset.get_scaled_precision()))) + " " + asset.symbol + " from " + from.name + " to " + to.name + " " + "(Fee: " + String.valueOf(transfer.fee.amount / Float.parseFloat(String.valueOf(fee.get_scaled_precision()))) + " " + fee.symbol + ")";
+            }
+        }
+
+        return list;
     }
 
     public List<HistoryResponseModel.DataBean> get_transfer_history(object_id<account_object> accountId, int nLimit) throws NetworkStatusException {

@@ -8,5 +8,6 @@ public class operation_history_object {
     public int trx_in_block;
     public int op_in_trx;
     public int virtual_op;
-
+    public String description = "";
+    public String memo = "";
 }

@@ -440,6 +440,12 @@ public class BitsharesWalletWraper {
         return listHistoryObject;
     }
 
+    public List<operation_history_object> get_account_history_with_last_id(String accountId, int nLimit,String id) throws NetworkStatusException {
+        object_id id_object = object_id.create_from_string(accountId);
+
+        return mWalletApi.get_account_history_with_last_id(id_object,nLimit,id);
+    }
+
     public List<HistoryResponseModel.DataBean> get_transfer_history(object_id<account_object> accountObjectId,
                                                               int nLimit) throws NetworkStatusException {
         List<HistoryResponseModel.DataBean> listHistoryObject;

@@ -594,6 +594,10 @@ public class websocket_api extends WebSocketListener {
 
 
     public List<operation_history_object> get_account_history(object_id<account_object> accountId, int nLimit) throws NetworkStatusException {
+        return get_account_history_with_last_id(accountId,nLimit,"1.11.0");
+    }
+
+    public List<operation_history_object> get_account_history_with_last_id(object_id<account_object> accountId, int nLimit, String id) throws NetworkStatusException {
         _nHistoryId = get_history_api_id();
         Call callObject = new Call();
         callObject.id = mnCallId.getAndIncrement();
@@ -606,20 +610,17 @@ public class websocket_api extends WebSocketListener {
         listAccountHistoryParam.add(accountId);
         listAccountHistoryParam.add("1.11.0");
         listAccountHistoryParam.add(nLimit);
-        listAccountHistoryParam.add("1.11.0");
+        listAccountHistoryParam.add(id);
         callObject.params.add(listAccountHistoryParam);
 
         ReplyObjectProcess<Reply<List<operation_history_object>>> replyObject =
                 new ReplyObjectProcess<>(new TypeToken<Reply<List<operation_history_object>>>(){}.getType());
         Reply<List<operation_history_object>> replyAccountHistory = sendForReply(callObject, replyObject);
-        if (replyAccountHistory == null) {
-            return null;
-        } else {
-            return replyAccountHistory.result;
-        }
+
+        if (replyAccountHistory == null) return null;
+
+        return replyAccountHistory.result;
     }
-
-
 
     public account_object get_account(String strAccountNameOrId) throws NetworkStatusException {
         object_id<account_object> accountObjectId = object_id.create_from_string(strAccountNameOrId);
