@@ -87,7 +87,7 @@ public class websocket_api extends WebSocketListener {
     private AtomicInteger mnCallId = new AtomicInteger(1);
     private HashMap<Integer, IReplyObjectProcess> mHashMapIdToProcess = new HashMap<>();
     private String gRespJson;
-    private String chainid = "4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8";
+    private String chainid = "4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84";
 
 
     /*
@@ -506,7 +506,7 @@ public class websocket_api extends WebSocketListener {
         ReplyObjectProcess<Reply<sha256_object>> replyObject =
                 new ReplyObjectProcess<>(new TypeToken<Reply<sha256_object>>(){}.getType());
 
-        replyObject.processTextToObject("{\"id\":65,\"jsonrpc\":\"2.0\",\"result\":\"4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8\"}");
+        replyObject.processTextToObject("{\"id\":65,\"jsonrpc\":\"2.0\",\"result\":\"4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84\"}");
         Reply<sha256_object> replyObj = replyObject.getReplyObject();
         return replyObj.result;
     }
