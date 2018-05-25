@@ -44,6 +44,7 @@ import com.tang.trade.tang.socket.account_object;
 import com.tang.trade.tang.socket.chain.asset_object;
 import com.tang.trade.tang.socket.chain.block_object;
 import com.tang.trade.tang.socket.chain.object_id;
+import com.tang.trade.tang.socket.chain.signed_transaction;
 import com.tang.trade.tang.socket.exception.NetworkStatusException;
 import com.tang.trade.tang.ui.MainActivity;
 import com.tang.trade.tang.ui.loginactivity.ChooseWalletActivity;

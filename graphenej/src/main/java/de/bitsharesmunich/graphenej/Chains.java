@@ -5,13 +5,13 @@ package de.bitsharesmunich.graphenej;
  */
 public class Chains {
     public static class BITSHARES {
-//        public static final String CHAIN_ID = "4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8";
-    public static final String CHAIN_ID = "4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8";
+//        public static final String CHAIN_ID = "4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84";
+    public static final String CHAIN_ID = "4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84";
     }
     public static class GRAPHENE {
-        public static final String CHAIN_ID = "4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8";
+        public static final String CHAIN_ID = "4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84";
     }
     public static class TEST {
-        public static final String CHAIN_ID = "4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8";
+        public static final String CHAIN_ID = "4a93e8abe6ab5f2b935d692e13eea73cdbfb288959fb41640b829d25b7f4bd84";
     }
 }
