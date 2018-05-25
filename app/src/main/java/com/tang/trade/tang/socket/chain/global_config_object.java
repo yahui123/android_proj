@@ -4,6 +4,7 @@ package com.tang.trade.tang.socket.chain;
 import com.google.common.primitives.UnsignedInteger;
 import com.google.common.primitives.UnsignedLong;
 import com.google.gson.GsonBuilder;
+import com.tang.trade.tang.socket.authority;
 import com.tang.trade.tang.socket.common.UnsignedShort;
 import com.tang.trade.tang.socket.common.gson_common_deserializer;
 import com.tang.trade.tang.socket.common.gson_common_serializer;
@@ -39,6 +40,7 @@ public class global_config_object {
         mGsonBuilder.registerTypeAdapter(UnsignedInteger.class, new unsigned_number_deserializer.UnsignedIntegerDeserialize());
         mGsonBuilder.registerTypeAdapter(Date.class, new gson_common_deserializer.DateDeserializer());
         mGsonBuilder.registerTypeAdapter(ByteBuffer.class, new gson_common_deserializer.ByteBufferDeserializer());
+        mGsonBuilder.registerTypeAdapter(authority.class,new authority.authority_type_deserializer());
         //mGsonBuilder.setDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
         // register serializer
